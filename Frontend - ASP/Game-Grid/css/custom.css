@@ -1,10 +1,4 @@
-﻿.signup-box .login .acc-info-box {
-    margin-bottom: 15px;
-    max-width: 400px;
-    margin: 50px auto;
-}
-
-.input-div {
+﻿.input-div {
     padding: 10px;
     text-align: center;
 }
@@ -16,6 +10,7 @@
 input {
     border: 1px solid #ccc;
     padding: 5px;
+    width: 100%;
 }
 
 .acc-headings {

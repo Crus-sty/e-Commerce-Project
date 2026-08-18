@@ -5,11 +5,13 @@
 
     <div style="height: 120px;"></div>
 
-        <div class="signup-box">
+        <div class="container">
 
             <div class="acc-headings">
             <h1 align ="center"> Sign Up / Create Account </h1>
             </div>
+
+            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 
             <div class="input-div">
             <asp:Label ID="lblName" runat="server" Text="Name" ForeColor="Gray"></asp:Label>
@@ -41,6 +43,8 @@
             <p>Already have an account?
                 <a href="login.aspx">Login</a>
             </p>
+
+            </div>
 
         </div>
 
