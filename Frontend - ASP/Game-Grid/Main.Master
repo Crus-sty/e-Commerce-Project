@@ -39,6 +39,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
 <!--===============================================================================================-->
     <asp:ContentPlaceHolder ID="head" runat="server">
 
@@ -62,7 +63,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="account-info.aspx" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 

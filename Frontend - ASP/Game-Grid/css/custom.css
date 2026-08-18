@@ -1,0 +1,31 @@
+﻿.signup-box .login .acc-info-box {
+    margin-bottom: 15px;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.input-div {
+    padding: 10px;
+    text-align: center;
+}
+
+.login-btn .signup-btn{
+
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.acc-headings {
+    padding-bottom: 50px;
+}
+
+h5 {
+    padding-top: 15px;
+}
+
+.edit-info-btn .save-info-btn{
+    margin: 15px;
+}

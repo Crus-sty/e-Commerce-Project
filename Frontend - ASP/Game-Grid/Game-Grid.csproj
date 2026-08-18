@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.aspx" />
+    <Content Include="account-info.aspx" />
     <Content Include="contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -127,6 +128,7 @@
     <Content Include="css-amado\magnific-popup.css" />
     <Content Include="css-amado\nice-select.css" />
     <Content Include="css-amado\owl.carousel.css" />
+    <Content Include="css\custom.css" />
     <Content Include="css\main.css" />
     <Content Include="css\util.css" />
     <Content Include="favicon.ico" />
@@ -266,6 +268,7 @@
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
+    <Content Include="login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -419,6 +422,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="shop.aspx" />
+    <Content Include="sign-up.aspx" />
     <Content Include="Site.Master" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
@@ -501,6 +505,13 @@
     <Compile Include="about.aspx.designer.cs">
       <DependentUpon>about.aspx</DependentUpon>
     </Compile>
+    <Compile Include="account-info.aspx.cs">
+      <DependentUpon>account-info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account-info.aspx.designer.cs">
+      <DependentUpon>account-info.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="contact.aspx.cs">
@@ -512,6 +523,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -526,6 +544,13 @@
     </Compile>
     <Compile Include="shop.aspx.designer.cs">
       <DependentUpon>shop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sign-up.aspx.cs">
+      <DependentUpon>sign-up.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sign-up.aspx.designer.cs">
+      <DependentUpon>sign-up.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
