@@ -11,7 +11,7 @@
 		<!-- Core Style CSS AMADO-->
     <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="imagery/GG_logo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -136,7 +136,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home.aspx"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="home.aspx"><img src="imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -318,26 +318,26 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="product.aspx?category=monitors-and-displays" class="stext-107 cl7 hov-cl1 trans-04">
+								Monitor & Displays
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="product.aspx?category=pc-components" class="stext-107 cl7 hov-cl1 trans-04">
+								PC Components
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
+							<a href="product.aspx?category=pc-gaming"	 class="stext-107 cl7 hov-cl1 trans-04">
+								Gaming
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="product.aspx?category=audio" class="stext-107 cl7 hov-cl1 trans-04">
+								Audio
 							</a>
 						</li>
 					</ul>
@@ -444,7 +444,7 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon | Modified by The Java Galacticos </a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>

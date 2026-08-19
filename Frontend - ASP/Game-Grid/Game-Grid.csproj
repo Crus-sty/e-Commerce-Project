@@ -269,6 +269,7 @@
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
+    <Content Include="product-detail.aspx" />
     <Content Include="product.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -547,6 +548,13 @@
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="product-detail.aspx.cs">
+      <DependentUpon>product-detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product-detail.aspx.designer.cs">
+      <DependentUpon>product-detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
