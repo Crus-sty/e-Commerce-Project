@@ -1,9 +1,7 @@
-﻿<%@ Page Title="Account Information" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="account-info.aspx.cs" Inherits="Game_Grid.account_info" %>
+﻿<%@ Page Title="Account Information" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="account-info.aspx.cs" Inherits="Game_Grid.account_info" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div style="height: 120px;"></div>
 
     <div class="container">
 

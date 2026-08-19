@@ -269,6 +269,7 @@
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
+    <Content Include="product.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -394,6 +395,7 @@
     <Content Include="fonts\Poppins\Poppins-ThinItalic.ttf" />
     <Content Include="Main.Master" />
     <Content Include="home.aspx" />
+    <Content Include="Main-2.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -422,6 +424,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="shop.aspx" />
+    <Content Include="shopping-cart.aspx" />
     <Content Include="sign-up.aspx" />
     <Content Include="Site.Master" />
     <Content Include="vendor\animate\animate.css" />
@@ -531,12 +534,26 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Main-2.Master.cs">
+      <DependentUpon>Main-2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main-2.Master.designer.cs">
+      <DependentUpon>Main-2.Master</DependentUpon>
+    </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shop.aspx.cs">
@@ -545,6 +562,13 @@
     </Compile>
     <Compile Include="shop.aspx.designer.cs">
       <DependentUpon>shop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shopping-cart.aspx.cs">
+      <DependentUpon>shopping-cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shopping-cart.aspx.designer.cs">
+      <DependentUpon>shopping-cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="sign-up.aspx.cs">
       <DependentUpon>sign-up.aspx</DependentUpon>

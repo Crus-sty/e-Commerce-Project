@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Sign Up" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="sign-up.aspx.cs" Inherits="Game_Grid.sign_up" %>
+﻿<%@ Page Title="Sign Up" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="sign-up.aspx.cs" Inherits="Game_Grid.sign_up" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div style="height: 120px;"></div>
+    
 
         <div class="container">
 

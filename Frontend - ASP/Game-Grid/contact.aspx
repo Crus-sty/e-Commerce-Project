@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="contact.aspx.cs" Inherits="Game_Grid.contact" %>
+﻿<%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="contact.aspx.cs" Inherits="Game_Grid.contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

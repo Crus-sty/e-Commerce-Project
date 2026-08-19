@@ -258,12 +258,12 @@
 			<div class="main-content-wrapper d-flex clearfix">
 			
 			<!-- Product Catagories Area Start -->
-        <div class="products-catagories-area clearfix">
+			<div class="products-catagories-area clearfix">
             <div class="amado-pro-catagory clearfix">
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/1.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -276,7 +276,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/2.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -289,7 +289,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/3.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -302,7 +302,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/4.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -315,7 +315,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/5.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -328,7 +328,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/6.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -341,7 +341,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/7.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -354,7 +354,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/8.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -367,7 +367,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="shop.aspx">
                         <img src="img-amado/bg-img/9.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
