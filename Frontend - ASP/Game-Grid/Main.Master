@@ -97,14 +97,6 @@
 								<a href="shop.aspx">Shop</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
-								<a href="shopping-cart.aspx">Features</a>
-							</li>
-
-							<li>
-								<a href="blog.aspx">Blog</a>
-							</li>
-
 							<li>
 								<a href="about.aspx">About</a>
 							</li>
