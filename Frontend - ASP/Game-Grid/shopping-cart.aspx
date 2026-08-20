@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="shopping-cart.aspx.cs" Inherits="Game_Grid.shopping_cart" %>
+﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="shopping-cart.aspx.cs" Inherits="Game_Grid.shopping_cart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
