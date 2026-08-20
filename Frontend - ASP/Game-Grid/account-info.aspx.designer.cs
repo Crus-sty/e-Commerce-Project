@@ -24,13 +24,67 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.Label lblName;
 
         /// <summary>
-        /// lblsurname control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblsurname;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
+
+        /// <summary>
+        /// lblSurname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSurname;
+
+        /// <summary>
+        /// txtSurname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSurname;
+
+        /// <summary>
+        /// lblDOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDOB;
+
+        /// <summary>
+        /// txtDOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDOB;
+
+        /// <summary>
+        /// lblGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGender;
+
+        /// <summary>
+        /// txtGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGender;
 
         /// <summary>
         /// lblEmail control.
@@ -42,12 +96,12 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// lblPassword control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
     }
 }

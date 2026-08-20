@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="about.aspx" />
     <Content Include="account-info.aspx" />
+    <Content Include="admin-home.aspx" />
     <Content Include="checkout.aspx" />
     <Content Include="contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -398,6 +399,7 @@
     <Content Include="Main.Master" />
     <Content Include="home.aspx" />
     <Content Include="Main-2.Master" />
+    <Content Include="Admin.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -516,6 +518,20 @@
     </Compile>
     <Compile Include="account-info.aspx.designer.cs">
       <DependentUpon>account-info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-home.aspx.cs">
+      <DependentUpon>admin-home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-home.aspx.designer.cs">
+      <DependentUpon>admin-home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
