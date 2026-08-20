@@ -14,16 +14,16 @@
 
         <div class="input-div">
         <asp:Label ID="lblEmail" runat="server" Text="Email" ForeColor="Gray"></asp:Label>
-        <input type="email" id="login-email" placeholder="Enter your Email here...">
+        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" placeholder="Enter your Email here..."></asp:TextBox><--changed input to textbox-->
         </div>
-
+       
         <div class="input-div">
         <asp:Label ID="lblPassword" runat="server" Text="Password" ForeColor="Gray"></asp:Label>
         <input type="password" id="login-password" placeholder="Enter your Password here...">
         </div>
 
-        <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Login</button>
-
+        <asp:Button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Login</asp:Button>
+		
         <p>Don't have an account?
             <a href="sign-up.aspx">Sign Up</a>
         </p>

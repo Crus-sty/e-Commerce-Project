@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="text-center p-t-20">
-                        <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"></asp:Button>
+                        <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"OnClick="btnCreateAccount_Click"></asp:Button>
                     </div>
 
 
