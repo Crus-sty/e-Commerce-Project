@@ -1,0 +1,14 @@
+spring.application.name=electronics
+
+# MySQL connection
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_store
+spring.datasource.username=root
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+
+# MySQL driver
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA / Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
