@@ -8,11 +8,11 @@
   		<div class="container">
   			<div class="row">
 
-                  <h3 class="mtext-111 cl2 p-b-16"> Checkout / Complete Purchase</h3>
+                  
                     <div class="col-lg-5 col-xl-5 m-lr-auto m-b-50">
 				    <div class="m-l-25 m-r--38 m-lr-0-xl">
                     
-                        
+                        <h3 class="mtext-111 cl2 p-b-16"> Checkout / Complete Purchase</h3>
                         <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">

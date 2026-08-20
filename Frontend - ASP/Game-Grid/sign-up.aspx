@@ -5,48 +5,203 @@
 
     
 
-        <div class="container">
+    <div class="bg0 p-t-75 p-b-85">
+    <div class="container">
 
-            <div class="acc-headings">
-            <h1 align ="center"> Sign Up / Create Account </h1>
-            </div>
+        <div class="acc-headings p-b-40">
+            <h1 class="text-center">Sign Up / Create Account</h1>      
+        </div>
 
-            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 
-            <div class="input-div">
-            <asp:Label ID="lblName" runat="server" Text="Name" ForeColor="Gray"></asp:Label>
-            <input type="text" id="signup-name" placeholder="Enter your Name here...">
-            </div>
+        <div class="row">
 
-            <div class="input-div">
-            <asp:Label ID="lblsurname" runat="server" Text="Surname" ForeColor="Gray"></asp:Label>
-            <input type="text" id="signup-surname" placeholder="Enter your Surname here...">
-            </div>
+            <div class="col-11 col-md-8 col-lg-6 m-lr-auto">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div  class="form-group">
 
-            <div class="input-div">
-            <asp:Label ID="lblEmail" runat="server" Text="Email" ForeColor="Gray"></asp:Label>
-            <input type="email" id="signup-email" placeholder="Enter your Email here...">
-            </div>
+                            <asp:Label
+                                ID="lblName"
+                                runat="server"
+                                Text="Name"
+                                ForeColor="Gray">
+                            </asp:Label>
 
-            <div class="input-div">
-            <asp:Label ID="lblPassword" runat="server" Text="Password" ForeColor="Gray"></asp:Label>
-            <input type="password" id="signup-password" placeholder="Enter your Password here...">
-            </div>
+                            <asp:TextBox
+                                ID="txtName"
+                                runat="server"
+                                CssClass="form-control"
+                                placeholder="Enter your name">
+                            </asp:TextBox>
 
-            <div class="input-div">
-            <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm Password" ForeColor="Gray"></asp:Label>
-            <input type="password" id="confirm-password" placeholder="Enter your Password again...">
-            </div>
+                        </div>
+                    </div>
 
-            <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Create Account</button>
 
-            <p>Already have an account?
-                <a href="login.aspx">Login</a>
-            </p>
+                    <div class="col-md-6">
+                        <div  class="form-group">
+
+                            <asp:Label
+                                ID="lblsurname"
+                                runat="server"
+                                Text="Surname"
+                                ForeColor="Gray">
+                            </asp:Label>
+
+                            <asp:TextBox
+                                ID="txtSurname"
+                                runat="server"
+                                CssClass="form-control"
+                                placeholder="Enter your surname">
+                            </asp:TextBox>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div  class="form-group">
+
+                            <asp:Label
+                                ID="lblAge"
+                                runat="server"
+                                Text="Age"
+                                ForeColor="Gray">
+                            </asp:Label>
+
+                            <asp:TextBox
+                                ID="txtAge"
+                                runat="server"
+                                CssClass="form-control"
+                                placeholder="Enter your age">
+                            </asp:TextBox>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div  class="form-group">
+
+                            <asp:Label
+                                ID="lblGender"
+                                runat="server"
+                                Text="Gender"
+                                ForeColor="Gray">
+                            </asp:Label>
+
+                            <asp:TextBox
+                                ID="txtGender"
+                                runat="server"
+                                CssClass="form-control"
+                                placeholder="Enter your gender">
+                            </asp:TextBox>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <asp:Label
+                        ID="lblEmail"
+                        runat="server"
+                        Text="Email"
+                        ForeColor="Gray">
+                    </asp:Label>
+
+                    <asp:TextBox
+                        ID="txtEmail"
+                        runat="server"
+                        CssClass="form-control"
+                        TextMode="Email"
+                        placeholder="Enter your email">
+                    </asp:TextBox>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div  class="form-group">
+
+                            <asp:Label
+                                ID="lblPassword"
+                                runat="server"
+                                Text="Password"
+                                ForeColor="Gray">
+                            </asp:Label>
+
+                            <asp:TextBox
+                                ID="txtPassword"
+                                runat="server"
+                                CssClass="form-control"
+                                TextMode="Password"
+                                placeholder="Enter your password">
+                            </asp:TextBox>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div  class="form-group">
+
+                            <asp:Label
+                                ID="lblConfirmPassword"
+                                runat="server"
+                                Text="Confirm Password"
+                                ForeColor="Gray">
+                            </asp:Label>
+
+                            <asp:TextBox
+                                ID="txtConfirmPassword"
+                                runat="server"
+                                CssClass="form-control"
+                                TextMode="Password"
+                                placeholder="Enter your password again">
+                            </asp:TextBox>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center p-t-20">
+
+                    <asp:Button
+                        ID="btnCreateAccount"
+                        runat="server"
+                        Text="Create Account"
+                        CssClass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                    </asp:Button>
+
+                </div>
+
+
+                <div class="text-center p-t-25">
+
+                    <p class="stext-113 cl6">
+                        Already have an account?
+
+                        <a
+                            href="login.aspx"
+                            class="mtext-106 cl2">
+                            Login
+                        </a>
+
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
+
+    </div>
+
+</div>
 
 
 
