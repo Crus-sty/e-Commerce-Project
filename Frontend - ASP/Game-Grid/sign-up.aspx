@@ -96,6 +96,12 @@
 
                     </div>
 
+                    <div class="text-center p-t-25">
+
+                        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
+
+                    </div>
+
                 </div>
 
             </div>

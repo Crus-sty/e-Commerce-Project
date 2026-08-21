@@ -272,6 +272,7 @@
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
     <Content Include="product-detail.aspx" />
+    <Content Include="product-mod.aspx" />
     <Content Include="product.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -579,6 +580,13 @@
     </Compile>
     <Compile Include="product-detail.aspx.designer.cs">
       <DependentUpon>product-detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product-mod.aspx.cs">
+      <DependentUpon>product-mod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product-mod.aspx.designer.cs">
+      <DependentUpon>product-mod.aspx</DependentUpon>
     </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-using System.Net.Http;
+//using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 
@@ -61,7 +61,7 @@ namespace Game_Grid
             // Convert object to JSON
             string json = JsonConvert.SerializeObject(registerData);
 
-            using (HttpClient client = new HttpClient())
+            /*using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress =
                     new Uri("http://localhost:8080");//will  change later
@@ -106,7 +106,7 @@ namespace Game_Grid
                     lblMessage.Text = "Could not connect to the backend.";
                        
                 }
-            }
+            }*/
         }
     }
 }

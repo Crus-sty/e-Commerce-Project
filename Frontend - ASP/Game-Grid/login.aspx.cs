@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-using System.Net.Http;
+//using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 
@@ -19,13 +19,13 @@ namespace Game_Grid
         }
 		protected async void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text.Trim();
+            /*string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
             if (string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password))
             {
-                lblMessage.Text = "Please enter your email and password.";
+                //lblMessage.Text = "Please enter your email and password.";
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace Game_Grid
                     lblMessage.Text ="Could not connect to the backend.";
                         
                 }
-            }
+            }*/
         }
     }
 }

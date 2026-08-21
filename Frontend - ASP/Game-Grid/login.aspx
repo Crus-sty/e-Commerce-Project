@@ -19,15 +19,17 @@
        
         <div class="input-div">
         <asp:Label ID="lblPassword" runat="server" Text="Password" ForeColor="Gray"></asp:Label>
-        <input type="password" id="login-password" placeholder="Enter your Password here...">
+        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter your Password here..."></asp:TextBox>
         </div>
 
-        <asp:Button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Login</asp:Button>
+        <asp:Button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="btnLogin_Click">Login</asp:Button>
 		
         <p>Don't have an account?
             <a href="sign-up.aspx">Sign Up</a>
         </p>
         </div>
+
+        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Placeholder=""></asp:Label>
     </div>
 
 </asp:Content>

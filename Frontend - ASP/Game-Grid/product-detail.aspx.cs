@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-using System.Net.Http;
+//using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 
@@ -19,7 +19,7 @@ namespace Game_Grid
         }
 		protected async void btnAddToCart_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 // Get product ID
                 int productId;
@@ -95,7 +95,7 @@ namespace Game_Grid
             catch (Exception ex)
             {
                 // Handle error
-            }
+            }*/
         }
     }
 }
