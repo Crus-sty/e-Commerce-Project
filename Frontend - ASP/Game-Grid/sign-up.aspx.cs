@@ -26,6 +26,7 @@ namespace Game_Grid
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
+            String user;
 
             // Check required fields
             if (string.IsNullOrEmpty(name) ||
@@ -39,10 +40,29 @@ namespace Game_Grid
                 return;
             }
 
+            
+
             // Check passwords
             if (password != confirmPassword)
             {
                 lblMessage.Text = "Passwords do not match.";
+                return;
+            }
+
+            if (email.EndsWith("@gmail.com") || email.EndsWith("@yahoo.com") || email.EndsWith("@outlook.com") || email.EndsWith("@hotmail.com"))
+            {
+                // Email is valid - User Email
+                user = "client";
+            }
+            else if (email.EndsWith("@Game_Grid-Grid.com"))
+            {
+                // Email is valid - Admin Email
+                user = "admin";
+            }
+            else
+            {
+                // Email is invalid
+                lblMessage.Text = "Please enter a valid email address.";
                 return;
             }
 
@@ -55,7 +75,8 @@ namespace Game_Grid
                 dob = dob,
                 gender = gender,
                 email = email,
-                password = password
+                password = password,
+                user = user
             };
 
             // Convert object to JSON

@@ -271,6 +271,11 @@
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
+    <Content Include="payment.aspx" />
+    <Content Include="Payments\apple-pay-logo-19557.svg" />
+    <Content Include="Payments\google-pay-logo-19558.svg" />
+    <Content Include="Payments\paypal-blue-logo-19528.svg" />
+    <Content Include="Payments\visa-blue-logo-19529.svg" />
     <Content Include="product-detail.aspx" />
     <Content Include="product-mod.aspx" />
     <Content Include="product.aspx" />
@@ -574,6 +579,13 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="product-detail.aspx.cs">
       <DependentUpon>product-detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -698,7 +710,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55944</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55944/</IISUrl>
+          <IISUrl>http://localhost:55945/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

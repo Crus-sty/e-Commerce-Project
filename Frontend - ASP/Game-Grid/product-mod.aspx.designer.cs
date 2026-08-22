@@ -15,6 +15,15 @@ namespace Game_Grid
     {
 
         /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
         /// txt_id control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.TextBox txt_price;
 
         /// <summary>
+        /// txt_qty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_qty;
+
+        /// <summary>
         /// txt_desc control.
         /// </summary>
         /// <remarks>
@@ -60,40 +78,40 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.TextBox txt_desc;
 
         /// <summary>
-        /// txtAddress2 control.
+        /// txt_features control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress2;
+        protected global::System.Web.UI.WebControls.TextBox txt_features;
 
         /// <summary>
-        /// txtSuburb control.
+        /// txt_image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuburb;
+        protected global::System.Web.UI.WebControls.TextBox txt_image1;
 
         /// <summary>
-        /// txtCity control.
+        /// txt_image2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCity;
+        protected global::System.Web.UI.WebControls.TextBox txt_image2;
 
         /// <summary>
-        /// txtZip control.
+        /// txt_image3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtZip;
+        protected global::System.Web.UI.WebControls.TextBox txt_image3;
 
         /// <summary>
         /// btnEdit control.
@@ -121,5 +139,14 @@ namespace Game_Grid
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCart;
+
+        /// <summary>
+        /// btn_addproduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_addproduct;
     }
 }

@@ -22,7 +22,7 @@
         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter your Password here..."></asp:TextBox>
         </div>
 
-        <asp:Button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="btnLogin_Click">Login</asp:Button>
+        <asp:Button runat="server" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" Text="Login" onclick="btnLogin_Click"></asp:Button>
 		
         <p>Don't have an account?
             <a href="sign-up.aspx">Sign Up</a>

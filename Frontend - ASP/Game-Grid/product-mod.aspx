@@ -6,13 +6,18 @@
 
     <div class="bg0 p-t-75 p-b-85">
         <div class="container">
+
+            <div class="row">
+                <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Text=""></asp:Label>
+            </div>
+
             <div class="row">
 
 
                 <div class="col-lg-5 col-xl-5 m-lr-auto m-b-50">
                     <div class="m-l-25 m-r--38 m-lr-0-xl">
 
-                        <h3 class="mtext-111 cl2 p-b-16">Checkout / Complete Purchase</h3>
+                        <h3 class="mtext-111 cl2 p-b-16">Modify Product</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -29,97 +34,113 @@
 
                         <div class="form-group">
                             <label id="p-name">Product Name</label>
-                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" placeholder="[Product Name]"></asp:TextBox>
+                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Name]"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
                             <label id="p-price">Product Price</label>
-                            <asp:TextBox ID="txt_price" runat="server" CssClass="form-control" placeholder="[Product Price]"></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label id="p-desc">Product Description</label>
-                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control" placeholder="[Product Description]"></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label id="address2">Address Line 2</label>
-                            <asp:TextBox ID="txtAddress2" runat="server" CssClass="form-control" placeholder="Enter your additional address information (optional)"></asp:TextBox>
+                            <asp:TextBox ID="txt_price" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Price]"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
-                            <label id="suburb">Suburb</label>
-                            <asp:TextBox ID="txtSuburb" runat="server" CssClass="form-control" placeholder="Enter your suburb"></asp:TextBox>
+                            <label id="p-qty">Product Quantity</label>
+                            <asp:TextBox ID="txt_qty" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Quantity]"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label id="city">City</label>
-                            <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" placeholder="Enter your city"></asp:TextBox>
+                            <label id="p-desc">Product Description</label>
+                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Description]"></asp:TextBox>
                         </div>
+
                         <div class="form-group">
-                            <label id="zip">ZIP Code</label>
-                            <asp:TextBox ID="txtZip" runat="server" CssClass="form-control" placeholder="Enter your ZIP code"></asp:TextBox>
+                            <label id="p-features">Product Features</label>
+                            <asp:TextBox ID="txt_features" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Features]"></asp:TextBox>
                         </div>
+
+                        <div class="form-group">
+                            <label id="p-image1">Product Image 1</label>
+                            <asp:TextBox ID="txt_image1" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 1]"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="p-image2">Product Image 2</label>
+                            <asp:TextBox ID="txt_image2" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 2]"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="p-image3">Product Image 3</label>
+                            <asp:TextBox ID="txt_image3" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 3]"></asp:TextBox>
+                        </div>
+
+
+
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <asp:Button ID="btnEdit" runat="server" Text="Edit Product" CssClass="btn btn-primary mt-3" />
+                                    <asp:Button ID="btnEdit" runat="server" Text="Edit Product" CssClass="btn btn-primary mt-3" OnClick="btnEdit_Click" />
                                 </div>
                                 <div class="col-md-6">
-                                    <asp:Button ID="btnSave" runat="server" Text="Save Changes" CssClass="btn btn-primary mt-3" />
+                                    <asp:Button ID="btnSave" runat="server" Text="Save Changes" CssClass="btn btn-primary mt-3" OnClick="btnSave_Click" />
 
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- shopping Cart -->
-
-                    <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
-                        <div class="m-l-25 m-r--38 m-lr-0-xl">
-                            <div class="wrap-table-shopping-cart">
-                                <table class="table-shopping-cart">
-                                    <tr class="table_head">
-                                        <th class="column-1">Product</th>
-                                        <th class="column-2"></th>
-                                        <th class="column-3">Price</th>
-                                        <th class="column-4">Quantity</th>
-                                    </tr>
-
-                                    <!-- Repeater control to display cart items dynamically from the data source. 
-                            Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
-
-                                    <asp:Repeater ID="rptCart" runat="server">
-                                        <ItemTemplate>
-                                            <tr class="table_row">
-                                                <td class="column-1">
-                                                    <div class="how-itemcart1">
-                                                        <img src='<%# Eval("ProductImage") %>' alt="IMG">
-                                                    </div>
-                                                </td>
-                                                <td class="column-2"><%# Eval("ProductName") %></td>
-                                                <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
-                                                <td class="column-4">
-                                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                                        </div>
-
-                                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
-
-                                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                                        </div>
-                                                    </div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-
-
-                                </table>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
+
+                <!-- shopping Cart -->
+
+                <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart">
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">Product</th>
+                                    <th class="column-2"></th>
+                                    <th class="column-3">Price</th>
+                                    <th class="column-4">Quantity</th>
+                                    <th class="column-5"></th>
+                                </tr>
+
+                                <!-- Repeater control to display cart items dynamically from the data source. 
+                            Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
+
+                                <asp:Repeater ID="rptCart" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="table_row">
+                                            <td class="column-1">
+                                                <div class="how-itemcart1">
+                                                    <img src='<%# Eval("ProductImage") %>' alt="IMG">
+                                                    <p class="column-1"><%# Eval("ProductName") %></p>
+                                                </div>
+                                            </td>
+                                            <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
+                                            <td class="column-4">
+                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                                    </div>
+
+                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
+
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <asp:Button ID="btn_addproduct" runat="server" Text="Add Product" CssClass="btn btn-primary mt-3" OnClick="btnaddproduct_Click" />
             </div>
         </div>
     </div>

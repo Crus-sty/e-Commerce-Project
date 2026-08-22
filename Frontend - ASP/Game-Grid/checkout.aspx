@@ -55,7 +55,9 @@
                             <label id="zip">ZIP Code</label>
                             <asp:TextBox ID="txtZip" runat="server" CssClass="form-control" placeholder="Enter your ZIP code"></asp:TextBox>
                         </div>
-                        <asp:Button ID="btnPayment" runat="server" Text="Continue to Payment" CssClass="btn btn-primary mt-3" />
+                        <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onclick="location.href='payment.aspx' ">
+				           Proceed to Payment
+                        </button>
                    
                         </div>
                         </div>

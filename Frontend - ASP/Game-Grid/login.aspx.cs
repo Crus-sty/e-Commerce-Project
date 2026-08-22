@@ -63,7 +63,7 @@ namespace Game_Grid
 
                         Session["email"] = email;
 
-                        Response.Redirect("Default.aspx");//will check later if correct
+                        Response.Redirect("admin-home.aspx");
                     }
                     else
                     {

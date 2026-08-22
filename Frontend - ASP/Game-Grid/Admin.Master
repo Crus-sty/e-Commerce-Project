@@ -89,11 +89,15 @@
                                     <a href="admin-home.aspx">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">Modify Catalogue</a>
+                                    <a href="product-mod.aspx">Modify Catalogue</a>
                                 </li>
 
                                 <li>
                                     <a href="#">Client Orders</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Discounts</a>
                                 </li>
 
                                 <li>
