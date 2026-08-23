@@ -22,15 +22,15 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+							Game-Grid was created from a passion for technology, gaming and innovation. We wanted to build an online store where people can easily access quality technology and gaming products, whether they are gamers building their first setup, students looking for reliable technology, content creators, or tech enthusiasts upgrading their equipment.
 						</p>
 
 						<p class="stext-113 cl6 p-b-26">
-							Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula. 
+							Our vision goes beyond simply selling products. We believe that South Africa and Africa have a growing technology and esports community with a lot of untapped potential. Game-Grid aims to contribute to this growth by making gaming and technology more accessible and supporting the development of the local esports ecosystem.
 						</p>
 
 						<p class="stext-113 cl6 p-b-26">
-							Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+							From gaming peripherals, monitors and PC components to controllers and other electronic accessories, we aim to provide products that help people build, improve and enjoy their setups. 
 						</p>
 					</div>
 				</div>
@@ -52,7 +52,10 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
+							Our mission is to make quality technology and gaming products more accessible while contributing to the growth of the esports and technology industry in South Africa and across Africa.
+							We aim to provide customers with a convenient and reliable online shopping experience, competitive products and innovative options such as controller customisation services, including Magnetic joystick upgrades and mouse-trigger modifications.
+							Beyond our store, we want Game-Grid to become a brand that supports local talent, encourages participation in esports, promotes technology and helps create opportunities for the next generation of African gamers, creators and technology enthusiasts.
+							Our goal is not simply to sell technology - it's to be part of building Africa's gaming and technology future.
 						</p>
 
 						<div class="bor16 p-l-29 p-b-9 m-t-22">
