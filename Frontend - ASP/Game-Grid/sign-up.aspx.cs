@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-//using System.Net.Http;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 
@@ -17,7 +17,7 @@ namespace Game_Grid
         {
 
         }
-		protected async void btnCreateAccount_Click(object sender, EventArgs e)
+        protected async void btnCreateAccount_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
             string surname = txtSurname.Text.Trim();
@@ -26,7 +26,6 @@ namespace Game_Grid
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
-            String user;
 
             // Check required fields
             if (string.IsNullOrEmpty(name) ||
@@ -40,8 +39,6 @@ namespace Game_Grid
                 return;
             }
 
-            
-
             // Check passwords
             if (password != confirmPassword)
             {
@@ -49,43 +46,42 @@ namespace Game_Grid
                 return;
             }
 
-            if (email.EndsWith("@gmail.com") || email.EndsWith("@yahoo.com") || email.EndsWith("@outlook.com") || email.EndsWith("@hotmail.com"))
+            // Check email
+            if (!email.EndsWith("@gmail.com",
+                    StringComparison.OrdinalIgnoreCase) &&
+                !email.EndsWith("@yahoo.com",
+                    StringComparison.OrdinalIgnoreCase) &&
+                !email.EndsWith("@outlook.com",
+                    StringComparison.OrdinalIgnoreCase) &&
+                !email.EndsWith("@hotmail.com",
+                    StringComparison.OrdinalIgnoreCase))
             {
-                // Email is valid - User Email
-                user = "client";
-            }
-            else if (email.EndsWith("@Game_Grid-Grid.com"))
-            {
-                // Email is valid - Admin Email
-                user = "admin";
-            }
-            else
-            {
-                // Email is invalid
                 lblMessage.Text = "Please enter a valid email address.";
                 return;
             }
 
-            // Create object to send to Spring Boot
+            // Create username
+            string username = email;
+
+           
             var registerData = new
             {
-				//will cahge varibles to match the database
-                name = name,
-                surname = surname,
-                dob = dob,
-                gender = gender,
+                username = username,
                 email = email,
                 password = password,
-                user = user
+                firstName = name,
+                lastName = surname,
+                gender = gender,
+                dob = dob
             };
 
-            // Convert object to JSON
             string json = JsonConvert.SerializeObject(registerData);
 
-            /*using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress =
-                    new Uri("http://localhost:8080");//will  change later
+                client.BaseAddress = new Uri(
+                    "http://localhost:8080"
+                );
 
                 StringContent content = new StringContent(
                     json,
@@ -95,39 +91,40 @@ namespace Game_Grid
 
                 try
                 {
-                    // Send pOST request to Spring Boot
-                    HttpResponseMessage response =
-                        await client.PostAsync(
-                            "/api/auth/register",
-                            content
-                        );
+                    HttpResponseMessage response = await client.PostAsync("/api/auth/register", content);
+
+                    string result = await response.Content.ReadAsStringAsync();
+
 
                     if (response.IsSuccessStatusCode)
                     {
-                        lblMessage.ForeColor =
-                            System.Drawing.Color.Green;
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
 
-                        lblMessage.Text ="Account created successfully!";
-                            
 
-                        // Go to login page
+                        lblMessage.Text = "Account created successfully!";
+
+
                         Response.Redirect("login.aspx");
                     }
                     else
                     {
-                        string result =
-                            await response.Content.ReadAsStringAsync();
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
 
-                        lblMessage.Text ="Registration failed: " + result;
-                            
+
+                        lblMessage.Text = "Registration failed: " + result;
+
                     }
                 }
                 catch (Exception ex)
                 {
-                    lblMessage.Text = "Could not connect to the backend.";
-                       
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+
+
+                    lblMessage.Text = "Could not connect to the backend: " + ex.Message;
+
+
                 }
-            }*/
+            }
         }
     }
 }

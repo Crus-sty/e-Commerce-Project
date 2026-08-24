@@ -9,7 +9,7 @@ import com.eccomerce_store.electronics.User;
 import com.eccomerce_store.repository.CartItemRepository;
 import com.eccomerce_store.repository.CartRepository;
 import com.eccomerce_store.repository.ProductRepository;
-import com.eccomerce_store.repository.userRepository;
+import com.eccomerce_store.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.core.Authentication;
@@ -28,32 +28,30 @@ public class CartController {
     private final CartItemRepository cartItemRepository;
 
     private final ProductRepository productRepository;
-
-    private final userRepository.UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
     public CartController(
             CartRepository cartRepository,
             CartItemRepository cartItemRepository,
             ProductRepository productRepository,
-            userRepository.UserRepository userRepository) {
+            UserRepository userRepository) {
 
         this.cartRepository = cartRepository;
 
-        this.cartItemRepository =
-                cartItemRepository;
+        this.cartItemRepository =cartItemRepository;
 
-        this.productRepository =
-                productRepository;
 
-        this.userRepository =
-                userRepository;
+        this.productRepository = productRepository;
+
+
+        this.userRepository = userRepository;
+
     }
 
 
-    // ==========================================
+
     // ADD PRODUCT TO CART
-    // ==========================================
 
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(

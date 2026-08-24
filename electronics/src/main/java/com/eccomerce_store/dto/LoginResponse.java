@@ -3,18 +3,21 @@ package com.eccomerce_store.dto;
 public class LoginResponse {
     private final String message;
     private final String token;
-    private final String username;
+    private final Long id;
+    private final String email;
     private final String role;
 
     public LoginResponse(
             String message,
             String token,
-            Long id, String username,
+            Long id,
+            String email,
             String role) {
 
         this.message = message;
         this.token = token;
-        this.username = username;
+        this.id = id;
+        this.email = email;
         this.role = role;
     }
 
@@ -26,8 +29,12 @@ public class LoginResponse {
         return token;
     }
 
-    public String getUsername() {
-        return username;
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getRole() {
