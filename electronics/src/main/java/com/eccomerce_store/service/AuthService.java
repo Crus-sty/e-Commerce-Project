@@ -3,15 +3,9 @@ package com.eccomerce_store.service;
 import com.eccomerce_store.dto.*;
 import com.eccomerce_store.electronics.User;
 
-import com.eccomerce_store.security.SecurityConfig;
-import com.eccomerce_store.security.JwtAuthenticationFilter;
-
-import com.eccomerce_store.repository.userRepository;
+import com.eccomerce_store.repository.UserRepository;
 import com.eccomerce_store.security.JwtService;
-import com.eccomerce_store.repository.userRepository;
 import com.eccomerce_store.dto.RegisterRequest;
-import com.eccomerce_store.dto.RegisterRequest;
-
 
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,60 +13,44 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-    private final userRepository.UserRepository userRepository;
-
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     private final JwtService jwtService;
 
     public AuthService(
-            userRepository.UserRepository userRepository,
+            UserRepository userRepository,
             PasswordEncoder passwordEncoder,
             JwtService jwtService) {
 
         this.userRepository = userRepository;
-
         this.passwordEncoder = passwordEncoder;
-
         this.jwtService = jwtService;
     }
 
     // REGISTER
-    public String register(
-            RegisterRequest request) {
+    public String register(RegisterRequest request) {
 
-        // Check username
-        if (userRepository.existsByUsername(
-                request.getUsername())) {
-
-            return "Username already exists";
-        }
-
-        // Check email
-        if (userRepository.existsByEmail(
-                request.getEmail())) {
-
+        // Check if email already exists
+        if (userRepository.existsByEmail(request.getEmail())) {
             return "Email already exists";
         }
 
-        // Create user
+        // Create new user
         User user = new User();
 
-        user.setUsername(
-                request.getUsername()
-        );
+        // Use email as username
+        user.setUsername(request.getEmail());
 
-        user.setEmail(
-                request.getEmail()
-        );
+        // Personal information
+        user.setFirstName(request.getName());
+        user.setLastName(request.getSurname());
 
-        user.setFirstName(
-                request.getFirstName()
-        );
+        // Email
+        user.setEmail(request.getEmail());
 
-        user.setLastName(
-                request.getLastName()
-        );
+        // Other information
+        user.setDob(request.getDob());
+        user.setGender(request.getGender());
 
         // Encrypt password
         user.setPassword(
@@ -84,32 +62,28 @@ public class AuthService {
         // Normal registration = customer
         user.setRole("CUSTOMER");
 
-        // Save user
+        // Save user to database
         userRepository.save(user);
 
         return "Registration successful";
     }
 
     // LOGIN
-    public LoginResponse login(
-            LoginRequest request) {
+    public LoginResponse login(LoginRequest request) {
 
-        User user =
-                userRepository
-                        .findByUsername(
-                                request.getUsername()
-                        )
-                        .orElse(null);
+        // Find user using email
+        User user = userRepository
+                .findByEmail(request.getEmail())
+                .orElse(null);
 
+        // User doesn't exist
         if (user == null) {
-
             throw new RuntimeException(
-                    "Invalid username or password"
+                    "Invalid email or password"
             );
         }
 
-        // Compare entered password
-        // against encrypted password
+        // Check password
         boolean passwordCorrect =
                 passwordEncoder.matches(
                         request.getPassword(),
@@ -117,25 +91,25 @@ public class AuthService {
                 );
 
         if (!passwordCorrect) {
-
             throw new RuntimeException(
-                    "Invalid username or password"
+                    "Invalid email or password"
             );
         }
 
         // Generate JWT
-        String token =
-                jwtService.generateToken(
-                        user.getId(),
-                        user.getUsername(),
-                        user.getRole()
-                );
+        String token = jwtService.generateToken(
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
 
+        // Return login response
         return new LoginResponse(
                 "Login successful",
                 token,
                 user.getId(),
-                user.getUsername(),
+                user.getEmail(),
                 user.getRole()
         );
-    }}
+     }
+    }

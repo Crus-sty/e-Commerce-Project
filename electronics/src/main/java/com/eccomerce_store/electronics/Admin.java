@@ -1,8 +1,7 @@
 package com.eccomerce_store.electronics;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "admin")//subject to change based on database

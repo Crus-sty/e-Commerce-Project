@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Game_Grid.login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Game_Grid.login" Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

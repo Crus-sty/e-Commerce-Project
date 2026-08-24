@@ -24,18 +24,26 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    // Constructor
+    @Column(nullable = false)
+    private String gender;
 
+    @Column(nullable = false)
+    private String dob;
+
+
+    // Constructor
     public User() {
         this.role = "CUSTOMER";
     }
 
-    // Getters and setters
 
+    // ID
     public Long getId() {
         return id;
     }
 
+
+    // Username
     public String getUsername() {
         return username;
     }
@@ -44,6 +52,8 @@ public class User {
         this.username = username;
     }
 
+
+    // Email
     public String getEmail() {
         return email;
     }
@@ -52,6 +62,8 @@ public class User {
         this.email = email;
     }
 
+
+    // Password
     public String getPassword() {
         return password;
     }
@@ -60,6 +72,8 @@ public class User {
         this.password = password;
     }
 
+
+    // First name
     public String getFirstName() {
         return firstName;
     }
@@ -68,6 +82,8 @@ public class User {
         this.firstName = firstName;
     }
 
+
+    // Last name
     public String getLastName() {
         return lastName;
     }
@@ -76,6 +92,8 @@ public class User {
         this.lastName = lastName;
     }
 
+
+    // Role
     public String getRole() {
         return role;
     }
@@ -83,5 +101,26 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+
+    // Gender
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+
+    // Date of birth
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    };
+
 }
 
