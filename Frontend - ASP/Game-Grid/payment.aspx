@@ -119,9 +119,9 @@
 
                     <div class="row">
                     <div class="m-t-20">
-                        <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="btnPay_Click">
-                            Pay Now
-                        </button>
+                        <asp:Button runat="server" Text="Pay Now" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" OnClick="btnPay_Click">
+                            
+                        </asp:Button>
                     </div>
                         </div>
                 </div>

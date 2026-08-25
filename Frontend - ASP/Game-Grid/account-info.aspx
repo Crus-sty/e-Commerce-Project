@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Save</button>
+                            <asp:Button runat="server" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" Text="Save" type="button" onclick="btnSave_Click"></asp:Button>
                         </div>
                     </div>
 
