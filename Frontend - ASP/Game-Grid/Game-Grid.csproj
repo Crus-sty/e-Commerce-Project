@@ -181,6 +181,7 @@
     <Content Include="images\gallery-08.jpg" />
     <Content Include="images\gallery-09.jpg" />
     <Content Include="images\icons\favicon.png" />
+    <Content Include="images\icons\google-maps.svg" />
     <Content Include="images\icons\icon-close.png" />
     <Content Include="images\icons\icon-close2.png" />
     <Content Include="images\icons\icon-email.png" />

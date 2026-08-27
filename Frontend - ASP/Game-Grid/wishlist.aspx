@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                <div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
                     <div class="m-l-25 m-r--38 m-lr-0-xl">
                         <div class="wrap-table-shopping-cart">
                             <table class="table-shopping-cart">
@@ -20,13 +20,13 @@
                                     <th class="column-2"></th>
                                     <th class="column-3">Price</th>
                                     <th class="column-4">Availability</th>
-                                    <th class="column-5"></th>
+                                    <th class="column-5">Remove</th>
                                 </tr>
 
                                 <!-- Repeater control to display cart items dynamically from the data source. 
                                 Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
 
-                                <asp:Repeater ID="rptCart" runat="server">
+                                <asp:Repeater ID="rptWishlist" runat="server">
                                     <ItemTemplate>
                                         <tr class="table_row">
                                             <td class="column-1">
@@ -49,7 +49,14 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="column-5"><%# Eval("Total", "{0:F2}") %></td>
+                                            <td class="column-5">
+                                                <div class="block2-txt-child2 flex-r p-t-3">
+                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                                    </a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

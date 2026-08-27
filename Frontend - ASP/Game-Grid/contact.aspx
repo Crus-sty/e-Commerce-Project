@@ -82,9 +82,9 @@
 	
 	<!-- Map -->
 	<div class="map">
-		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+		<div class="size-303" id="google_map" data-map-x="-26.182353572358032" data-map-y="27.995948862985884" data-pin="images/icons/google-maps.svg" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
 	</div>
-
+	
 
 
 </asp:Content>
