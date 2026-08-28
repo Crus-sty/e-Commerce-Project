@@ -18,5 +18,11 @@ namespace Game_Grid
         {
             
         }
+
+        protected void btnSubscribe_Click(object sender, EventArgs e)
+        {
+            // Add code to handle newsletter subscription
+
+        }
     }
 }

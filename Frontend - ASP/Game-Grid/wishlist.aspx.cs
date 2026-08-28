@@ -13,5 +13,10 @@ namespace Game_Grid
         {
 
         }
+
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

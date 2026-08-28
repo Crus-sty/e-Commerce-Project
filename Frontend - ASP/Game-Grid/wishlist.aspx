@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="wishlist.aspx.cs" Inherits="Game_Grid.wishlist" %>
+﻿<%@ Page Title="Wishlist" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="wishlist.aspx.cs" Inherits="Game_Grid.wishlist" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,8 +23,35 @@
                                     <th class="column-5">Remove</th>
                                 </tr>
 
-                                <!-- Repeater control to display cart items dynamically from the data source. 
-                                Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
+                                <tr class="table_row">
+                                            <td class="column-1">
+                                                <div class="how-itemcart1">
+                                                    <img src='' alt="IMG">
+                                                </div>
+                                            </td>
+                                            <td class="column-2">[Product Name]</td>
+                                            <td class="column-3">[Product Price]</td>
+                                            <td class="column-4">
+                                                <!-- Stock avilability check -->
+                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                                    
+
+
+                                                </div>
+                                            </td>
+
+                                            <td class="column-5">
+                                                <!-- Remove button -->
+                                                <div class="block2-txt-child2 flex-r p-t-3">
+                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="btnRemove_Click">
+                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                <!-- Repeater -->
 
                                 <asp:Repeater ID="rptWishlist" runat="server">
                                     <ItemTemplate>

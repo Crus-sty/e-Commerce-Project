@@ -246,6 +246,22 @@
                     <ul class="header-cart-wrapitem w-full">
 
                         <!--Repeater Cart Item-->
+                        <repeater id="rptCartItems" runat="server">
+                            <ItemTemplate>
+
+                                <li class="header-cart-item flex-w flex-t m-b-12">
+                                    <div class="header-cart-item-img">
+                                        <img src='<%# Eval("ProductImage") %>' alt='<%# Eval("ProductName") %>' />
+                                    </div>
+                                    <div class="header-cart-item-txt p-t-8">
+                                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"><%# Eval("ProductName") %></a>
+
+                                        <span class="header-cart-item-info"><%# Eval("Quantity") %> x R <%# Eval("Price", "{0:F2}") %></span>
+                                        
+                                    </div>
+                                </li>
+                            </ItemTemplate>
+                        </repeater>
 
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
@@ -296,22 +312,22 @@
 
                         <ul>
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Monitors & Displays
+                                <a href="products.aspx?category=monitors-and-displays" class="stext-107 cl7 hov-cl1 trans-04">Monitors & Displays
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">PC Components
+                                <a href="products.aspx?category=pc-components" class="stext-107 cl7 hov-cl1 trans-04">PC Components
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">PC Gaming
+                                <a href="products.aspx?category=pc-gaming" class="stext-107 cl7 hov-cl1 trans-04">PC Gaming
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Audio
+                                <a href="products.aspx?category=audio" class="stext-107 cl7 hov-cl1 trans-04">Audio
                                 </a>
                             </li>
                         </ul>
@@ -349,7 +365,7 @@
                         </h4>
 
                         <p class="stext-107 cl7 size-201">
-                            Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                            Any questions? Let us know in store at Game Grid Store Center 8th floor, 379 Hudson St, johannesburg, Gauteng, South Africa or call us on (+27) 11 555 3434
                         </p>
 
                         <div class="p-t-27">
@@ -371,18 +387,18 @@
                         <h4 class="stext-301 cl0 p-b-30">Newsletter
                         </h4>
 
-                        <form>
+                        <section>
                             <div class="wrap-input1 w-full p-b-4">
                                 <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
                                 <div class="focus-input1 trans-04"></div>
                             </div>
 
                             <div class="p-t-18">
-                                <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04" onclick="btnSubscribe_Click">
                                     Subscribe
                                 </button>
                             </div>
-                        </form>
+                        </section>
                     </div>
                 </div>
 
