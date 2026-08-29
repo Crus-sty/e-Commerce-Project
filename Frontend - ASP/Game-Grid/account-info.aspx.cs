@@ -14,6 +14,11 @@ namespace Game_Grid
 
         }
 
-       
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            // Implement save logic here
+        }
+
+
     }
 }
