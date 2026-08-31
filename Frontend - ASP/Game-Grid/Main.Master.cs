@@ -16,7 +16,14 @@ namespace Game_Grid
 
         protected void accountLink_Click(object sender, EventArgs e)
         {
-            
+            if (Session["UserID"] != null)
+            {
+                Response.Redirect("Account.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnSubscribe_Click(object sender, EventArgs e)

@@ -61,7 +61,7 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs
                             </a>
 
-                            <a href="account-info.aspx" class="flex-c-m trans-04 p-lr-25">My Account
+                            <a href="account-info.aspx" class="flex-c-m trans-04 p-lr-25" onclick="accountLink_Click">My Account
                             </a>
 
                             <a href="#" class="flex-c-m trans-04 p-lr-25">EN

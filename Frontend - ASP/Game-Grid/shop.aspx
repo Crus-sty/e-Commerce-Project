@@ -15,7 +15,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=monitors-and-displays">
-                        <img src="img-amado/bg-img/1.jpg" alt="Monitors & Displays">
+                        <img src="imagery/monitor-and-displays.jpg" alt="Monitors & Displays">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -28,7 +28,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=pc-components">
-                        <img src="img-amado/bg-img/2.jpg" alt="PC Components">
+                        <img src="imagery/pc-components.jpg" alt="PC Components">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -41,7 +41,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=pc-gaming">
-                        <img src="img-amado/bg-img/3.jpg" alt="">
+                        <img src="imagery/pc-gaming.jpg" alt="PC Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -53,13 +53,13 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=laptop-accessories">
-                        <img src="img-amado/bg-img/4.jpg" alt="Laptop Accessories">
+                    <a href="product.aspx?category=laptop-gaming">
+                        <img src="imagery/Laptop-gaming.jpg" alt="Laptop Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
                             <p>From R 180.00</p>
-                            <h4>Laptop Accessories</h4>
+                            <h4>Gaming Laptop & Accessories</h4>
                         </div>
                     </a>
                 </div>
@@ -67,7 +67,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=console-gaming">
-                        <img src="img-amado/bg-img/5.jpg" alt="Console Gaming">
+                        <img src="imagery/console gaming.jpg" alt="Console Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -79,13 +79,13 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=audio">
-                        <img src="img-amado/bg-img/6.jpg" alt="Audio">
+                    <a href="product.aspx?category=headphones">
+                        <img src="imagery/headphones.jpg" alt="Headphones">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
                             <p>From R 350.00</p>
-                            <h4>Audio</h4>
+                            <h4>Headphones</h4>
                         </div>
                     </a>
                 </div>
@@ -93,7 +93,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=cables-and-adapters">
-                        <img src="img-amado/bg-img/7.jpg" alt="Cables & Adapters">
+                        <img src="imagery/cables-and-adapters.jpg" alt="Cables & Adapters">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -105,13 +105,13 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=power">
-                        <img src="img-amado/bg-img/8.jpg" alt="Power">
+                    <a href="product.aspx?category=speakers">
+                        <img src="imagery/speakers.jpg" alt="Speakers">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From R 1100.00</p>
-                            <h4>Power</h4>
+                            <p>From R 1200.00</p>
+                            <h4>Speakers</h4>
                         </div>
                     </a>
                 </div>
@@ -119,7 +119,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="product.aspx?category=extras">
-                        <img src="img-amado/bg-img/9.jpg" alt="Extras">
+                        <img src="imagery/extras.jpg" alt="Extras">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
