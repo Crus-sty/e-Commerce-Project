@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <asp:Button ID="btnSearch" runat="server" Text="Search Product" CssClass="btn btn-primary mt-3" />
+                                <asp:Button ID="btnSearch" runat="server" Text="Search Product" CssClass="btn btn-primary mt-3" OnClick="btnSearch_Click"/>
                             </div>
                         </div>
 

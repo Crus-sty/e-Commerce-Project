@@ -68,14 +68,15 @@ namespace Game_Grid
             btnEdit.Visible = false;
         }
 
-        /*protected void btnSearch_Click(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
             String id = txt_id.Text.Trim();
             if (id == "")
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please enter a product ID.";
                 return;
-            }
+            }/*
             // Call the API to get the product details
             using (HttpClient client = new HttpClient())
             {
@@ -97,8 +98,8 @@ namespace Game_Grid
                 else
                 {
                     lblMessage.Text = "Product not found.";
-                }
-            }*/
+                }*/
+            }
 
         
     }
