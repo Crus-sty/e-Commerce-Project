@@ -284,6 +284,7 @@
     <Content Include="js\map-custom.js" />
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
+    <Content Include="orders.aspx" />
     <Content Include="payment.aspx" />
     <Content Include="Payments\apple-pay-logo-19557.svg" />
     <Content Include="Payments\google-pay-logo-19558.svg" />
@@ -292,6 +293,8 @@
     <Content Include="product-detail.aspx" />
     <Content Include="product-mod.aspx" />
     <Content Include="product.aspx" />
+    <Content Include="promo-codes.aspx" />
+    <Content Include="reports-and-stats.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -593,6 +596,13 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="orders.aspx.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orders.aspx.designer.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="payment.aspx.cs">
       <DependentUpon>payment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -621,7 +631,21 @@
     <Compile Include="product.aspx.designer.cs">
       <DependentUpon>product.aspx</DependentUpon>
     </Compile>
+    <Compile Include="promo-codes.aspx.cs">
+      <DependentUpon>promo-codes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="promo-codes.aspx.designer.cs">
+      <DependentUpon>promo-codes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reports-and-stats.aspx.cs">
+      <DependentUpon>reports-and-stats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports-and-stats.aspx.designer.cs">
+      <DependentUpon>reports-and-stats.aspx</DependentUpon>
+    </Compile>
     <Compile Include="shop.aspx.cs">
       <DependentUpon>shop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

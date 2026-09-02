@@ -93,15 +93,15 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">Client Orders</a>
+                                    <a href="orders.aspx">Client Orders</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Discounts</a>
+                                    <a href="promo-codes.aspx">Discounts</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Report & Statistics</a>
+                                    <a href="reports-and-stats.aspx">Report & Statistics</a>
                                 </li>
                             </ul>
                         </div>
