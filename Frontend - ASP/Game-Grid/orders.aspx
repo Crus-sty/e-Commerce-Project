@@ -6,8 +6,8 @@
     <div class="bg0 p-t-75 p-b-85">
     <div class="container">
 
-        <div class="acc-headings">
-            <h1 align="center" class="tit-1">
+        <div class="acc-headings p-b-40">
+            <h1 align="center">
                 Orders 
             </h1>
         </div>
@@ -75,8 +75,9 @@
         </div>
     </div>
 
-            <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                <asp:Button ID="btnUpdateOrders" runat="server" Text="Update Orders" CssClass="btn btn-primary mt-3" OnClick="btnUpdateOrders_Click"></asp:Button>
+            <div class="flex-w flex-sb-m bor0 p-t-18 p-b-15 p-lr-10 p-lr-10-sm">
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Order ID"></asp:TextBox>
+                <asp:Button ID="btnSearchOrder" runat="server" Text="Search Order" CssClass="btn btn-primary mt-3" OnClick="btnSearchOrders_Click"></asp:Button>
             </div>
 
 </div>

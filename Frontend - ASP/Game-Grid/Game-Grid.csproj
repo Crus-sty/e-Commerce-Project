@@ -158,9 +158,13 @@
     <Content Include="imagery\headphones.jpg" />
     <Content Include="imagery\Laptop-gaming.jpg" />
     <Content Include="imagery\monitor-and-displays.jpg" />
+    <Content Include="imagery\OLED-G9.jpg" />
     <Content Include="imagery\pc-components.jpg" />
     <Content Include="imagery\pc-gaming.jpg" />
+    <Content Include="imagery\Playstation-5-crop.jpg" />
+    <Content Include="imagery\Playstation-5.jpg" />
     <Content Include="imagery\speakers.jpg" />
+    <Content Include="imagery\XBOX-Controller.jpg" />
     <Content Include="images\about-01.jpg" />
     <Content Include="images\about-02.jpg" />
     <Content Include="images\avatar-01.jpg" />
@@ -293,7 +297,7 @@
     <Content Include="product-detail.aspx" />
     <Content Include="product-mod.aspx" />
     <Content Include="product.aspx" />
-    <Content Include="promo-codes.aspx" />
+    <Content Include="discounts.aspx" />
     <Content Include="reports-and-stats.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -423,6 +427,7 @@
     <Content Include="Main-2.Master" />
     <Content Include="Admin.Master" />
     <Content Include="wishlist.aspx" />
+    <Content Include="imagery\XBOX-Controller.avif" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -631,12 +636,12 @@
     <Compile Include="product.aspx.designer.cs">
       <DependentUpon>product.aspx</DependentUpon>
     </Compile>
-    <Compile Include="promo-codes.aspx.cs">
-      <DependentUpon>promo-codes.aspx</DependentUpon>
+    <Compile Include="discounts.aspx.cs">
+      <DependentUpon>discounts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="promo-codes.aspx.designer.cs">
-      <DependentUpon>promo-codes.aspx</DependentUpon>
+    <Compile Include="discounts.aspx.designer.cs">
+      <DependentUpon>discounts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reports-and-stats.aspx.cs">

@@ -11,7 +11,22 @@ namespace Game_Grid
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["UserID"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+            else if (!IsPostBack)
+            {
+                //LoadUserInfo();
+                txtName.Enabled = false;
+                txtSurname.Enabled = false;
+                txtGender.Enabled = false;
+                txtDOB.Enabled = false;
+                txtGender.Enabled = false;
+                txtEmail.Enabled = false;
+                btnSave.Visible = false;
+            }
+            
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -19,6 +34,18 @@ namespace Game_Grid
             // Implement save logic here
         }
 
+        protected void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            // Implement edit logic here
+            btnSave.Visible= true;
+            txtName.Enabled= true;
+            txtSurname.Enabled= true;
+            txtGender.Enabled= true;
+            txtDOB.Enabled= true;
+            txtEmail.Enabled= true;
+
+
+        }
 
     }
 }

@@ -14,7 +14,7 @@ namespace Game_Grid
 
         }
 
-        protected void btnUpdateOrders_Click(object sender, EventArgs e)
+        protected void btnSearchOrders_Click(object sender, EventArgs e)
         {
             
         }

@@ -13,5 +13,20 @@ namespace Game_Grid
         {
 
         }
+
+        protected void btnSearchDiscounts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddDiscount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDeleteDiscount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -54,11 +54,11 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" type="button" onclick="#">Edit Information</button>
+                            <asp:Button ID="btnEditInfo" runat="server" cssclass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" Text="Edit Information" type="button" onclick="btnEditInfo_Click"></asp:Button>
                         </div>
 
                         <div class="col-md-6">
-                            <asp:Button runat="server" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" Text="Save" type="button" onclick="btnSave_Click"></asp:Button>
+                            <asp:Button ID="btnSave" runat="server" cssclass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" Text="Save" type="button" onclick="btnSave_Click"></asp:Button>
                         </div>
                     </div>
 

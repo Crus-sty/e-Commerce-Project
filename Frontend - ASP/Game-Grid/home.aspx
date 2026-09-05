@@ -6,7 +6,7 @@
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(https://img.us.news.samsung.com/us/wp-content/uploads/2024/01/02163914/CES-2024_Odyssey-OLED-G9-G95SD-2-1536x842.jpg);">
+				<div class="item-slick1" style="background-image: url(imagery/OLED-G9.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(https://tv-it.com/storage/shada/playstation5/tech-talk-ps5-slim-hero.jpg);">
+				<div class="item-slick1" style="background-image: url(imagery/Playstation-5-crop.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(https://images.pexels.com/photos/5626849/pexels-photo-5626849.jpeg);">
+				<div class="item-slick1" style="background-image: url(imagery/XBOX-Controller.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
