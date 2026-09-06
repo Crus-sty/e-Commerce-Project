@@ -21,8 +21,8 @@ public class SecurityConfig {
     public SecurityConfig(
             JwtAuthenticationFilter jwtAuthenticationFilter) {
 
-        this.jwtAuthenticationFilter =
-                jwtAuthenticationFilter;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,18 +35,11 @@ public class SecurityConfig {
             HttpSecurity http)
             throws Exception {
 
-        http
-
-
-                .csrf(AbstractHttpConfigurer::disable)
-
-                .sessionManagement(session ->
+        http.csrf(AbstractHttpConfigurer::disable).sessionManagement(session ->
                         session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
                         )
-                )
-
-                .authorizeHttpRequests(auth -> auth
+                ).authorizeHttpRequests(auth -> auth
 
                         // Public endpoints
                         .requestMatchers(

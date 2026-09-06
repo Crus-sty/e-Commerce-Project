@@ -37,8 +37,8 @@ public class ProductController {
     public ResponseEntity<Product> createProduct(
             @RequestBody ProductRequest request) {
 
-        Product product =
-                productService.createProduct(request);
+        Product product =productService.createProduct(request);
+
 
         return ResponseEntity.ok(product);
     }
@@ -66,8 +66,8 @@ public class ProductController {
 
         try {
 
-            Product product =
-                    productService.getProductById(id);
+            Product product = productService.getProductById(id);
+
 
             return ResponseEntity.ok(product);
 

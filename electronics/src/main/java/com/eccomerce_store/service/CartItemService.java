@@ -89,13 +89,8 @@ public class CartItemService {
             Long productId,
             int quantity) {
 
-        CartItem cartItem =
-                cartItemRepository
-                        .findByCartIdAndProductId(
-                                cartId,
-                                productId
-                        )
-                        .orElseThrow(() ->
+        CartItem cartItem = cartItemRepository.findByCartIdAndProductId(cartId, productId)
+                .orElseThrow(() ->
                                 new RuntimeException(
                                         "Product not found in cart"
                                 )
