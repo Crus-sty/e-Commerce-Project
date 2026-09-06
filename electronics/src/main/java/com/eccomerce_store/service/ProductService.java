@@ -57,8 +57,6 @@ public class ProductService {
 
 
     // GET ALL PRODUCTS
-
-
     public List<Product> getAllProducts() {
 
         return productRepository.findAll();
@@ -66,8 +64,6 @@ public class ProductService {
 
 
     // GET PRODUCT BY ID
-
-
     public Product getProductById(Long id) {
 
         return productRepository
@@ -127,8 +123,6 @@ public class ProductService {
 
 
     // DELETE PRODUCT
-
-
     public void deleteProduct(Long id) {
 
         Product product =
@@ -146,8 +140,6 @@ public class ProductService {
 
 
     // PRODUCTS BY CATEGORY
-
-
     public List<Product> getProductsByCategory(
             String category) {
 
@@ -157,8 +149,6 @@ public class ProductService {
 
 
     // SEARCH PRODUCTS
-
-
     public List<Product> searchProducts(
             String name) {
 
@@ -168,7 +158,6 @@ public class ProductService {
 
 
     // CATEGORY + SEARCH
-
     public List<Product> searchByCategory(
             String category,
             String name) {
@@ -182,8 +171,6 @@ public class ProductService {
 
 
     // ALPHABETICAL ORDER
-
-
     public List<Product> getProductsAlphabetically() {
 
         return productRepository
@@ -191,8 +178,6 @@ public class ProductService {
     }
 
     // LOWEST PRICE
-
-
     public List<Product> getProductsByLowestPrice() {
 
         return productRepository

@@ -27,8 +27,8 @@ public class AdminController {
 
         try {
 
-            Admin newAdmin =
-                    adminService.createAdmin(admin);
+            Admin newAdmin = adminService.createAdmin(admin);
+
 
             return ResponseEntity.ok(newAdmin);
 
@@ -54,7 +54,6 @@ public class AdminController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getAdmin(
             @PathVariable Long id) {
-
         try {
 
             return ResponseEntity.ok(
@@ -77,8 +76,7 @@ public class AdminController {
         try {
 
             return ResponseEntity.ok(
-                    adminService
-                            .getAdminByUsername(username)
+                    adminService.getAdminByUsername(username)
             );
 
         } catch (RuntimeException e) {

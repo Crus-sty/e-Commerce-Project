@@ -14,5 +14,4 @@ public class ElectronicsApplication {
 
         SpringApplication.run(ElectronicsApplication.class, args);
 	}
-
 }
