@@ -135,4 +135,15 @@
 
 		</div>
 	</div>
+
+    <!-- AMADO-->
+<script src="js-amado/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="js-amado/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js-amado/bootstrap.min.js"></script>
+<!-- Plugins js -->
+<script src="js-amado/plugins.js"></script>
+<!-- Active js -->
+<script src="js-amado/active.js"></script>
 </asp:Content>
