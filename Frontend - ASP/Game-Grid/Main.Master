@@ -42,7 +42,6 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <!--===============================================================================================-->
     <asp:ContentPlaceHolder ID="head" runat="server">
-
     </asp:ContentPlaceHolder>
 </head>
 <body class="animsition">
@@ -62,8 +61,15 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs
                             </a>
 
-                            <a href="account-info.aspx" class="flex-c-m trans-04 p-lr-25" onclick="accountLink_Click">My Account
-                            </a>
+                            <asp:LinkButton ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+
+                            <asp:LinkButton ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+
+                            <asp:LinkButton ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+
+                            <asp:LinkButton ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+
+                            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <a href="#" class="flex-c-m trans-04 p-lr-25">EN
                             </a>
@@ -109,11 +115,11 @@
                                 <i class="zmdi zmdi-search"></i>
                             </div>
 
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="[]">
+                            <div id="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
                                 <i class="zmdi zmdi-shopping-cart"></i>
                             </div>
 
-                            <div href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="[]">
+                            <div id="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                                 <i class="zmdi zmdi-favorite-outline"></i>
                             </div>
                         </div>
@@ -135,11 +141,11 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="[]">
+                    <div id="cartIcon2" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <div href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="[]">
+                    <div id="wishlistIcon2" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </div>
                 </div>
@@ -247,7 +253,7 @@
 
                         <!--Repeater Cart Item-->
                         <repeater id="rptCartItems" runat="server">
-                            <ItemTemplate>
+                            <itemtemplate>
 
                                 <li class="header-cart-item flex-w flex-t m-b-12">
                                     <div class="header-cart-item-img">
@@ -257,10 +263,10 @@
                                         <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"><%# Eval("ProductName") %></a>
 
                                         <span class="header-cart-item-info"><%# Eval("Quantity") %> x R <%# Eval("Price", "{0:F2}") %></span>
-                                        
+
                                     </div>
                                 </li>
-                            </ItemTemplate>
+                            </itemtemplate>
                         </repeater>
 
                         <li class="header-cart-item flex-w flex-t m-b-12">
@@ -298,8 +304,8 @@
         </div>
 
 
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
 
 
         <!-- Footer -->
@@ -339,8 +345,7 @@
 
                         <ul>
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Track Order
-                                </a>
+                                <asp:LinkButton ID="btn_orderhistory" runat="server" Text="Order History" OnClick="btn_Orderhistory_Click" CssClass="stext-107 cl7 hov-cl1 trans-04"></asp:LinkButton>
                             </li>
 
                             <li class="p-b-10">
@@ -428,7 +433,7 @@
                     <p class="stext-107 cl6 txt-center">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                        All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon </a>| Modified by The Java Galacticos
+                        All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon </a>| Modified by The Java Galacticos
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                     </p>
@@ -538,17 +543,6 @@
         <!--===============================================================================================-->
         <script src="js/main.js"></script>
 
-        <!-- AMADO-->
-        <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-        <script src="js-amado/jquery/jquery-2.2.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="js-amado/popper.min.js"></script>
-        <!-- Bootstrap js -->
-        <script src="js-amado/bootstrap.min.js"></script>
-        <!-- Plugins js -->
-        <script src="js-amado/plugins.js"></script>
-        <!-- Active js -->
-        <script src="js-amado/active.js"></script>
 
     </form>
 </body>

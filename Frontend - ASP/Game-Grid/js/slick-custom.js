@@ -52,8 +52,8 @@
                 autoplaySpeed: 6000,
                 arrows: true,
                 appendArrows: $(wrapSlick1),
-                prevArrow:'<button class="arrow-slick1 prev-slick1"><i class="zmdi zmdi-caret-left"></i></button>',
-                nextArrow:'<button class="arrow-slick1 next-slick1"><i class="zmdi zmdi-caret-right"></i></button>',
+                prevArrow:'<button type="button" class="arrow-slick1 prev-slick1"><i class="zmdi zmdi-caret-left"></i></button>',
+                nextArrow:'<button type="button" class="arrow-slick1 next-slick1"><i class="zmdi zmdi-caret-right"></i></button>',
                 dots: showDot,
                 appendDots: $(wrapSlick1).find('.wrap-slick1-dots'),
                 dotsClass:'slick1-dots',
@@ -98,8 +98,8 @@
               autoplaySpeed: 6000,
               arrows: true,
               appendArrows: $(this),
-              prevArrow:'<button class="arrow-slick2 prev-slick2"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-              nextArrow:'<button class="arrow-slick2 next-slick2"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',  
+              prevArrow:'<button type="button" class="arrow-slick2 prev-slick2"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+              nextArrow:'<button type="button" class="arrow-slick2 next-slick2"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',  
               responsive: [
                 {
                   breakpoint: 1200,
@@ -152,8 +152,8 @@
 
                 arrows: true,
                 appendArrows: $(this).find('.wrap-slick3-arrows'),
-                prevArrow:'<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-                nextArrow:'<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+                prevArrow:'<button type="button" class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+                nextArrow:'<button type="button" class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
 
                 dots: true,
                 appendDots: $(this).find('.wrap-slick3-dots'),

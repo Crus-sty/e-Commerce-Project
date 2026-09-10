@@ -11,7 +11,17 @@ namespace Game_Grid
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack) 
+            {
+                if (Session["role"] != null && Session["role"].ToString() == "Admin")
+                {
+                    Response.Redirect("admin-home.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
         }
     }
 }

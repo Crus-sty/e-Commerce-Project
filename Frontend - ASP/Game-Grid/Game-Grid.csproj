@@ -149,6 +149,7 @@
     <Content Include="fonts\Montserrat\OFL.txt" />
     <Content Include="fonts\PlayfairDisplay\OFL.txt" />
     <Content Include="Global.asax" />
+    <Content Include="history.aspx" />
     <Content Include="imagery\cables-and-adapters.jpg" />
     <Content Include="imagery\console gaming.jpg" />
     <Content Include="imagery\extras.jpg" />
@@ -579,6 +580,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="history.aspx.cs">
+      <DependentUpon>history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="history.aspx.designer.cs">
+      <DependentUpon>history.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

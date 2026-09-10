@@ -61,8 +61,15 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs
                             </a>
 
-                            <a href="account-info.aspx" class="flex-c-m trans-04 p-lr-25" onclick="accountLink_Click">My Account
-                            </a>
+                            <asp:LinkButton ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                   
+                            <asp:LinkButton ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            
+                            <asp:LinkButton ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            
+                            <asp:LinkButton ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+
+                            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <a href="#" class="flex-c-m trans-04 p-lr-25">EN
                             </a>
@@ -108,13 +115,13 @@
                                 <i class="zmdi zmdi-search"></i>
                             </div>
 
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="[]">
-                                <i class="zmdi zmdi-shopping-cart"></i>
-                            </div>
+                    <div ID="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
 
-                            <div href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="[]">
-                                <i class="zmdi zmdi-favorite-outline"></i>
-                            </div>
+                    <div ID="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
+                        <i class="zmdi zmdi-favorite-outline"></i>
+                    </div>
                         </div>
                     </nav>
                 </div>
@@ -134,13 +141,13 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+                    <div ID="cartIcon2" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+                    <div ID="wishlistIcon2" runat="server" href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                         <i class="zmdi zmdi-favorite-outline"></i>
-                    </a>
+                    </div>
                 </div>
 
                 <!-- Button show menu -->
@@ -340,8 +347,7 @@
 
                         <ul>
                             <li class="p-b-10">
-                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Track Order
-                                </a>
+                                <asp:LinkButton ID="btn_orderhistory" runat="server" Text="Order History" OnClick="btn_Orderhistory_Click" CssClass="stext-107 cl7 hov-cl1 trans-04"></asp:LinkButton>
                             </li>
 
                             <li class="p-b-10">
