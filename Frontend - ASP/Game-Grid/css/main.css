@@ -3330,3 +3330,32 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 }
+
+/* FORCE ALL PRODUCT CARDS TO THE SAME SIZE */
+.block2 {
+    height: 420px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* FORCE ALL IMAGE CONTAINERS TO THE SAME SIZE */
+.block2-pic {
+    width: 100% !important;
+    height: 280px !important;
+    max-height: 280px !important;
+    overflow: hidden !important;
+}
+
+    /* FORCE ALL PRODUCT IMAGES TO THE SAME SIZE */
+    .block2-pic > img {
+        width: 100% !important;
+        height: 280px !important;
+        max-height: 280px !important;
+        object-fit: contain !important;
+    }
+
+/* Product information takes the remaining space */
+.block2-txt {
+    height: 140px !important;
+    flex: 1 !important;
+}
