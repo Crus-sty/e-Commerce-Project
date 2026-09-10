@@ -63,7 +63,24 @@ namespace Game_Grid
 
                         Session["email"] = email;
 
-                        Response.Redirect("admin-home.aspx");
+
+
+                        if(email.Contains("@Game-Grid.com"))
+                        {
+                            Response.Redirect("admin-home.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("home.aspx");
+
+                        }
+
+                        //Get User Information - Name Surnmame DOB 
+                        //Session["userId"]
+                        //Session["name"]
+                        //Session["surname"]
+                        //Session["dob"]
+
                     }
                     else
                     {
