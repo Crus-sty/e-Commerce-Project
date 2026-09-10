@@ -8,8 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Core Style CSS AMADO-->
-    <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="imagery/GG_logo.png" />
     <!--===============================================================================================-->
@@ -91,19 +89,19 @@
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
-                                <li class="active-menu">
+                                <li id="homeMenu" runat="server" class="active-menu">
                                     <a href="home.aspx">Home</a>
                                 </li>
 
-                                <li>
+                                <li id="shopMenu" runat="server">
                                     <a href="shop.aspx">Shop</a>
                                 </li>
 
-                                <li>
+                                <li id="aboutMenu" runat="server">
                                     <a href="about.aspx">About</a>
                                 </li>
 
-                                <li>
+                                <li id="contactMenu" runat="server">
                                     <a href="contact.aspx">Contact</a>
                                 </li>
                             </ul>

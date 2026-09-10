@@ -35,6 +35,8 @@ namespace Game_Grid
 
                 cartIcon.Attributes["data-notify"] = cartTotal.ToString();
                 wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+
+                SetActiveMenu();
             }
 
 
@@ -111,6 +113,41 @@ namespace Game_Grid
             if (Session["WishlistCount"] != null)
                 return Convert.ToInt32(Session["WishlistCount"]);
             return 0;
+        }
+
+        private void SetActiveMenu()
+        {
+            // Get just the file name of the current page (e.g. "shop.aspx")
+            string current = Session["Page"].ToString();
+
+            // Remove active class from all (safety - they shouldn't have it in markup anymore)
+            liHome.Attributes["class"] = "";
+            liShop.Attributes["class"] = "";
+            liAbout.Attributes["class"] = "";
+            liContact.Attributes["class"] = "";
+
+            // Apply to the right one
+            switch (current)
+            {
+                case "home.aspx":
+                case "default.aspx":
+                    liHome.Attributes["class"] = "active-menu";
+                    break;
+
+                case "shop.aspx":
+                case "product.aspx":
+                case "product-detail.aspx":
+                    liShop.Attributes["class"] = "active-menu";
+                    break;
+
+                case "about.aspx":
+                    liAbout.Attributes["class"] = "active-menu";
+                    break;
+
+                case "contact.aspx":
+                    liContact.Attributes["class"] = "active-menu";
+                    break;
+            }
         }
     }
 }

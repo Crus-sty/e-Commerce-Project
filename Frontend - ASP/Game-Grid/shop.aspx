@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="Shop" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="shop.aspx.cs" Inherits="Game_Grid.shop" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    
+    <!-- Core Style CSS AMADO-->
+    <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Product -->

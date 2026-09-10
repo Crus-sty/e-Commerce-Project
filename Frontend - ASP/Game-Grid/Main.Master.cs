@@ -35,6 +35,8 @@ namespace Game_Grid
                 
                 cartIcon.Attributes["data-notify"] = cartTotal.ToString();
                 wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+
+
             }
 
             
