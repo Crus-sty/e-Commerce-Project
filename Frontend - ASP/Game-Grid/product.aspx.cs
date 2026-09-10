@@ -1,20 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Game_Grid
 {
     public partial class product : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                await LoadProducts();
+            }
         }
 
         private async Task LoadProducts()
@@ -25,16 +25,16 @@ namespace Game_Grid
                 {
                     string apiUrl = "http://localhost:8080/api/products";
 
-                    HttpResponseMessage response =
-                        await client.GetAsync(apiUrl);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
 
                     if (response.IsSuccessStatusCode)
                     {
-                        string json =
-                            await response.Content.ReadAsStringAsync();
+                        string json = await response.Content.ReadAsStringAsync();
 
-                        List<product> products =
-                            JsonConvert.DeserializeObject<List<product>>(json);
+
+                        List<ProductModel> products = JsonConvert.DeserializeObject<List<ProductModel>>(json);
+
 
                         rptProducts.DataSource = products;
                         rptProducts.DataBind();
@@ -42,7 +42,9 @@ namespace Game_Grid
                     else
                     {
                         Response.Write(
-                            "<script>alert('Could not load products from the API');</script>"
+                            "<script>alert('Could not load products. Status: " + response.StatusCode + "');</script>"
+
+
                         );
                     }
                 }
@@ -50,12 +52,9 @@ namespace Game_Grid
             catch (Exception ex)
             {
                 Response.Write(
-                    "<script>alert('" +
-                    ex.Message.Replace("'", "") +
-                    "');</script>"
+                    "<script>alert('" + ex.Message.Replace("'", "") +"');</script>"
                 );
             }
         }
     }
 }
-
