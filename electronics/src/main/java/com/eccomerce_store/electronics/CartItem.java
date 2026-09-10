@@ -2,21 +2,22 @@ package com.eccomerce_store.electronics;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cart_items")//may be change later
+@Table(name = "cartitem")
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CartItemID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", nullable = false)
+    @JoinColumn(name = "CartID", nullable = false)
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "ProductID", nullable = false)
     private Product product;
 
-    @Column(nullable = false)
+    @Column(name = "Quantity", nullable = false)
     private int quantity;
 
     public CartItem() {
