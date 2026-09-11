@@ -382,8 +382,8 @@
                                      alt='<%# Eval("name") %>'
                                      style="width: 100% !important; height: 280px !important; object-fit: contain !important;">
 
-                                <!-- Quick View -->
-                                <a href='<%# "product-detail.aspx?id=" + Eval("id") %>'
+                                <!-- Quick View -<%# "product-detail.aspx?id=" + Eval("id") %> -->
+                                <a href="#"
                                    class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 
                                     Quick View
