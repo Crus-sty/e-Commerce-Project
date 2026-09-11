@@ -89,19 +89,19 @@
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
-                                <li id="homeMenu" runat="server" class="active-menu">
+                                <li id="homeMenu" runat="server" class="">
                                     <a href="home.aspx">Home</a>
                                 </li>
 
-                                <li id="shopMenu" runat="server">
+                                <li id="shopMenu" runat="server" class="">
                                     <a href="shop.aspx">Shop</a>
                                 </li>
 
-                                <li id="aboutMenu" runat="server">
+                                <li id="aboutMenu" runat="server" class="">
                                     <a href="about.aspx">About</a>
                                 </li>
 
-                                <li id="contactMenu" runat="server">
+                                <li id="contactMenu" runat="server" class="">
                                     <a href="contact.aspx">Contact</a>
                                 </li>
                             </ul>

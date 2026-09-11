@@ -16,6 +16,8 @@ namespace Game_Grid
         {
             if (!IsPostBack)
             {
+                Session["UserID"] = "Kamo";
+                Session["Page"] = "home.aspx";
                 await LoadProducts();
             }
         }

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main-2.master.cs" Inherits="Game_Grid.Main_2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main-2.Master.cs" Inherits="Game_Grid.Main_2" %>
 
 <!DOCTYPE html>
 
@@ -270,7 +270,7 @@
 
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
-                                <img src="" alt="[PRODUCT NAME IMG RPLCMNT]">
+                                <img src="images/item-cart-01.jpg" alt="[PRODUCT NAME IMG RPLCMNT]">
                             </div>
 
                             <div class="header-cart-item-txt p-t-8">

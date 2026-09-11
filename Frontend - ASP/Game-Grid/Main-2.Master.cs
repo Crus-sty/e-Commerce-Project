@@ -117,35 +117,30 @@ namespace Game_Grid
 
         private void SetActiveMenu()
         {
-            // Get just the file name of the current page (e.g. "shop.aspx")
             string current = Session["Page"].ToString();
 
-            // Remove active class from all (safety - they shouldn't have it in markup anymore)
-            liHome.Attributes["class"] = "";
-            liShop.Attributes["class"] = "";
-            liAbout.Attributes["class"] = "";
-            liContact.Attributes["class"] = "";
+            homeMenu.Attributes["class"] = "";
+            shopMenu.Attributes["class"] = "";
+            aboutMenu.Attributes["class"] = "";
+            contactMenu.Attributes["class"] = "";
 
             // Apply to the right one
             switch (current)
             {
                 case "home.aspx":
-                case "default.aspx":
-                    liHome.Attributes["class"] = "active-menu";
+                    homeMenu.Attributes["class"] = "active-menu";
                     break;
 
                 case "shop.aspx":
-                case "product.aspx":
-                case "product-detail.aspx":
-                    liShop.Attributes["class"] = "active-menu";
+                    shopMenu.Attributes["class"] = "active-menu";
                     break;
 
                 case "about.aspx":
-                    liAbout.Attributes["class"] = "active-menu";
+                    aboutMenu.Attributes["class"] = "active-menu";
                     break;
 
                 case "contact.aspx":
-                    liContact.Attributes["class"] = "active-menu";
+                    contactMenu.Attributes["class"] = "active-menu";
                     break;
             }
         }
