@@ -96,6 +96,8 @@ namespace Game_Grid
             {
                 // Handle error
             }*/
+
+            Session["CartCount"] = (int)(Session["CartCount"]) + 1;
         }
     }
 }

@@ -352,16 +352,15 @@
                             <div class="block2">
 
                                 <!-- Product Image -->
-                                <div class="block2-pic hov-img0"
-                                    style="height: 280px !important; overflow: hidden !important;">
+                                <div class="block2-pic hov-img0">
 
                                     <img src='<%# Eval("imageUrl") %>'
-                                        alt='<%# Eval("name") %>'
-                                        style="width: 100% !important; height: 280px !important; object-fit: contain !important;">
+                                        alt='<%# Eval("name") %>'>
 
                                     <!-- Quick View -<%# "product-detail.aspx?id=" + Eval("id") %> -->
                                     <a href="#"
-                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">Quick View
+                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
 
                                     </a>
 
@@ -509,9 +508,7 @@
                                                 </div>
                                             </div>
 
-                                            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                Add to cart
-                                            </button>
+                                            <asp:Button ID="btnAddToCart" runat="server" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" Text="Add to cart"></asp:Button>
                                         </div>
                                     </div>
                                 </div>

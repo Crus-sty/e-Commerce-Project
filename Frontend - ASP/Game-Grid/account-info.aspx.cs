@@ -11,13 +11,13 @@ namespace Game_Grid
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["UserID"] == null)
+            if(Session["email"] == null)
             {
                 Response.Redirect("login.aspx");
             }
             else if (!IsPostBack)
             {
-                //LoadUserInfo();
+                LoadUserInfo();
                 txtName.Enabled = false;
                 txtSurname.Enabled = false;
                 txtGender.Enabled = false;
@@ -31,7 +31,9 @@ namespace Game_Grid
 
         protected void LoadUserInfo()
         {
-            String userId = Session["UserID"].ToString();
+            String email = Session["email"].ToString();
+            txtEmail.Text = email;
+
 
 
         }
