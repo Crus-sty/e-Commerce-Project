@@ -23,7 +23,7 @@ namespace Game_Grid
             string name = txtName.Text.Trim();
             string surname = txtSurname.Text.Trim();
             string dob = txtDOB.Text.Trim();
-            string gender = txtGender.Text.Trim();
+            string gender = ddlGender.SelectedValue;
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
@@ -103,7 +103,9 @@ namespace Game_Grid
 
 
                         lblMessage.Text = "Account created successfully!";
-
+                        Session["name"] = name;
+                        Session["surname"] = surname;
+                        //Session["userID"] = Funtion to get user ID from the backend using the username or email;
 
                         Response.Redirect("login.aspx");
                     }

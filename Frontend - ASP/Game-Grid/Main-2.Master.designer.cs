@@ -78,6 +78,42 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.LinkButton btnLogout;
 
         /// <summary>
+        /// homeMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl homeMenu;
+
+        /// <summary>
+        /// shopMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl shopMenu;
+
+        /// <summary>
+        /// aboutMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aboutMenu;
+
+        /// <summary>
+        /// contactMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contactMenu;
+
+        /// <summary>
         /// cartIcon control.
         /// </summary>
         /// <remarks>

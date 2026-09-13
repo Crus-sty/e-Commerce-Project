@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main-2.master.cs" Inherits="Game_Grid.Main_2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main-2.Master.cs" Inherits="Game_Grid.Main_2" %>
 
 <!DOCTYPE html>
 
@@ -8,8 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Core Style CSS AMADO-->
-    <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="imagery/GG_logo.png" />
     <!--===============================================================================================-->
@@ -62,11 +60,11 @@
                             </a>
 
                             <asp:LinkButton ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
-                   
+
                             <asp:LinkButton ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
-                            
+
                             <asp:LinkButton ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
-                            
+
                             <asp:LinkButton ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
@@ -91,19 +89,19 @@
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
-                                <li class="active-menu">
+                                <li id="homeMenu" runat="server" class="">
                                     <a href="home.aspx">Home</a>
                                 </li>
 
-                                <li>
+                                <li id="shopMenu" runat="server" class="">
                                     <a href="shop.aspx">Shop</a>
                                 </li>
 
-                                <li>
+                                <li id="aboutMenu" runat="server" class="">
                                     <a href="about.aspx">About</a>
                                 </li>
 
-                                <li>
+                                <li id="contactMenu" runat="server" class="">
                                     <a href="contact.aspx">Contact</a>
                                 </li>
                             </ul>
@@ -115,13 +113,13 @@
                                 <i class="zmdi zmdi-search"></i>
                             </div>
 
-                    <div ID="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
-                        <i class="zmdi zmdi-shopping-cart"></i>
-                    </div>
+                            <div id="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
 
-                    <div ID="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
-                        <i class="zmdi zmdi-favorite-outline"></i>
-                    </div>
+                            <div id="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
+                                <i class="zmdi zmdi-favorite-outline"></i>
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -141,11 +139,11 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div ID="cartIcon2" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
+                    <div id="cartIcon2" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <div ID="wishlistIcon2" runat="server" href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
+                    <div id="wishlistIcon2" runat="server" href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </div>
                 </div>
@@ -272,7 +270,7 @@
 
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
-                                <img src="" alt="[PRODUCT NAME IMG RPLCMNT]">
+                                <img src="images/item-cart-01.jpg" alt="[PRODUCT NAME IMG RPLCMNT]">
                             </div>
 
                             <div class="header-cart-item-txt p-t-8">
@@ -548,7 +546,7 @@
         <!--===============================================================================================-->
         <script src="js/main.js"></script>
 
-        
+
 
     </form>
 </body>

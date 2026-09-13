@@ -35,6 +35,8 @@ namespace Game_Grid
                 
                 cartIcon.Attributes["data-notify"] = cartTotal.ToString();
                 wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+
+                SetActiveMenu();
             }
 
             
@@ -113,6 +115,36 @@ namespace Game_Grid
             if (Session["WishlistCount"] != null)
                 return Convert.ToInt32(Session["WishlistCount"]);
             return 0;
+        }
+
+        private void SetActiveMenu()
+        {
+            string current = Session["Page"].ToString();
+
+            homeMenu.Attributes["class"] = "";
+            shopMenu.Attributes["class"] = "";
+            aboutMenu.Attributes["class"] = "";
+            contactMenu.Attributes["class"] = "";
+
+            // Apply to the right one
+            switch (current)
+            {
+                case "home.aspx":
+                    homeMenu.Attributes["class"] = "active-menu";
+                    break;
+
+                case "shop.aspx":
+                    shopMenu.Attributes["class"] = "active-menu";
+                    break;
+
+                case "about.aspx":
+                    aboutMenu.Attributes["class"] = "active-menu";
+                    break;
+
+                case "contact.aspx":
+                    contactMenu.Attributes["class"] = "active-menu";
+                    break;
+            }
         }
     }
 }
