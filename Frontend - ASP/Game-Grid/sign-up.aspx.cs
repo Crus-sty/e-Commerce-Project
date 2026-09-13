@@ -70,8 +70,8 @@ namespace Game_Grid
                 username = username,
                 email = email,
                 password = password,
-                firstName = name,
-                lastName = surname,
+                name = name,
+                surname = surname,
                 gender = gender,
                 dob = dob
             };
