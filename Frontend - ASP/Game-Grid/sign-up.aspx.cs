@@ -105,9 +105,10 @@ namespace Game_Grid
                         lblMessage.Text = "Account created successfully!";
                         Session["name"] = name;
                         Session["surname"] = surname;
+                        Session["email"] = email;
                         //Session["userID"] = Funtion to get user ID from the backend using the username or email;
 
-                        Response.Redirect("login.aspx");
+                        Response.Redirect("home.aspx");
                     }
                     else
                     {
