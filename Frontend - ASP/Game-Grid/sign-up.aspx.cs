@@ -67,11 +67,11 @@ namespace Game_Grid
 
             var registerData = new
             {
-                username = username,
+                name = name,
+                surname = surname,
                 email = email,
                 password = password,
-                firstName = name,
-                lastName = surname,
+                username = username,
                 gender = gender,
                 dob = dob
             };

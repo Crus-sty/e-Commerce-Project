@@ -2,10 +2,11 @@ package com.eccomerce_store.electronics;
 import jakarta.persistence.*;
 //user model
 @Entity
-@Table(name ="Users")
+@Table(name ="User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UserID")
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -14,7 +15,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "PasswordHash")
     private String password;
 
     private String firstName;

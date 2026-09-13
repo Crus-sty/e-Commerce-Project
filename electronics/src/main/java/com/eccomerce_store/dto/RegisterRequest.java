@@ -1,7 +1,7 @@
 package com.eccomerce_store.dto;
 
 public class RegisterRequest {
-    private String name;
+    private String firstname;
     private String surname;
     private String dob;
     private String gender;
@@ -14,11 +14,11 @@ public class RegisterRequest {
 
 
     public String getName() {
-        return name;
+        return firstname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.firstname = name;
     }
 
 
