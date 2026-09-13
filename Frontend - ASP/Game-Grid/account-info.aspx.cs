@@ -29,6 +29,14 @@ namespace Game_Grid
             
         }
 
+        protected void LoadUserInfo()
+        {
+            String userId = Session["UserID"].ToString();
+
+
+        }
+
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             // Implement save logic here

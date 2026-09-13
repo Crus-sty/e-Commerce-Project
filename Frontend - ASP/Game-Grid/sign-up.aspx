@@ -48,8 +48,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <asp:Label ID="lblGender" runat="server" Text="Gender" ForeColor="Gray"></asp:Label>
-                                <asp:DropDownList ID="ddlGender" runat="server"
-                                    CssClass="form-control">
+                                <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
 
                                     <asp:ListItem Text="Choose your gender" Value="" />
                                     <asp:ListItem Text="Male" Value="Male" />

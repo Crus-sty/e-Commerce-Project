@@ -8,7 +8,7 @@
         <div class="container">
 
             <div class="acc-headings">
-                <h1 style="padding-bottom: 20px;" align="center" class="mtext-111 cl2 p-b-16">Welcome, [NAME] [SURNAME] </h1>
+                <h1 style="padding-bottom: 20px;" align="center" class="mtext-111 cl2 p-b-16">Welcome, Session["name"] Session["surname"] </h1>
             </div>
 
                 <h5 align="center" class="mtext-107 cl2 size-114 plh2 p-r-15">Account Information </h5>
