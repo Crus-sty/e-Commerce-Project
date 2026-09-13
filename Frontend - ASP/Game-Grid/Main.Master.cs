@@ -13,7 +13,7 @@ namespace Game_Grid
         {
             if (!IsPostBack)
             {
-                if (Session["UserID"] != null)
+                if (Session["email"] != null)
                 {
                     btnSignUp.Visible = false;
                     btnLogin.Visible = false;
