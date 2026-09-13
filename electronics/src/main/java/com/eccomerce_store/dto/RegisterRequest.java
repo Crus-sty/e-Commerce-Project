@@ -1,9 +1,9 @@
 package com.eccomerce_store.dto;
-
+import java.time.LocalDate;
 public class RegisterRequest {
-    private String firstname;
+    private String name;
     private String surname;
-    private String dob;
+    private LocalDate dob;
     private String gender;
     private String email;
     private String password;
@@ -14,11 +14,11 @@ public class RegisterRequest {
 
 
     public String getName() {
-        return firstname;
+        return name;
     }
 
     public void setName(String name) {
-        this.firstname = name;
+        this.name = name;
     }
 
 
@@ -31,11 +31,11 @@ public class RegisterRequest {
     }
 
 
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 

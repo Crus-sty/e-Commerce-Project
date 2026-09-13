@@ -1,21 +1,22 @@
 package com.eccomerce_store.electronics;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 //user model
 @Entity
 @Table(name ="User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
+    @Column(name ="UserID")
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name="UserName",unique = true, nullable = false)
     private String username;
 
-    @Column(unique = true, nullable = false)
+    @Column(name="Email",unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false, name = "PasswordHash")
+    @Column(name="PasswordHash",nullable = false)
     private String password;
 
     private String firstName;
@@ -29,7 +30,7 @@ public class User {
     private String gender;
 
     @Column(nullable = false)
-    private String dob;
+    private LocalDate dob;
 
 
     // Constructor
@@ -115,11 +116,11 @@ public class User {
 
 
     // Date of birth
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     };
 

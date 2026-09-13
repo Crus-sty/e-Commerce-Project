@@ -187,8 +187,6 @@ public class ProductService {
 
 
     // HIGHEST PRICE
-
-
     public List<Product> getProductsByHighestPrice() {
 
         return productRepository
