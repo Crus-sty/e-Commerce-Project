@@ -23,7 +23,7 @@ namespace Game_Grid
             string name = txtName.Text.Trim();
             string surname = txtSurname.Text.Trim();
             string dob = txtDOB.Text.Trim();
-            string gender = txtGender.Text.Trim();
+            string gender = ddlGender.SelectedValue;
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;

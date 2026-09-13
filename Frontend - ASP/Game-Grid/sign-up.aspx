@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <asp:Label ID="lblDOB" runat="server" Text="Date of Birth" ForeColor="Gray"></asp:Label>
-                                <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" placeholder="Enter your date of birth"></asp:TextBox>
+                                <asp:TextBox ID="txtDOB" runat="server" TextMode="Date" CssClass="form-control" placeholder="Enter your date of birth"></asp:TextBox>
                             </div>
                         </div>
 
@@ -48,7 +48,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <asp:Label ID="lblGender" runat="server" Text="Gender" ForeColor="Gray"></asp:Label>
-                                <asp:TextBox ID="txtGender" runat="server" CssClass="form-control" placeholder="Enter your gender"></asp:TextBox>
+                                <asp:DropDownList ID="ddlGender" runat="server"
+                                    CssClass="form-control">
+
+                                    <asp:ListItem Text="Choose your gender" Value="" />
+                                    <asp:ListItem Text="Male" Value="Male" />
+                                    <asp:ListItem Text="Female" Value="Female" />
+                                    <asp:ListItem Text="Other" Value="Other" />
+
+                                </asp:DropDownList>
                             </div>
                         </div>
 
@@ -83,10 +91,10 @@
                     </div>
 
                     <div class="col-md-12">
-                    <div class="text-center p-t-20">
-                        <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" OnClick="btnCreateAccount_Click" />
-                    </div>
+                        <div class="text-center p-t-20">
+                            <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" OnClick="btnCreateAccount_Click" />
                         </div>
+                    </div>
 
 
                     <div class="text-center p-t-25">
