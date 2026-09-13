@@ -562,6 +562,7 @@
     <Compile Include="Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="apiclient.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="checkout.aspx.cs">
@@ -716,6 +717,7 @@
     <Compile Include="wishlist.aspx.designer.cs">
       <DependentUpon>wishlist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WishlistItemDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,11 +17,13 @@ namespace Game_Grid
         {
 
         }
-		protected async void btnLogin_Click(object sender, EventArgs e)
+ 
+        protected async void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
+            // Check fields
             if (string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password))
             {
@@ -29,71 +31,112 @@ namespace Game_Grid
                 return;
             }
 
+            // Create login request
             var loginData = new
             {
                 email = email,
                 password = password
             };
 
+            // Convert request to JSON
             string json = JsonConvert.SerializeObject(loginData);
+
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress =
-                    new Uri("http://localhost:8080");//we can change this  i used my localhost
+                client.BaseAddress = new Uri("http://localhost:8080");
 
-                StringContent content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json"
-                );
+
+                StringContent content =
+                    new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json"
+                    );
 
                 try
                 {
-					//Making Requst
-                    HttpResponseMessage response =
-                        await client.PostAsync(
-                            "/api/auth/login",
-                            content
-                        );
+                    // Send login request to Spring Boot
+                    HttpResponseMessage response = await client.PostAsync("/api/auth/login", content);
+
+
+
+
+
+                    // Read response from Spring Boot
+                    string result = await response.Content.ReadAsStringAsync();
+
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Login successful
-
-                        Session["email"] = email;
-
+                        // Convert JSON response into LoginResponse
+                        LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(result);
 
 
-                        if(email.Contains("@Game-Grid.com"))
+                        // Make sure we received a token
+                        if (loginResponse != null &&
+                            !string.IsNullOrEmpty(loginResponse.token))
                         {
-                            Response.Redirect("admin-home.aspx");
+                            // Store login information in Session
+                            Session["Token"] = loginResponse.token;
+                            Session["email"] = email;
+                            Session["Username"] = loginResponse.username;
+                            Session["Role"] = loginResponse.role;
+
+                            // Go to the correct page
+                            if (loginResponse.role != null &&
+                                loginResponse.role.Equals(
+                                    "ADMIN",
+                                    StringComparison.OrdinalIgnoreCase))
+                            {
+                                Response.Redirect(
+                                    "admin-home.aspx",
+                                    false);
+
+                                Context.ApplicationInstance
+                                    .CompleteRequest();
+                            }
+                            else
+                            {
+                                Response.Redirect(
+                                    "home.aspx",
+                                    false);
+
+                                Context.ApplicationInstance
+                                    .CompleteRequest();
+                            }
                         }
                         else
                         {
-                            Response.Redirect("home.aspx");
-
+                            lblMessage.Text =
+                                "Login succeeded, but no token was received.";
                         }
-
-                        //Get User Information - Name Surnmame DOB 
-                        //Session["userId"]
-                        //Session["name"]
-                        //Session["surname"]
-                        //Session["dob"]
-
                     }
                     else
                     {
-                        lblMessage.Text = "Invalid email or password.";
-                           
+                        lblMessage.Text =
+                            "Invalid email or password.";
                     }
                 }
                 catch (Exception ex)
                 {
-                    lblMessage.Text ="Could not connect to the backend.";
-                        
+                    lblMessage.Text =
+                        "Could not connect to the backend: "
+                        + ex.Message;
                 }
             }
+        }
+        // LOGIN RESPONSE FROM SPRING BOOT
+
+        public class LoginResponse
+        {
+            public string message { get; set; }
+
+            public string token { get; set; }
+
+            public string username { get; set; }
+
+            public string role { get; set; }
         }
     }
 }

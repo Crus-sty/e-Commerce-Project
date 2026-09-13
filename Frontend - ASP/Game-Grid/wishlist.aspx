@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h2 class="mtext-105 cl2 txt-center p-b-30">Wishlist</h2>
@@ -23,36 +24,7 @@
                                     <th class="column-5">Remove</th>
                                 </tr>
 
-                                <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="how-itemcart1">
-                                                    <img src='' alt="IMG">
-                                                </div>
-                                            </td>
-                                            <td class="column-2">[Product Name]</td>
-                                            <td class="column-3">[Product Price]</td>
-                                            <td class="column-4">
-                                                <!-- Stock avilability check -->
-                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                    
-
-
-                                                </div>
-                                            </td>
-
-                                            <td class="column-5">
-                                                <!-- Remove button -->
-                                                <div class="block2-txt-child2 flex-r p-t-3">
-                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="btnRemove_Click">
-                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                <!-- Repeater -->
-
+                                <!-- Repeater: one row per wishlist item from GET /api/wishlist -->
                                 <asp:Repeater ID="rptWishlist" runat="server">
                                     <ItemTemplate>
                                         <tr class="table_row">
@@ -61,33 +33,33 @@
                                                     <img src='<%# Eval("ProductImage") %>' alt="IMG">
                                                 </div>
                                             </td>
+
                                             <td class="column-2"><%# Eval("ProductName") %></td>
-                                            <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
+
+                                            <td class="column-3"><%# Eval("Price", "{0:F2}") %></td>
+
                                             <td class="column-4">
-                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                                    </div>
-
-                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
-
-                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                                    </div>
-                                                </div>
+                                                <span class="stext-110 cl2">
+                                                    <%# (bool)Eval("InStock") ? "In Stock" : "Out of Stock" %>
+                                                </span>
                                             </td>
+
                                             <td class="column-5">
                                                 <div class="block2-txt-child2 flex-r p-t-3">
-                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                                    </a>
+                                                    <asp:LinkButton runat="server"
+                                                        CommandArgument='<%# Eval("ProductId") %>'
+                                                        OnClick="btnRemove_Click"
+                                                        CssClass="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                                        <img class="icon-heart1 dis-block trans-04"
+                                                             src="images/icons/icon-heart-01.png" alt="ICON">
+                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                             src="images/icons/icon-heart-02.png" alt="ICON">
+                                                    </asp:LinkButton>
                                                 </div>
                                             </td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>
-
 
                             </table>
                         </div>
@@ -97,6 +69,9 @@
                                 Update Wishlist
                             </div>
                         </div>
+
+                        <!-- Error / info messages surface here -->
+                        <asp:Literal ID="litMessage" runat="server" />
                     </div>
                 </div>
 
