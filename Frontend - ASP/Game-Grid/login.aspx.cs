@@ -108,7 +108,7 @@ namespace Game_Grid
                         Session["Username"] = loginResponse.username;
 
 
-                        Session["Role"] = loginResponse.role;
+                        Session["role"] = loginResponse.role;
                         
 
                         // CHECK ROLE
