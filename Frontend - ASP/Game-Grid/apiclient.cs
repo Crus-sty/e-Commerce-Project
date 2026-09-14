@@ -188,7 +188,7 @@ namespace Game_Grid
             {
                 // Get JWT token
                 string token =
-                    HttpContext.Current.Session["AuthToken"] as string;
+                    HttpContext.Current.Session["Token"] as string;
 
                 // Add JWT token
                 if (!string.IsNullOrEmpty(token))
