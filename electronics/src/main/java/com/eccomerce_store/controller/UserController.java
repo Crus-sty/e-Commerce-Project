@@ -28,7 +28,7 @@ public class UserController
         // finds that user in the database
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Return user information without the password
+        // returns the user's information 
         UserProfileResponse response = new UserProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getRole(), user.getGender(), user.getDob());
 
         return ResponseEntity.ok(response);
