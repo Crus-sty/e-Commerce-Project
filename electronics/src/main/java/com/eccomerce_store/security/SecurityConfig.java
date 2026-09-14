@@ -53,7 +53,8 @@ public class SecurityConfig {
                                 "/api/auth/register",
                                 "/api/auth/login",
                                 "/api/products",
-                                "/api/products/**"
+                                "/api/products/**",
+                                "/api/admin/create"
                         ).permitAll()
 
                         // Admin endpoints
@@ -77,7 +78,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
 
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://http://localhost:55945"));//asp.net localhost
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:55945"));//asp.net localhost
 
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));

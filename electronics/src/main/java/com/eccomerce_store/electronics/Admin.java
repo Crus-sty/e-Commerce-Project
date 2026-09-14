@@ -4,17 +4,21 @@ package com.eccomerce_store.electronics;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "admin")//subject to change based on database
+@Table(name = "User")//subject to change based on database
 public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="UserID")
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name="UserName",unique = true, nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name="Email",unique = true, nullable = false)
+    private String email;
+
+    @Column(name="PasswordHash",nullable = false)
     private String password;
 
 
@@ -43,5 +47,18 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail (String email){return this.email = email;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

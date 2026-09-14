@@ -117,7 +117,7 @@ namespace Game_Grid
 
         private void SetActiveMenu()
         {
-            string current = Session["Page"].ToString();
+            string current = Session["Page"] as string ?? "";
 
             homeMenu.Attributes["class"] = "";
             shopMenu.Attributes["class"] = "";

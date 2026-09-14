@@ -4,6 +4,7 @@ package com.eccomerce_store.controller;
 import com.eccomerce_store.dto.LoginRequest;
 import com.eccomerce_store.dto.LoginResponse;
 import com.eccomerce_store.dto.RegisterRequest;
+import com.eccomerce_store.electronics.User;
 import com.eccomerce_store.service.AuthService;
 import org.springframework.http.ResponseEntity;
 
@@ -29,8 +30,8 @@ public class AuthController {
 
         try {
 
-            String result =
-                    authService.register(request);
+            User result = authService.register(request);
+
 
             return ResponseEntity.ok(result);
 

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Newtonsoft.Json;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Game_Grid
 {
@@ -15,37 +9,36 @@ namespace Game_Grid
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
- 
+
         protected async void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
-            // Check fields
+            // CHECK FIELDS
             if (string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password))
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please enter your email and password.";
                 return;
             }
 
-            // Create login request
+            // CREATE LOGIN REQUEST
             var loginData = new
             {
                 email = email,
                 password = password
             };
 
-            // Convert request to JSON
+            // CONVERT TO JSON
             string json = JsonConvert.SerializeObject(loginData);
-
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:8080");
-
+                client.BaseAddress =
+                    new Uri("http://localhost:8080/");
 
                 StringContent content =
                     new StringContent(
@@ -56,85 +49,139 @@ namespace Game_Grid
 
                 try
                 {
-                    // Send login request to Spring Boot
-                    HttpResponseMessage response = await client.PostAsync("/api/auth/login", content);
+                    // SEND LOGIN REQUEST TO SPRING BOOT
+                    HttpResponseMessage response =
+                        await client.PostAsync(
+                            "api/auth/login",
+                            content
+                        );
 
-
-
-
-
-                    // Read response from Spring Boot
+                    // READ BACKEND RESPONSE
                     string result = await response.Content.ReadAsStringAsync();
 
 
+                    // LOGIN SUCCESSFUL
+
                     if (response.IsSuccessStatusCode)
                     {
-                        // Convert JSON response into LoginResponse
-                        LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(result);
+                        LoginResponse loginResponse =
+                            JsonConvert.DeserializeObject<LoginResponse>(
+                                result
+                            );
 
-
-                        // Make sure we received a token
-                        if (loginResponse != null &&
-                            !string.IsNullOrEmpty(loginResponse.token))
+                        // CHECK RESPONSE
+                        if (loginResponse == null)
                         {
-                            // Store login information in Session
-                            Session["Token"] = loginResponse.token;
-                            Session["email"] = email;
-                            Session["Username"] = loginResponse.username;
-                            Session["Role"] = loginResponse.role;
+                            lblMessage.ForeColor =
+                                System.Drawing.Color.Red;
 
-                            // Go to the correct page
-                            if (loginResponse.role != null &&
-                                loginResponse.role.Equals(
-                                    "ADMIN",
-                                    StringComparison.OrdinalIgnoreCase))
-                            {
-                                Response.Redirect(
-                                    "admin-home.aspx",
-                                    false);
+                            lblMessage.Text =
+                                "Could not read the login response.";
 
-                                Context.ApplicationInstance
-                                    .CompleteRequest();
-                            }
-                            else
-                            {
-                                Response.Redirect(
-                                    "home.aspx",
-                                    false);
+                            return;
+                        }
 
-                                Context.ApplicationInstance
-                                    .CompleteRequest();
-                            }
+                        // CHECK TOKEN
+                        if (string.IsNullOrEmpty(loginResponse.token))
+                        {
+                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+
+                            lblMessage.Text = "Login succeeded, but no token was received.";
+
+
+                            return;
+                        }
+
+                        // STORE USER INFORMATION IN SESSION
+                     
+
+                        Session["Token"] = loginResponse.token;
+
+
+                        Session["UserID"] = loginResponse.id;
+
+
+                        Session["email"] = loginResponse.email;
+
+
+                        Session["Username"] = loginResponse.username;
+
+
+                        Session["Role"] = loginResponse.role;
+                        
+
+                        // CHECK ROLE
+
+
+                        if (loginResponse.role != null &&
+                            loginResponse.role.Equals(
+                                "ADMIN",
+                                StringComparison.OrdinalIgnoreCase))
+                        {
+                            // ADMIN
+                             Response.Redirect(
+                                  "admin-home.aspx",
+                                  false
+                             ); 
+
+                            Context.ApplicationInstance
+                               .CompleteRequest();
                         }
                         else
                         {
-                            lblMessage.Text =
-                                "Login succeeded, but no token was received.";
+                            // CUSTOMER
+                            Response.Redirect(
+                                "home.aspx",
+                                false
+                            );
+
+                            Context.ApplicationInstance
+                                .CompleteRequest();
                         }
                     }
+
+                    // LOGIN FAILED
                     else
                     {
+                        lblMessage.ForeColor =
+                            System.Drawing.Color.Red;
+
+                        // SHOW THE ACTUAL BACKEND ERROR
                         lblMessage.Text =
-                            "Invalid email or password.";
+                            "Login failed.<br/>" +
+                            "Status: " +
+                            response.StatusCode +
+                            "<br/>" +
+                            "Response: " +
+                            result;
                     }
                 }
-                catch (Exception ex)
+               catch (Exception ex)
                 {
-                    lblMessage.Text =
-                        "Could not connect to the backend: "
-                        + ex.Message;
+                    lblMessage.ForeColor =
+                        System.Drawing.Color.Red;
+
+                    lblMessage.Text = "Could not connect to the backend:<br/>" + ex.Message;
+
+
                 }
             }
-        }
-        // LOGIN RESPONSE FROM SPRING BOOT
 
+        }
+
+        // LOGIN RESPONSE
         public class LoginResponse
         {
             public string message { get; set; }
 
             public string token { get; set; }
 
+            public long id { get; set; }
+
             public string username { get; set; }
+
+            public string email { get; set; }
 
             public string role { get; set; }
         }
