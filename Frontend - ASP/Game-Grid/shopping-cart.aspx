@@ -124,7 +124,7 @@
                     </div>
 
                 </div> <!-- CHECKOUT BUTTON --> 
-                <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClientClick="location.href='checkout.aspx'; return false;" />
+                <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClientClick="location.href='/cart/checkout'" />
 
             </div>
 

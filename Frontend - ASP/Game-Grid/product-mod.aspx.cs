@@ -22,7 +22,7 @@ namespace Game_Grid
             Double price = Convert.ToDouble(txt_price.Text.Trim());
             int qty = Convert.ToInt32(txt_qty.Text.Trim());
             String desc = txt_desc.Text.Trim();
-            String features = txt_features.Text.Trim();
+            String category = ddlCategory.SelectedValue;
             String image_1 = txt_image1.Text.Trim();
             String image_2 = txt_image2.Text.Trim();
             String image_3 = txt_image3.Text.Trim();
@@ -37,7 +37,7 @@ namespace Game_Grid
             txt_price.Enabled = true;
             txt_qty.Enabled = true;
             txt_desc.Enabled = true;
-            txt_features.Enabled = true;
+            ddlCategory.Enabled = true;
             txt_image1.Enabled = true;
             txt_image2.Enabled = true;
             txt_image3.Enabled = true;
@@ -56,8 +56,8 @@ namespace Game_Grid
             txt_qty.Text = "";
             txt_desc.Enabled = true;
             txt_desc.Text = "";
-            txt_features.Enabled = true;
-            txt_features.Text = "";
+            ddlCategory.Enabled = true;
+            ddlCategory.ClearSelection();
             txt_image1.Enabled = true;
             txt_image1.Text = "";
             txt_image2.Enabled = true;

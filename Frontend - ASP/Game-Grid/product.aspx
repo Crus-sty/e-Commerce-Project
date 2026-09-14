@@ -15,40 +15,37 @@
 
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
-                        data-filter="*">
-                        All Products
-                    </button>
+                    <asp:linkbutton href="/shop/monitors-and-displays" runat="server" id="btn_monitors" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Monitors">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".monitors">
-                        Monitors
-                    </button>
+                    <asp:linkbutton href="/shop/console-gaming" runat="server" id="btn_console" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Gaming">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".gaming">
-                        Gaming
-                    </button>
+                    <asp:linkbutton href="/shop/pc-components" id="btn_pcgaming" runat="server" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="PC Components">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".laptop-accessories">
-                        Laptop Accessories
-                    </button>
+                    <asp:linkbutton href="/shop/laptops" id="btn_laptops" runat="server" type="button" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Laptops">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".audio">
-                        Audio
-                    </button>
+                    <asp:linkbutton href="/shop/headphones" id="btn_headphones" runat="server" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Headphones">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".cables">
-                        Cable &amp; Adapters
-                    </button>
+                    <asp:linkbutton href="/shop/speakers" id="btn_speakers" runat="server" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Speakers">
+                    </asp:linkbutton>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                        data-filter=".extras">
-                        Extras
-                    </button>
+                    <asp:linkbutton href="/shop/cables-and-adapters" id="btn_cables" runat="server" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Cable &amp; Adapters">
+                    </asp:linkbutton>
+
+                    <asp:linkbutton href="/shop/extras" id="btn_extras" runat="server" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                        data-filter="*" Text="Extras">
+                    </asp:linkbutton>
 
                 </div>
 
@@ -392,11 +389,11 @@
                                             class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 
                                             <img class="icon-heart1 dis-block trans-04"
-                                                src="images/icons/icon-heart-01.png"
+                                                src="/images/icons/icon-heart-01.png"
                                                 alt="Wishlist">
 
                                             <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                                src="images/icons/icon-heart-02.png"
+                                                src="/images/icons/icon-heart-02.png"
                                                 alt="Wishlist">
                                         </a>
 
@@ -432,7 +429,7 @@
             <div class="container">
                 <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
                     <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                        <img src="images/icons/icon-close.png" alt="CLOSE">
+                        <img src="/images/icons/icon-close.png" alt="CLOSE">
                     </button>
 
                     <div class="row">
@@ -443,9 +440,9 @@
                                     <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                                     <div class="slick3 gallery-lb">
-                                        <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                        <div class="item-slick3" data-thumb="/images/product-detail-01.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                                <img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
                                                     <i class="fa fa-expand"></i>
@@ -453,9 +450,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                        <div class="item-slick3" data-thumb="/images/product-detail-02.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                                <img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
                                                     <i class="fa fa-expand"></i>
@@ -463,9 +460,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                        <div class="item-slick3" data-thumb="/images/product-detail-03.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                                <img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
                                                     <i class="fa fa-expand"></i>
@@ -508,7 +505,7 @@
                                                 </div>
                                             </div>
 
-                                            <asp:Button ID="btnAddToCart" runat="server" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" Text="Add to cart"></asp:Button>
+                                            <asp:Button ID="btnAddToCart" runat="server" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" Text="Add to cart" OnClick="btnAddToCart_Click"></asp:Button>
                                         </div>
                                     </div>
                                 </div>

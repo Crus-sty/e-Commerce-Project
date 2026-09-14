@@ -30,6 +30,9 @@ namespace Game_Grid
                     btnLogout.Visible = false;
                 }
 
+                
+            }
+
                 int cartTotal = GetCartItemCount();       
                 int wishlistTotal = GetWishlistItemCount();
                 
@@ -37,9 +40,6 @@ namespace Game_Grid
                 wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
 
                 SetActiveMenu();
-            }
-
-            
         }
 
         protected void accountLink_Click(object sender, EventArgs e)
@@ -47,11 +47,11 @@ namespace Game_Grid
             if (Session["UserID"] != null)
             {
                 
-                Response.Redirect("account-info.aspx");
+                Response.Redirect("`account");
             }
             else
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("/login");
             }
         }
 
@@ -63,41 +63,41 @@ namespace Game_Grid
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("sign-up.aspx");
+            Response.Redirect("/sign-up");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("login.aspx");
+            Response.Redirect("/login");
         }
 
         protected void btnHistory_Click(object sender, EventArgs e)
         {
-            if (Session["UserID"] != null)
+            if (Session["email"] != null)
             {
-                Response.Redirect("history.aspx");
+                Response.Redirect("/account/history");
             }
             else
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("/login");
             }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("home.aspx");
+            Response.Redirect("/home");
         }
 
         protected void btn_Orderhistory_Click(object sender, EventArgs e)
         {
-            if (Session["UserID"] != null)
+            if (Session["email"] != null)
             {
-                Response.Redirect("history.aspx");
+                Response.Redirect("/account/history");
             }
             else
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("/login");
             }
         }
 

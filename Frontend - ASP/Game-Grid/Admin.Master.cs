@@ -13,14 +13,14 @@ namespace Game_Grid
         {
             if(!IsPostBack) 
             {
-                if (Session["role"] != null && Session["role"].ToString() == "Admin")
+                /*if (Session["role"] != null && Session["role"].ToString() == "Admin")
                 {
-                    Response.Redirect("admin-home.aspx");
+                    Response.Redirect("/admin-home");
                 }
                 else
                 {
-                    Response.Redirect("Login.aspx");
-                }
+                    Response.Redirect("/Login");
+                }*/
             }
         }
     }

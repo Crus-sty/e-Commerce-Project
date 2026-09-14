@@ -17,7 +17,7 @@ namespace Game_Grid
         {
 
         }
-		protected async void btnAddToCart_Click(object sender, EventArgs e)
+		protected void btnAddToCart_Click(object sender, EventArgs e)
         {
             /*try
             {
@@ -96,7 +96,10 @@ namespace Game_Grid
             {
                 // Handle error
             }*/
-
+            if (Session["CartCount"] == null)
+            {
+                Session["CartCount"] = 0;
+            }
             Session["CartCount"] = (int)(Session["CartCount"]) + 1;
         }
     }

@@ -13,8 +13,12 @@ namespace Game_Grid
         {
             if (!IsPostBack)
             {
+                Session["Page"] = "shop.aspx";
                 await LoadProducts();
+
+                updatecategory();
             }
+
         }
 
         private async Task LoadProducts()
@@ -57,7 +61,7 @@ namespace Game_Grid
             }
         }
 
-        protected async void btnAddToCart_Click(object sender, EventArgs e)
+        protected void btnAddToCart_Click(object sender, EventArgs e)
         {
             /*try
             {
@@ -138,6 +142,45 @@ namespace Game_Grid
             }*/
 
             Session["CartCount"] = (int)(Session["CartCount"]) + 1;
+        }
+
+        protected void updatecategory()
+        {
+            string category = Page.RouteData.Values["category"] as string;
+
+            btn_monitors.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_pcgaming.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_laptops.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_speakers.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_headphones.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_cables.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+            btn_extras.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5";
+
+            switch (category)
+            {
+                case "monitors-and-displays":
+                    btn_monitors.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "pc-components":
+                    btn_pcgaming.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "laptops":
+                    btn_laptops.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "speakers":
+                    btn_speakers.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "headphones":
+                    btn_headphones.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;  
+                case "cables-and-adapters":
+                    btn_cables.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "extras":
+                    btn_extras.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+            }
+
         }
     }
 }

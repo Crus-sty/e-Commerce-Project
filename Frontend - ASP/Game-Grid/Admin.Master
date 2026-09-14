@@ -8,38 +8,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Core Style CSS AMADO-->
-    <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="imagery/GG_logo.png" />
+    <link rel="icon" type="image/png" href="/imagery/GG_logo.png" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/MagnificPopup/magnific-popup.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <!--===============================================================================================-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -79,29 +77,29 @@
 
                         <!-- Logo desktop -->
                         <a href="#" class="logo">
-                            <img src="imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO">
+                            <img src="/imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO">
                         </a>
 
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
                                 <li>
-                                    <a href="admin-home.aspx">Home</a>
+                                    <a href="/admin-home">Home</a>
                                 </li>
                                 <li>
-                                    <a href="product-mod.aspx">Modify Catalogue</a>
-                                </li>
-
-                                <li>
-                                    <a href="orders.aspx">Client Orders</a>
+                                    <a href="/admin/product-mod">Modify Catalogue</a>
                                 </li>
 
                                 <li>
-                                    <a href="discounts.aspx">Discounts</a>
+                                    <a href="/admin/orders">Client Orders</a>
                                 </li>
 
                                 <li>
-                                    <a href="reports-and-stats.aspx">Report & Statistics</a>
+                                    <a href="/admin/discounts">Discounts</a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin/reports-and-stats">Report & Statistics</a>
                                 </li>
                             </ul>
                         </div>
@@ -116,7 +114,7 @@
                 <!-- Logo moblie -->
                 <div class="logo-mobile">
                     <a href="home.aspx">
-                        <img src="imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO"></a>
+                        <img src="/imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO"></a>
                 </div>
 
                 <!-- Icon header -->
@@ -218,22 +216,22 @@
 
                         <ul>
                             <li class="p-b-10">
-                                <a href="products.aspx?category=monitors-and-displays" class="stext-107 cl7 hov-cl1 trans-04">Monitors & Displays
+                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Monitors & Displays
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="products.aspx?category=pc-components" class="stext-107 cl7 hov-cl1 trans-04">PC Components
+                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">PC Components
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="products.aspx?category=pc-gaming" class="stext-107 cl7 hov-cl1 trans-04">PC Gaming
+                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">PC Gaming
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="products.aspx?category=audio" class="stext-107 cl7 hov-cl1 trans-04">Audio
+                                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">Audio
                                 </a>
                             </li>
                         </ul>
@@ -308,23 +306,23 @@
                 <div class="p-t-40">
                     <div class="flex-c-m flex-w p-b-18">
                         <a href="#" class="m-all-1">
-                            <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+                            <img src="/images/icons/icon-pay-01.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+                            <img src="/images/icons/icon-pay-02.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+                            <img src="/images/icons/icon-pay-03.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+                            <img src="/images/icons/icon-pay-04.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+                            <img src="/images/icons/icon-pay-05.png" alt="ICON-PAY">
                         </a>
                     </div>
 
@@ -340,14 +338,14 @@
         </footer>
 
         <!--===============================================================================================-->
-        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/animsition/js/animsition.min.js"></script>
+        <script src="/vendor/animsition/js/animsition.min.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/vendor/bootstrap/js/popper.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/select2/select2.min.js"></script>
+        <script src="/vendor/select2/select2.min.js"></script>
         <script>
             $(".js-select2").each(function () {
                 $(this).select2({
@@ -357,18 +355,18 @@
             })
         </script>
         <!--===============================================================================================-->
-        <script src="vendor/daterangepicker/moment.min.js"></script>
-        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="/vendor/daterangepicker/moment.min.js"></script>
+        <script src="/vendor/daterangepicker/daterangepicker.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/slick/slick.min.js"></script>
-        <script src="js/slick-custom.js"></script>
+        <script src="/vendor/slick/slick.min.js"></script>
+        <script src="/js/slick-custom.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/parallax100/parallax100.js"></script>
+        <script src="/vendor/parallax100/parallax100.js"></script>
         <script>
             $('.parallax100').parallax100();
         </script>
         <!--===============================================================================================-->
-        <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+        <script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
         <script>
             $('.gallery-lb').each(function () { // the containers for all your galleries
                 $(this).magnificPopup({
@@ -382,9 +380,9 @@
             });
         </script>
         <!--===============================================================================================-->
-        <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+        <script src="/vendor/isotope/isotope.pkgd.min.js"></script>
         <!--===============================================================================================-->
-        <script src="vendor/sweetalert/sweetalert.min.js"></script>
+        <script src="/vendor/sweetalert/sweetalert.min.js"></script>
         <script>
             $('.js-addwish-b2').on('click', function (e) {
                 e.preventDefault();
@@ -422,7 +420,7 @@
 
         </script>
         <!--===============================================================================================-->
-        <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script>
             $('.js-pscroll').each(function () {
                 $(this).css('position', 'relative');
@@ -439,19 +437,8 @@
             });
         </script>
         <!--===============================================================================================-->
-        <script src="js/main.js"></script>
+        <script src="/js/main.js"></script>
 
-        <!-- AMADO-->
-        <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-        <script src="js-amado/jquery/jquery-2.2.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="js-amado/popper.min.js"></script>
-        <!-- Bootstrap js -->
-        <script src="js-amado/bootstrap.min.js"></script>
-        <!-- Plugins js -->
-        <script src="js-amado/plugins.js"></script>
-        <!-- Active js -->
-        <script src="js-amado/active.js"></script>
 
     </form>
 </body>

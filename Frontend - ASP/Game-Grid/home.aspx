@@ -231,11 +231,11 @@
 											class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 
 											 <img class="icon-heart1 dis-block trans-04"
-												  src="images/icons/icon-heart-01.png"
+												  src="/images/icons/icon-heart-01.png"
 												  alt="Wishlist">
 
 											 <img class="icon-heart2 dis-block trans-04 ab-t-l"
-												  src="images/icons/icon-heart-02.png"
+												  src="/images/icons/icon-heart-02.png"
 												  alt="Wishlist">
 
 										 </a>

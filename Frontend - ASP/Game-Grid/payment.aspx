@@ -16,19 +16,19 @@
                 <div class="row p-b-30">
 
                     <div class="col-md-3">
-                        <img src="Payments/visa-blue-logo-19529.svg" alt="Visa" class="img-fluid">
+                        <img src="/Payments/visa-blue-logo-19529.svg" alt="Visa" class="img-fluid">
                     </div>
 
                     <div class="col-md-3">
-                        <img src="Payments/paypal-blue-logo-19528.svg" alt="PayPal" class="img-fluid">
+                        <img src="/Payments/paypal-blue-logo-19528.svg" alt="PayPal" class="img-fluid">
                     </div>
 
                     <div class="col-md-3">
-                        <img src="Payments/google-pay-logo-19558.svg" alt="Google Pay" class="img-fluid">
+                        <img src="/Payments/google-pay-logo-19558.svg" alt="Google Pay" class="img-fluid">
                     </div>
 
                     <div class="col-md-3">
-                        <img src="Payments/apple-pay-logo-19557.svg" alt="Apple Pay" class="img-fluid">
+                        <img src="/Payments/apple-pay-logo-19557.svg" alt="Apple Pay" class="img-fluid">
                     </div>
 
                 </div>

@@ -22,10 +22,11 @@ namespace Game_Grid
         {
             if (!IsPostBack)
             {
-                await LoadCart();
+                //await LoadCart();
             }
         }
 
+        /*
         // LOAD CART
         private async Task LoadCart()
         {
@@ -359,7 +360,7 @@ namespace Game_Grid
             {
                 return subtotal;
             }
-        }
+        }*/
     }
 }
 

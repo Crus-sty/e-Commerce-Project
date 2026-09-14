@@ -3,7 +3,7 @@
 
     
     <!-- Core Style CSS AMADO-->
-    <link rel="stylesheet" type="text/css" href="css-amado/core-style.css">
+    <link rel="stylesheet" type="text/css" href="/css-amado/core-style.css">
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -19,8 +19,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=monitors-and-displays">
-                        <img src="imagery/monitor-and-displays.jpg" alt="Monitors & Displays">
+                    <a href="/shop/monitors-and-displays">
+                        <img src="/imagery/monitor-and-displays.jpg" alt="Monitors & Displays">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -32,8 +32,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=pc-components">
-                        <img src="imagery/pc-components.jpg" alt="PC Components">
+                    <a href="/shop/pc-components">
+                        <img src="/imagery/pc-components.jpg" alt="PC Components">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -45,8 +45,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=pc-gaming">
-                        <img src="imagery/pc-gaming.jpg" alt="PC Gaming">
+                    <a href="/shop/pc-gaming">
+                        <img src="/imagery/pc-gaming.jpg" alt="PC Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -58,8 +58,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=laptop-gaming">
-                        <img src="imagery/Laptop-gaming.jpg" alt="Laptop Gaming">
+                    <a href="/shop/laptops">
+                        <img src="/imagery/Laptop-gaming.jpg" alt="Laptop Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -71,8 +71,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=console-gaming">
-                        <img src="imagery/console gaming.jpg" alt="Console Gaming">
+                    <a href="/shop/console-gaming">
+                        <img src="/imagery/console gaming.jpg" alt="Console Gaming">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -84,8 +84,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=headphones">
-                        <img src="imagery/headphones.jpg" alt="Headphones">
+                    <a href="/shop/headphones">
+                        <img src="/imagery/headphones.jpg" alt="Headphones">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -97,8 +97,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=cables-and-adapters">
-                        <img src="imagery/cables-and-adapters.jpg" alt="Cables & Adapters">
+                    <a href="/shop/cables-and-adapters">
+                        <img src="/imagery/cables-and-adapters.jpg" alt="Cables & Adapters">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -110,8 +110,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=speakers">
-                        <img src="imagery/speakers.jpg" alt="Speakers">
+                    <a href="/shop/speakers">
+                        <img src="/imagery/speakers.jpg" alt="Speakers">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -123,8 +123,8 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="product.aspx?category=extras">
-                        <img src="imagery/extras.jpg" alt="Extras">
+                    <a href="/shop/extras">
+                        <img src="/imagery/extras.jpg" alt="Extras">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -142,13 +142,13 @@
 	</div>
 
     <!-- AMADO-->
-<script src="js-amado/jquery/jquery-2.2.4.min.js"></script>
+<script src="/js-amado/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
-<script src="js-amado/popper.min.js"></script>
+<script src="/js-amado/popper.min.js"></script>
 <!-- Bootstrap js -->
-<script src="js-amado/bootstrap.min.js"></script>
+<script src="/js-amado/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="js-amado/plugins.js"></script>
+<script src="/js-amado/plugins.js"></script>
 <!-- Active js -->
-<script src="js-amado/active.js"></script>
+<script src="/js-amado/active.js"></script>
 </asp:Content>

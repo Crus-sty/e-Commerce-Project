@@ -14,6 +14,19 @@ namespace Game_Grid
 
         }
 
-        
+        protected void btnPayment_Click(object sender, EventArgs e)
+        {
+            if( txtAddress1 != null && txtCity != null && txtSuburb != null && txtZip != null)
+            {
+                Response.Redirect("/cart/checkout/payment");
+            }
+            else
+            {
+                lblError.Text = "Please fill in all required fields.";
+            }
+        }
+
+
+
     }
 }
