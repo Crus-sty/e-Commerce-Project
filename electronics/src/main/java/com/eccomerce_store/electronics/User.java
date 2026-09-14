@@ -1,47 +1,54 @@
 package com.eccomerce_store.electronics;
+
 import jakarta.persistence.*;
-import java.time.LocalDate;
-//user model
+import org.jspecify.annotations.Nullable;
+
 @Entity
-@Table(name ="User")
+@Table(name = "User")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="UserID")
+    @Column(name ="UserID",nullable = true)
     private Long id;
 
-    @Column(name="UserName",unique = true, nullable = false)
+    @Column(name = "UserName", nullable = false, unique = true)
     private String username;
 
-    @Column(name="Email",unique = true, nullable = false)
+    @Column(name = "Email", nullable = false, unique = true)
     private String email;
 
-    @Column(name="PasswordHash",nullable = false)
-    private String password;
+    @Column(name = "PasswordHash", nullable = false)
+    private String passwordHash;
 
+    @Column(name = "FirstName", nullable = false)
     private String firstName;
 
+    @Column(name = "LastName", nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
-    private String role;
+    @Column(name = "Role", nullable = false)
+    private String role = "CUSTOMER";
 
-    @Column(nullable = false)
+    @Column(name = "Gender")
     private String gender;
 
-    @Column(nullable = false)
-    private LocalDate dob;
+    @Column(name = "DOB")
+    private String dob;
 
 
-    // Constructor
+    // Empty constructor required by JPA
     public User() {
-        this.role = "CUSTOMER";
     }
 
 
     // ID
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 
@@ -66,16 +73,16 @@ public class User {
 
 
     // Password
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
 
-    // First name
+    // First Name
     public String getFirstName() {
         return firstName;
     }
@@ -85,7 +92,7 @@ public class User {
     }
 
 
-    // Last name
+    // Last Name
     public String getLastName() {
         return lastName;
     }
@@ -115,14 +122,14 @@ public class User {
     }
 
 
-    // Date of birth
-    public LocalDate getDob() {
+    // Date of Birth
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
-    };
+    }
+
 
 }
-

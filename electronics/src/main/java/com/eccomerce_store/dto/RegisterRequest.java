@@ -3,7 +3,7 @@ import java.time.LocalDate;
 public class RegisterRequest {
     private String name;
     private String surname;
-    private LocalDate dob;
+    private String dob;
     private String gender;
     private String email;
     private String password;
@@ -31,11 +31,11 @@ public class RegisterRequest {
     }
 
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
