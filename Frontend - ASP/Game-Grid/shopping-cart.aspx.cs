@@ -22,10 +22,30 @@ namespace Game_Grid
         {
             if (!IsPostBack)
             {
+                // Load the cart
                 //await LoadCart();
             }
         }
 
+        protected void btnCheckout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/cart/checkout");
+        }
+
+        protected void btnApplyCoupon_Click(object sender, EventArgs e)
+        {
+            string couponCode = txtCouponCode.Text.Trim();
+            if (string.IsNullOrEmpty(couponCode))
+            {
+                lblCouponMessage.ForeColor = System.Drawing.Color.Red;
+                lblCouponMessage.Text = "Please enter a coupon code.";
+                return;
+            }
+            else
+            {
+
+            }
+        }
         /*
         // LOAD CART
         private async Task LoadCart()
@@ -119,10 +139,10 @@ namespace Game_Grid
                     + ex.Message.Replace("'", "")
                     + "');</script>");
             }
-        }
+        }*/
         protected async void btnRemove_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 // Get JWT token
                 string token = Session["Token"] as string;
@@ -173,13 +193,13 @@ namespace Game_Grid
                     "<script>alert('Error removing product: "
                     + ex.Message.Replace("'", "")
                     + "');</script>");
-            }
+            }*/
         }
 
         // UPDATE QUANTITY
         protected async void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 // Get JWT token
                 string token = Session["Token"] as string;
@@ -276,12 +296,12 @@ namespace Game_Grid
                     + ex.Message.Replace("'", "")
                     + "');</script>");
             }
-        }
+        }*/
     }
 
     // CART RESPONSE
 
-    public class CartResponse
+    /*public class CartResponse
     {
         public List<CartItemDto> items { get; set; }
 

@@ -21,8 +21,29 @@ namespace Game_Grid
                 string.IsNullOrEmpty(password))
             {
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-                lblMessage.Text = "Please enter your email and password.";
-                return;
+                txtEmail.BorderColor = System.Drawing.Color.Empty;
+                txtPassword.BorderColor = System.Drawing.Color.Empty;
+
+                if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+                {
+                    txtEmail.BorderColor = System.Drawing.Color.Red;
+                    txtPassword.BorderColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "Please enter your Email and Password";
+                    return;
+                }
+                else if(string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+                {
+                    txtEmail.BorderColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "Please enter your Email";
+                    return;
+                }
+                else if (!string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+                {
+                    txtPassword.BorderColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "Please enter your Password";
+                    return;
+                }
+
             }
 
             // CREATE LOGIN REQUEST

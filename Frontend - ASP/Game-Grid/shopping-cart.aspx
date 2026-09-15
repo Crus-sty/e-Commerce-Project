@@ -47,9 +47,9 @@
                 <!-- ================================================= --> 
                 <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm"> <!-- COUPON --> 
                     <div class="flex-w flex-m m-r-20 m-tb-5"> 
-                        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code" /> 
-                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"> Apply coupon </div>
-
+                        <asp:TextBox runat="server" cssclass="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code" id="txtCouponCode" /> 
+                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" OnClick="btnApplyCoupon_Click"> Apply coupon </div>
+                        <asp:Label ID="lblCouponMessage" runat="server" />
                     </div> 
 
                 </div> 
@@ -124,7 +124,7 @@
                     </div>
 
                 </div> <!-- CHECKOUT BUTTON --> 
-                <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClientClick="location.href='/cart/checkout'" />
+                <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClick="btnCheckout_Click"></asp:Button>
 
             </div>
 
