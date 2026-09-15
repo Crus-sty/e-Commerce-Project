@@ -61,6 +61,13 @@ namespace Game_Grid
                 lblMessage.Text = "Please enter a valid 16-digit card number.";
                 return;
             }
+            if(cvv.Length != 3 || !cvv.All(char.IsDigit))
+            {
+                txtCVV.BorderColor = System.Drawing.Color.Red;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Please enter a valid 3-digit CVV.";
+                return;
+            }
 
             lblMessage.ForeColor = System.Drawing.Color.Green;
             lblMessage.Text = "Payment successful!";
