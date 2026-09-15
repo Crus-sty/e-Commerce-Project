@@ -44,10 +44,10 @@ namespace Game_Grid
 
         protected void accountLink_Click(object sender, EventArgs e)
         {
-            if (Session["UserID"] != null)
+            if (Session["email"] != null)
             {
                 
-                Response.Redirect("`account");
+                Response.Redirect("/account");
             }
             else
             {

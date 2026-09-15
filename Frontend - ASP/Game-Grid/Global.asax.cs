@@ -55,7 +55,6 @@ namespace Game_Grid
             routes.MapPageRoute("Sign Up", "sign-up", "~/sign-up.aspx");
             routes.MapPageRoute("Login", "login", "~/login.aspx");
             routes.MapPageRoute("Account", "account", "~/account-info.aspx");
-            routes.MapPageRoute("Logout", "logout", "~/logout.aspx");
             routes.MapPageRoute("Cart", "cart", "~/shopping-cart.aspx");
             routes.MapPageRoute("Wishlist", "wishlist", "~/wishlist.aspx");
 
@@ -86,7 +85,7 @@ namespace Game_Grid
             // Product detail (if you have it)
             routes.MapPageRoute(
                 "ProductDetail",
-                "product/{id}",
+                "shop/product/{id}",
                 "~/product-detail.aspx"
             );
         }

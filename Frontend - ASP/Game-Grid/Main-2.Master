@@ -59,15 +59,15 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs
                             </a>
 
-                            <asp:LinkButton href="sign-up.aspx" ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton href="/sign-up" ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="login.aspx" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton href="/login" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <asp:LinkButton href="/account" ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <asp:LinkButton href="/account/history" ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="logout.aspx" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton href="" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <a href="#" class="flex-c-m trans-04 p-lr-25">EN
                             </a>

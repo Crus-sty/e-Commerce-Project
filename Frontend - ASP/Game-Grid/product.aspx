@@ -354,9 +354,16 @@
                                     <img src='<%# Eval("imageUrl") %>'
                                         alt='<%# Eval("name") %>'>
 
-                                    <!-- Quick View -<%# "product-detail.aspx?id=" + Eval("id") %> -->
+                                    <!-- Quick View "/shop/product/" + Eval("id") -->
                                     <a href="#"
-                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                                        data-id='<%# Eval("id") %>'
+                                        data-name='<%# Eval("name") %>'
+                                        data-price='<%# Eval("price", "{0:N2}") %>'
+                                        data-imageurl1='<%# Eval("imageUrl1") %>'
+                                        data-imageurl2='<%# Eval("imageUrl2") %>'
+                                        data-imageurl3='<%# Eval("imageUrl3") %>'
+                                        data-description='<%# Eval("description") %>'>
                                         Quick View
 
                                     </a>
@@ -369,7 +376,7 @@
                                     <div class="block2-txt-child1 flex-col-l">
 
                                         <!-- Product Name -->
-                                        <a href='<%# "product-detail.aspx?id=" + Eval("id") %>'
+                                        <a href='<%# "/shop/product/" + Eval("id") %>'
                                             class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 
                                             <%# Eval("name") %>
@@ -387,11 +394,11 @@
 
                                         <a href="#"
                                             class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-
+                                            <!-- Add to Wishlist Button -->
                                             <img class="icon-heart1 dis-block trans-04"
                                                 src="/images/icons/icon-heart-01.png"
                                                 alt="Wishlist">
-
+                                            <!-- Remove from Wishlist Button -->
                                             <img class="icon-heart2 dis-block trans-04 ab-t-l"
                                                 src="/images/icons/icon-heart-02.png"
                                                 alt="Wishlist">

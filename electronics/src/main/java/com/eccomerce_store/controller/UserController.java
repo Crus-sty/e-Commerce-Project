@@ -6,6 +6,7 @@ import com.eccomerce_store.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/user")
@@ -29,7 +30,7 @@ public class UserController
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
         // returns the user's information 
-        UserProfileResponse response = new UserProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getRole(), user.getGender(), user.getDob());
+        UserProfileResponse response = new UserProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getRole(), user.getGender(), LocalDate.parse(user.getDob()));
 
         return ResponseEntity.ok(response);
     }
