@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.UI;
 
 namespace Game_Grid
 {
@@ -29,25 +29,70 @@ namespace Game_Grid
                 {
                     string apiUrl = "http://localhost:8080/api/products";
 
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
-
+                    HttpResponseMessage response =
+                        await client.GetAsync(apiUrl);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        string json = await response.Content.ReadAsStringAsync();
+                        string json =
+                            await response.Content.ReadAsStringAsync();
 
+                        List<ProductModel> products =
+                            JsonConvert.DeserializeObject<List<ProductModel>>(json);
 
-                        List<ProductModel> products = JsonConvert.DeserializeObject<List<ProductModel>>(json);
+                        // SEARCH
 
+                        string search = Request.QueryString["search"];
+
+                        if (!string.IsNullOrWhiteSpace(search))
+                        {
+                            search = search.Trim();
+
+                            products = products
+                                .Where(p =>
+                                    (!string.IsNullOrEmpty(p.Name) &&
+                                     p.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+
+                                    ||
+
+                                    (!string.IsNullOrEmpty(p.Description) &&
+                                     p.Description.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+
+                                    ||
+
+                                    (!string.IsNullOrEmpty(p.Category) &&
+                                     p.Category.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                                )
+                                .ToList();
+                        }
+
+                        // CATEGORY FILTER
+                        string category =
+                            Request.QueryString["category"];
+
+                        if (!string.IsNullOrWhiteSpace(category))
+                        {
+                            category = category.Trim();
+
+                            products = products
+                                .Where(p =>
+                                    !string.IsNullOrEmpty(p.Category) &&
+                                    p.Category.IndexOf(
+                                        category,
+                                        StringComparison.OrdinalIgnoreCase
+                                    ) >= 0
+                                )
+                                .ToList();
+                        }
+
+                        // DISPLAY PRODUCTS
 
                         rptProducts.DataSource = products;
                         rptProducts.DataBind();
                     }
                     else
                     {
-                        Response.Write(
-                            "<script>alert('Could not load products. Status: " + response.StatusCode + "');</script>"
-
+                        Response.Write("<script>alert('Could not load products. Status: " + response.StatusCode + "');</script>"
 
                         );
                     }
@@ -55,8 +100,10 @@ namespace Game_Grid
             }
             catch (Exception ex)
             {
-                Response.Write(
-                    "<script>alert('" + ex.Message.Replace("'", "") +"');</script>"
+                Response.Write("<script>alert('" + ex.Message.Replace("'", "") + "');</script>"
+
+
+
                 );
             }
         }

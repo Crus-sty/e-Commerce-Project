@@ -9,35 +9,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="/imagery/GG_logo.png" />
+    <link rel="icon" type="image/png" href="imagery/GG_logo.png" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
     <!--===============================================================================================-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -59,15 +59,15 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs
                             </a>
 
-                            <asp:LinkButton href="/sign-up" ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="/login" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="/account" ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton ID="btnAccount" runat="server" Text="My Account" OnClick="accountLink_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="/account/history" ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton ID="btnHistory" runat="server" Text="Order History" OnClick="btnHistory_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
-                            <asp:LinkButton href="" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
+                            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="flex-c-m trans-04 p-lr-25"></asp:LinkButton>
 
                             <a href="#" class="flex-c-m trans-04 p-lr-25">EN
                             </a>
@@ -83,26 +83,26 @@
 
                         <!-- Logo desktop -->
                         <a href="#" class="logo">
-                            <img src="/imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO">
+                            <img src="imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO">
                         </a>
 
                         <!-- Menu desktop -->
                         <div class="menu-desktop">
                             <ul class="main-menu">
                                 <li id="homeMenu" runat="server" class="">
-                                    <a href="/home">Home</a>
+                                    <a href="home.aspx">Home</a>
                                 </li>
 
                                 <li id="shopMenu" runat="server" class="">
-                                    <a href="/shop">Shop</a>
+                                    <a href="shop.aspx">Shop</a>
                                 </li>
 
                                 <li id="aboutMenu" runat="server" class="">
-                                    <a href="/about">About</a>
+                                    <a href="about.aspx">About</a>
                                 </li>
 
                                 <li id="contactMenu" runat="server" class="">
-                                    <a href="/contact">Contact</a>
+                                    <a href="contact.aspx">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -117,7 +117,7 @@
                                 <i class="zmdi zmdi-shopping-cart"></i>
                             </div>
 
-                            <div id="wishlistIcon" runat="server" onclick="location.href='/wishlist'" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
+                            <div id="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                                 <i class="zmdi zmdi-favorite-outline"></i>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                 <!-- Logo moblie -->
                 <div class="logo-mobile">
                     <a href="home.aspx">
-                        <img src="/imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO"></a>
+                        <img src="imagery/Futuristic_GAMEGRID_Tech_Gaming_Logo_-_black.png" alt="IMG-LOGO"></a>
                 </div>
 
                 <!-- Icon header -->
@@ -143,7 +143,7 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <div id="wishlistIcon2" runat="server" href="/wishlist" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
+                    <div id="wishlistIcon2" runat="server" href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </div>
                 </div>
@@ -214,20 +214,45 @@
             </div>
 
             <!-- Modal Search -->
-            <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-                <div class="container-search-header">
-                    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                        <img src="/images/icons/icon-close2.png" alt="CLOSE">
-                    </button>
+         
+<!-- Modal Search -->
+<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 
-                    <section class="wrap-search-header flex-w p-l-15">
-                        <button class="flex-c-m trans-04">
-                            <i class="zmdi zmdi-search"></i>
-                        </button>
-                        <input class="plh3" type="text" name="search" placeholder="Search...">
-                    </section>
-                </div>
-            </div>
+    <div class="container-search-header">
+
+        <!-- Close button -->
+        <button type="button"
+                class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+            <img src="images/icons/icon-close2.png" alt="CLOSE">
+        </button>
+
+        <!-- Search -->
+        <form action="product.aspx"
+              method="get"
+              class="wrap-search-header flex-w p-l-15">
+
+            <button type="submit"
+                    class="flex-c-m trans-04">
+
+                <i class="zmdi zmdi-search"></i>
+
+            </button>
+
+            <input class="plh3"
+                   type="text"
+                   name="search"
+                   placeholder="Search..."
+                   autocomplete="off"
+                   required />
+
+        </form>
+
+    </div>
+
+</div>
+
+    </div>
+</div>
         </header>
 
         <!--Cart-Stuff-->
@@ -270,7 +295,7 @@
 
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
-                                <img src="/images/item-cart-01.jpg" alt="[PRODUCT NAME IMG RPLCMNT]">
+                                <img src="images/item-cart-01.jpg" alt="[PRODUCT NAME IMG RPLCMNT]">
                             </div>
 
                             <div class="header-cart-item-txt p-t-8">
@@ -291,10 +316,10 @@
                         </div>
 
                         <div class="header-cart-buttons flex-w w-full">
-                            <a href="/cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">View Cart
+                            <a href="shopping-cart.aspx" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">View Cart
                             </a>
 
-                            <a href="/cart/checkout" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">Check Out
+                            <a href="checkout.aspx" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">Check Out
                             </a>
                         </div>
                     </div>
@@ -430,22 +455,22 @@
 
                         <ul>
                             <li class="p-b-10">
-                                <a href="/shop/monitors-and-displays" class="stext-107 cl7 hov-cl1 trans-04">Monitor & Displays
+                                <a href="product.aspx?category=monitors-and-displays" class="stext-107 cl7 hov-cl1 trans-04">Monitor & Displays
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="/shop/pc-components" class="stext-107 cl7 hov-cl1 trans-04">PC Components
+                                <a href="product.aspx?category=pc-components" class="stext-107 cl7 hov-cl1 trans-04">PC Components
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="/shop/pc-gaming" class="stext-107 cl7 hov-cl1 trans-04">Gaming
+                                <a href="product.aspx?category=pc-gaming" class="stext-107 cl7 hov-cl1 trans-04">Gaming
                                 </a>
                             </li>
 
                             <li class="p-b-10">
-                                <a href="/shop/audio" class="stext-107 cl7 hov-cl1 trans-04">Audio
+                                <a href="product.aspx?category=audio" class="stext-107 cl7 hov-cl1 trans-04">Audio
                                 </a>
                             </li>
                         </ul>
@@ -522,23 +547,23 @@
                 <div class="p-t-40">
                     <div class="flex-c-m flex-w p-b-18">
                         <a href="#" class="m-all-1">
-                            <img src="/images/icons/icon-pay-01.png" alt="ICON-PAY">
+                            <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="/images/icons/icon-pay-02.png" alt="ICON-PAY">
+                            <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="/images/icons/icon-pay-03.png" alt="ICON-PAY">
+                            <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="/images/icons/icon-pay-04.png" alt="ICON-PAY">
+                            <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
                         </a>
 
                         <a href="#" class="m-all-1">
-                            <img src="/images/icons/icon-pay-05.png" alt="ICON-PAY">
+                            <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
                         </a>
                     </div>
 
@@ -554,17 +579,17 @@
         </footer>
 
         <!--===============================================================================================-->
-        <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/animsition/js/animsition.min.js"></script>
+        <script src="vendor/animsition/js/animsition.min.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/bootstrap/js/popper.js"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-        <script src="/js/map-custom.js"></script>
+        <script src="js/map-custom.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/select2/select2.min.js"></script>
+        <script src="vendor/select2/select2.min.js"></script>
         <script>
             $(".js-select2").each(function () {
                 $(this).select2({
@@ -574,18 +599,18 @@
             })
         </script>
         <!--===============================================================================================-->
-        <script src="/vendor/daterangepicker/moment.min.js"></script>
-        <script src="/vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/slick/slick.min.js"></script>
-        <script src="/js/slick-custom.js"></script>
+        <script src="vendor/slick/slick.min.js"></script>
+        <script src="js/slick-custom.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/parallax100/parallax100.js"></script>
+        <script src="vendor/parallax100/parallax100.js"></script>
         <script>
             $('.parallax100').parallax100();
         </script>
         <!--===============================================================================================-->
-        <script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+        <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
         <script>
             $('.gallery-lb').each(function () { // the containers for all your galleries
                 $(this).magnificPopup({
@@ -599,9 +624,9 @@
             });
         </script>
         <!--===============================================================================================-->
-        <script src="/vendor/isotope/isotope.pkgd.min.js"></script>
+        <script src="vendor/isotope/isotope.pkgd.min.js"></script>
         <!--===============================================================================================-->
-        <script src="/vendor/sweetalert/sweetalert.min.js"></script>
+        <script src="vendor/sweetalert/sweetalert.min.js"></script>
         <script>
             $('.js-addwish-b2').on('click', function (e) {
                 e.preventDefault();
@@ -639,7 +664,7 @@
 
         </script>
         <!--===============================================================================================-->
-        <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script>
             $('.js-pscroll').each(function () {
                 $(this).css('position', 'relative');
@@ -656,7 +681,7 @@
             });
         </script>
         <!--===============================================================================================-->
-        <script src="/js/main.js"></script>
+        <script src="js/main.js"></script>
 
 
 
