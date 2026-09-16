@@ -30,23 +30,23 @@ namespace Game_Grid
                     btnLogout.Visible = false;
                 }
 
-                
+
             }
 
-                int cartTotal = GetCartItemCount();       
-                int wishlistTotal = GetWishlistItemCount();
-                
-                cartIcon.Attributes["data-notify"] = cartTotal.ToString();
-                wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+            int cartTotal = GetCartItemCount();
+            int wishlistTotal = GetWishlistItemCount();
 
-                SetActiveMenu();
+            cartIcon.Attributes["data-notify"] = cartTotal.ToString();
+            wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+
+            SetActiveMenu();
         }
 
         protected void accountLink_Click(object sender, EventArgs e)
         {
             if (Session["email"] != null)
             {
-                
+
                 Response.Redirect("/account");
             }
             else
@@ -145,6 +145,11 @@ namespace Game_Grid
                     contactMenu.Attributes["class"] = "active-menu";
                     break;
             }
+        }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            // Add code to handle adding item to cart
         }
     }
 }

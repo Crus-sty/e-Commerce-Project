@@ -55,6 +55,11 @@ namespace Game_Grid
             }
         }
 
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            // Add code to handle adding item to cart
+        }
+
         protected void btnSubscribe_Click(object sender, EventArgs e)
         {
             // Add code to handle newsletter subscription

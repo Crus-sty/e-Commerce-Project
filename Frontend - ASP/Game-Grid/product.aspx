@@ -431,6 +431,107 @@
 
     </div>
 
+    <!-- JavaScript -->
+    <!-- <script>
+    $(document).ready(function () {
 
+        /*--------------------------------------------------
+          Populate Quick View modal on click
+          (show/hide is handled by js/main.js)
+        --------------------------------------------------*/
+        $('.js-show-modal1').on('click', function () {
+
+            var $link = $(this);
+
+
+            // ---- Read data attributes from the clicked link ----
+            var id          = $link.data('id');
+            var name        = $link.data('name');
+            var price       = $link.data('price');
+            var description = $link.data('description');
+
+            var image1 = $link.data('image1');
+            var image2 = $link.data('image2');
+            var image3 = $link.data('image3');
+
+
+            // ---- Fill text fields ----
+            $('#modalProductName').text(name);
+            $('#modalProductPrice').text('R ' + price);
+            $('#modalProductDescription').text(description);
+
+            // Point the Add-to-cart link at the product detail page
+            $('#modalAddToCart').attr('href', '/shop/product/' + id);
+
+
+            // ---- Fill the three image slots ----
+            SetImage('#modalProductImage1', '#modalProductImage1-div', image1, name);
+            SetImage('#modalProductImage2', '#modalProductImage2-div', image2, name);
+            SetImage('#modalProductImage3', '#modalProductImage3-div', image3, name);
+
+
+            // ---- Rebuild the slick slider so it sees the right slides ----
+            var $slick3 = $('.js-modal1 .slick3');
+
+            if ($slick3.hasClass('slick-initialized')) {
+                $slick3.slick('unslick');
+            }
+
+            $slick3.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                fade: true,
+                infinite: true,
+                autoplay: false,
+                arrows: true,
+                appendArrows: $('.js-modal1 .wrap-slick3-arrows'),
+                prevArrow: '<button type="button" class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left"></i></button>',
+                nextArrow: '<button type="button" class="arrow-slick3 next-slick3"><i class="fa fa-angle-right"></i></button>',
+                dots: true,
+                appendDots: $('.js-modal1 .wrap-slick3-dots'),
+                dotsClass: 'slick3-dots',
+                customPaging: function (slick, index) {
+                    var thumb = $(slick.$slides[index]).data('thumb');
+                    return '<img src="' + thumb + '"/><div class="slick3-dot-overlay"></div>';
+                }
+            });
+
+        });
+
+
+        /*--------------------------------------------------
+          Helper — sets the URL in three places:
+            ① <img src="">          → the visible image
+            ② <a href="">           → lightbox full-size image
+            ③ <div data-thumb="">   → slick dot thumbnail
+          Hides the slot if no URL is provided.
+        --------------------------------------------------*/
+        function SetImage(imgSelector, divSelector, url, altText) {
+
+            var $img = $(imgSelector);
+            var $div = $(divSelector);
+
+            if (url && url.length > 0) {
+
+                // Add a leading "/" if the path is relative
+                if (url.indexOf('/') !== 0 && url.indexOf('http') !== 0) {
+                    url = '/' + url;
+                }
+
+                $img.attr('src', url).attr('alt', altText);
+                $img.closest('a').attr('href', url);
+                $div.attr('data-thumb', url);
+                $div.show();
+
+            } else {
+                $img.attr('src', '');
+                $img.closest('a').attr('href', '');
+                $div.attr('data-thumb', '');
+                $div.hide();
+            }
+        }
+
+    });
+    </script> -->
 
 </asp:Content>
