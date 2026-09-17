@@ -322,8 +322,11 @@
                                             data-name='<%# Eval("name") %>'
                                             data-price='<%# Eval("price", "{0:N2}") %>'
                                             data-imageurl1='<%# Eval("imageUrl") %>'
-                                            data-imageurl2='<%# Eval("imageUrl2") %>'
-                                            data-imageurl3='<%# Eval("imageUrl3") %>'
+                                        data-imageurl2='<%# Eval("imageUrl") %>'
+                                        data-imageurl3='<%# Eval("imageUrl") %>'
+                                        <!-- 
+                                        data-imageurl2='< Eval("imageUrl2") %>'
+                                        data-imageurl3='< Eval("imageUrl3") %>' -->
                                             data-description='<%# Eval("description") %>'>Quick View
 
                                         </a>

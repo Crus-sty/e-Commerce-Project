@@ -47,7 +47,7 @@ namespace Game_Grid
             if (Session["email"] != null)
             {
 
-                Response.Redirect("/accountx");
+                Response.Redirect("/account");
             }
             else
             {

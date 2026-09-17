@@ -39,11 +39,11 @@
 
                 <div class="row">
                     <div class="col-md-9">
-                    <p class="stext-113 cl6">
-                        Don't have an account?
+                        <p class="stext-113 cl6">
+                            Don't have an account?
                                 <a href="sign-up.aspx" class="mtext-106 cl2">Sign Up</a>
-                    </p>
-                        </div>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="text-center p-t-25">

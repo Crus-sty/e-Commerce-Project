@@ -31,7 +31,7 @@ namespace Game_Grid
                     lblMessage.Text = "Please enter your Email and Password";
                     return;
                 }
-                else if(string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+                else if (string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                 {
                     txtEmail.BorderColor = System.Drawing.Color.Red;
                     lblMessage.Text = "Please enter your Email";
@@ -115,7 +115,7 @@ namespace Game_Grid
                         }
 
                         // STORE USER INFORMATION IN SESSION
-                     
+
 
                         Session["Token"] = loginResponse.token;
 
@@ -130,7 +130,7 @@ namespace Game_Grid
 
 
                         Session["role"] = loginResponse.role;
-                        
+
 
                         // CHECK ROLE
 
@@ -141,10 +141,10 @@ namespace Game_Grid
                                 StringComparison.OrdinalIgnoreCase))
                         {
                             // ADMIN
-                             Response.Redirect(
-                                  "admin-home.aspx",
-                                  false
-                             ); 
+                            Response.Redirect(
+                                 "admin-home.aspx",
+                                 false
+                            );
 
                             Context.ApplicationInstance
                                .CompleteRequest();
@@ -178,7 +178,7 @@ namespace Game_Grid
                             result;
                     }
                 }
-               catch (Exception ex)
+                catch (Exception ex)
                 {
                     lblMessage.ForeColor =
                         System.Drawing.Color.Red;
