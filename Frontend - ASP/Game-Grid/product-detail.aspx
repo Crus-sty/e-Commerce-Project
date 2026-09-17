@@ -11,7 +11,7 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="<%# "product.aspx?category=" + Eval("Category") %>" class="stext-109 cl8 hov-cl1 trans-04"><%# Eval("Category") %>
+            <a href="<%# "/shop/" + Eval("Category") %>" class="stext-109 cl8 hov-cl1 trans-04"><%# Eval("Category") %>
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -33,33 +33,33 @@
 
                             <!-- PRODUCT IMAGE 1 -->
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="/images/product-detail-01.jpg">
+                                <div class="item-slick3" data-thumb="<%# Eval("imageUrl") %>">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="<%# Eval("imageurl_1") %>" alt="IMG-PRODUCT">
+                                        <img src="<%# Eval("imageUrl") %>" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<%# Eval("imageUrl") %>">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
                                 <!-- PRODUCT IMAGE 2 -->
-                                <div class="item-slick3" data-thumb="/images/product-detail-02.jpg">
+                                <div class="item-slick3" data-thumb="<%# Eval("imageUrl2") %>">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                        <img src="<%# Eval("imageUrl2") %>" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<%# Eval("imageUrl2") %>">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
                                 <!-- PRODUCT IMAGE 3 -->
-                                <div class="item-slick3" data-thumb="/images/product-detail-03.jpg">
+                                <div class="item-slick3" data-thumb="<%# Eval("imageUrl3") %>">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                        <img src="<%# Eval("imageUrl3") %>" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<%# Eval("imageUrl3") %>">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -77,11 +77,11 @@
                         <span class="mtext-106 cl2">
                             <%# Eval("price") %>
                         </span>
-
+                        <!--
                         <p class="stext-102 cl3 p-t-23">
-                            <%# Eval("description") %>
+                             Eval("description") %>
                         </p>
-
+                        -->
 
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-204 flex-w flex-m respon6-next">
@@ -151,8 +151,7 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel">
                         <div class="how-pos2 p-lr-15-md">
                             <p class="stext-102 cl6">
-                                Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
-                            </p>
+                            <%# Eval("description") %></p>
                         </div>
                     </div>
 
@@ -317,13 +316,22 @@
                                 <div class="block2">
                                     <div class="block2-pic hov-img0">
                                         <img src='<%# Eval("ImageUrl") %>' alt="IMG-PRODUCT">
-                                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">Quick View
+                                        <a href="#"
+                                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                                            data-id='<%# Eval("id") %>'
+                                            data-name='<%# Eval("name") %>'
+                                            data-price='<%# Eval("price", "{0:N2}") %>'
+                                            data-imageurl1='<%# Eval("imageUrl") %>'
+                                            data-imageurl2='<%# Eval("imageUrl2") %>'
+                                            data-imageurl3='<%# Eval("imageUrl3") %>'
+                                            data-description='<%# Eval("description") %>'>Quick View
+
                                         </a>
                                     </div>
 
                                     <div class="block2-txt flex-w flex-t p-t-14">
                                         <div class="block2-txt-child1 flex-col-l ">
-                                            <a href='<%# "product-detail.aspx?id=" + Eval("Id") %>' class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            <a href='<%# "/shop/product/" + Eval("Id") %>' class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                                 <%# Eval("Name") %>
                                             </a>
 

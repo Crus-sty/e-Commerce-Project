@@ -432,22 +432,21 @@
     </div>
 
     <!-- JavaScript -->
-    <!-- <script>
+    <script>
     $(document).ready(function () {
 
         /*--------------------------------------------------
-          Populate Quick View modal on click
-          (show/hide is handled by js/main.js)
+          Populate Quick View modal on click (show/hide is handled by js/main.js)
         --------------------------------------------------*/
         $('.js-show-modal1').on('click', function () {
 
             var $link = $(this);
 
 
-            // ---- Read data attributes from the clicked link ----
-            var id          = $link.data('id');
-            var name        = $link.data('name');
-            var price       = $link.data('price');
+            // ---- Read data attributes from the clicked link (a)----
+            var id = $link.data('id');
+            var name = $link.data('name');
+            var price = $link.data('price');
             var description = $link.data('description');
 
             var image1 = $link.data('image1');
@@ -455,22 +454,21 @@
             var image3 = $link.data('image3');
 
 
-            // ---- Fill text fields ----
+            // Fill text fields (id)
             $('#modalProductName').text(name);
             $('#modalProductPrice').text('R ' + price);
             $('#modalProductDescription').text(description);
+
+            SetImage('#modalProductImage1', '#modalProductImage1-div', image1, name);
+            SetImage('#modalProductImage2', '#modalProductImage2-div', image2, name);
+            SetImage('#modalProductImage3', '#modalProductImage3-div', image3, name);
 
             // Point the Add-to-cart link at the product detail page
             $('#modalAddToCart').attr('href', '/shop/product/' + id);
 
 
-            // ---- Fill the three image slots ----
-            SetImage('#modalProductImage1', '#modalProductImage1-div', image1, name);
-            SetImage('#modalProductImage2', '#modalProductImage2-div', image2, name);
-            SetImage('#modalProductImage3', '#modalProductImage3-div', image3, name);
 
-
-            // ---- Rebuild the slick slider so it sees the right slides ----
+            // slick slider
             var $slick3 = $('.js-modal1 .slick3');
 
             if ($slick3.hasClass('slick-initialized')) {
@@ -532,6 +530,6 @@
         }
 
     });
-    </script> -->
+    </script> 
 
 </asp:Content>

@@ -67,8 +67,7 @@ namespace Game_Grid
                         }
 
                         // CATEGORY FILTER
-                        string category =
-                            Request.QueryString["category"];
+                        string category = Page.RouteData.Values["category"] as string;
 
                         if (!string.IsNullOrWhiteSpace(category))
                         {
