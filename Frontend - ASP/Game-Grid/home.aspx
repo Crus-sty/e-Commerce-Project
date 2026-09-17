@@ -185,15 +185,14 @@
                                         data-imageurl1='<%# Eval("imageUrl") %>'
                                         data-imageurl2='<%# Eval("imageUrl") %>'
                                         data-imageurl3='<%# Eval("imageUrl") %>'
-                                        <!-- 
-                                        data-imageurl2='< Eval("imageUrl2") %>'
-                                        data-imageurl3='< Eval("imageUrl3") %>' -->
                                         data-description='<%# Eval("description") %>'>Quick View
 
                                     </a>
 
                                 </div>
-
+                                <!-- 
+                                        data-imageurl2='< Eval("imageUrl2") %>'
+                                        data-imageurl3='< Eval("imageUrl3") %>' -->
                                 <!-- Product Information -->
                                 <div class="block2-txt flex-w flex-t p-t-14">
 
@@ -248,4 +247,6 @@
             </div>
         </div>
     </section>
+
+    
 </asp:Content>
