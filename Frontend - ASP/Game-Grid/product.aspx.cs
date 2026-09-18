@@ -15,10 +15,30 @@ namespace Game_Grid
             {
                 Session["Page"] = "shop.aspx";
                 await LoadProducts();
-
                 updatecategory();
             }
+        }
 
+        /// <summary>
+        /// Maps a URL-friendly category slug to the numeric Category ID used by the backend.
+        /// </summary>
+        private string GetCategoryIdFromSlug(string slug)
+        {
+            if (string.IsNullOrWhiteSpace(slug)) return null;
+
+            switch (slug.ToLowerInvariant())
+            {
+                case "monitors-and-displays": return "4";
+                case "pc-components": return "2";
+                case "laptops": return "5";
+                case "speakers": return "7";
+                case "headphones": return "7";
+                case "cables-and-adapters": return "10";
+                case "extras": return "8";
+                case "console-gaming":
+                case "gaming": return "3";
+                default: return null;
+            }
         }
 
         private async Task LoadProducts()
@@ -28,166 +48,67 @@ namespace Game_Grid
                 using (HttpClient client = new HttpClient())
                 {
                     string apiUrl = "http://localhost:8080/api/products";
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-                    HttpResponseMessage response =
-                        await client.GetAsync(apiUrl);
-
-                    if (response.IsSuccessStatusCode)
+                    if (!response.IsSuccessStatusCode)
                     {
-                        string json =
-                            await response.Content.ReadAsStringAsync();
-
-                        List<ProductModel> products =
-                            JsonConvert.DeserializeObject<List<ProductModel>>(json);
-
-                        // SEARCH
-
-                        string search = Request.QueryString["search"];
-
-                        if (!string.IsNullOrWhiteSpace(search))
-                        {
-                            search = search.Trim();
-
-                            products = products
-                                .Where(p =>
-                                    (!string.IsNullOrEmpty(p.Name) &&
-                                     p.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
-
-                                    ||
-
-                                    (!string.IsNullOrEmpty(p.Description) &&
-                                     p.Description.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
-
-                                    ||
-
-                                    (!string.IsNullOrEmpty(p.Category) &&
-                                     p.Category.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
-                                )
-                                .ToList();
-                        }
-
-                        // CATEGORY FILTER
-                        string category = Page.RouteData.Values["category"] as string;
-
-                        if (!string.IsNullOrWhiteSpace(category))
-                        {
-                            category = category.Trim();
-
-                            products = products
-                                .Where(p =>
-                                    !string.IsNullOrEmpty(p.Category) &&
-                                    p.Category.IndexOf(
-                                        category,
-                                        StringComparison.OrdinalIgnoreCase
-                                    ) >= 0
-                                )
-                                .ToList();
-                        }
-
-                        // DISPLAY PRODUCTS
-
-                        rptProducts.DataSource = products;
-                        rptProducts.DataBind();
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        lblMessage.Text = "API ERROR: " + response.StatusCode;
+                        return;
                     }
-                    else
+
+                    string json = await response.Content.ReadAsStringAsync();
+
+                    List<ProductModel> products =
+                        JsonConvert.DeserializeObject<List<ProductModel>>(json);
+
+                    if (products == null) products = new List<ProductModel>();
+
+                    // SEARCH
+                    string search = Request.QueryString["search"];
+                    if (!string.IsNullOrWhiteSpace(search))
                     {
-                        Response.Write("<script>alert('Could not load products. Status: " + response.StatusCode + "');</script>"
-
-                        );
+                        search = search.Trim();
+                        products = products.Where(p =>
+                            (!string.IsNullOrEmpty(p.Name) &&
+                             p.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                            ||
+                            (!string.IsNullOrEmpty(p.Description) &&
+                             p.Description.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                            ||
+                            (!string.IsNullOrEmpty(p.Category) &&
+                             p.Category.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                        ).ToList();
                     }
+
+                    // CATEGORY FILTER (slug → numeric ID)
+                    string categorySlug = Page.RouteData.Values["category"] as string;
+                    if (!string.IsNullOrWhiteSpace(categorySlug))
+                    {
+                        string categoryId = GetCategoryIdFromSlug(categorySlug);
+                        if (!string.IsNullOrEmpty(categoryId))
+                        {
+                            products = products.Where(p =>
+                                !string.IsNullOrEmpty(p.Category) &&
+                                p.Category == categoryId
+                            ).ToList();
+                        }
+                    }
+
+                    // BIND
+                    rptProducts.DataSource = products;
+                    rptProducts.DataBind();
+
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                    lblMessage.Text = "Loaded " + products.Count + " products.";
                 }
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message.Replace("'", "") + "');</script>"
-
-
-
-                );
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "EXCEPTION: " + ex.Message;
+                System.Diagnostics.Debug.WriteLine("=== EXCEPTION: " + ex.ToString());
             }
-        }
-
-        protected void btnAddToCart_Click(object sender, EventArgs e)
-        {
-            /*try
-            {
-                // Get product ID
-                int productId;
-
-                if (!int.TryParse(hfProductId.Value, out productId))
-                {
-                    return;
-                }
-
-                // Get quantity
-                int quantity;
-
-                if (!int.TryParse(txtQuantity.Text, out quantity))
-                {
-                    quantity = 1;
-                }
-
-                if (quantity < 1)
-                {
-                    quantity = 1;
-                }
-
-                // Get logged-in user
-                string email = Session["email"] as string;
-
-                if (string.IsNullOrEmpty(email))
-                {
-                    Response.Redirect("login.aspx");
-                    return;
-                }
-
-                // Data that will be sent to Spring Boot
-                var cartData = new
-                {
-                    productId = productId,
-                    quantity = quantity,
-                    email = email
-                };
-
-                // Convert to JSON
-                string json = JsonConvert.SerializeObject(cartData);
-                   
-
-                using (HttpClient client = new HttpClient())
-                {
-                    client.BaseAddress =
-                        new Uri("http://localhost:8080");//we will change
-
-                    StringContent content =
-                        new StringContent(
-                            json,
-                            Encoding.UTF8,
-                            "application/json"
-                        );
-
-                    // POST request
-                    HttpResponseMessage response =
-                        await client.PostAsync(
-                            "/api/cart/add",
-                            content
-                        );
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        Response.Redirect("cart.aspx");
-                    }
-                    else
-                    {
-                        //We Will Display error
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle error
-            }*/
-
-            Session["CartCount"] = (int)(Session["CartCount"]) + 1;
         }
 
         protected void updatecategory()
@@ -218,7 +139,7 @@ namespace Game_Grid
                     break;
                 case "headphones":
                     btn_headphones.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
-                    break;  
+                    break;
                 case "cables-and-adapters":
                     btn_cables.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
                     break;
@@ -226,7 +147,6 @@ namespace Game_Grid
                     btn_extras.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
                     break;
             }
-
         }
     }
 }

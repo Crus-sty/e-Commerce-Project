@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -55,9 +58,95 @@ namespace Game_Grid
             }
         }
 
-        protected void btnAddToCart_Click(object sender, EventArgs e)
+        protected async void btnAddToCart_Click(object sender, EventArgs e)
         {
-            // Add code to handle adding item to cart
+            try
+            {
+                // 1. Product ID from the hidden field
+                int productId;
+                if (!int.TryParse(hfProductId.Value, out productId) || productId <= 0)
+                {
+                    ShowAlert("No product selected. Please try again.");
+                    return;
+                }
+
+                // 2. Quantity
+                int quantity;
+                if (!int.TryParse(txtQuantity.Text, out quantity) || quantity < 1)
+                {
+                    quantity = 1;
+                }
+
+                // 3. Logged-in user's email
+                string email = Session["email"] as string;
+                if (string.IsNullOrEmpty(email))
+                {
+                    Response.Redirect("login.aspx");
+                    return;
+                }
+
+                // 4. Build JSON payload
+                var cartData = new
+                {
+                    productId = productId,
+                    quantity = quantity,
+                    email = email
+                };
+
+                string json = JsonConvert.SerializeObject(cartData);
+
+                // 5. POST to Spring Boot
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:8080/");
+
+                    var content = new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json"
+                    );
+
+                    HttpResponseMessage response =
+                        await client.PostAsync("api/cart/add", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Update cart badge in session
+                        int current = 0;
+                        int.TryParse(Session["CartCount"]?.ToString(), out current);
+                        Session["CartCount"] = current + quantity;
+
+                        Response.Redirect("cart.aspx");
+                    }
+                    else
+                    {
+                        string errorBody = await response.Content.ReadAsStringAsync();
+                        System.Diagnostics.Debug.WriteLine(
+                            $"=== Cart API error {response.StatusCode}: {errorBody}");
+                        ShowAlert("Could not add to cart. Status: " + response.StatusCode);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("=== EXCEPTION: " + ex.ToString());
+                ShowAlert("Error: " + ex.Message);
+            }
+        }
+        private void ShowAlert(string message)
+        {
+            string safe = message
+                .Replace("\\", "\\\\")
+                .Replace("'", "\\'")
+                .Replace("\r", "")
+                .Replace("\n", "\\n");
+
+            Page.ClientScript.RegisterStartupScript(
+                this.GetType(),
+                "alert_" + Guid.NewGuid().ToString("N"),
+                "alert('" + safe + "');",
+                true
+            );
         }
 
         protected void btnSubscribe_Click(object sender, EventArgs e)
