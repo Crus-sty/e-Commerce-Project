@@ -385,6 +385,8 @@
                                                 </div>
                                             </div>
 
+                                            <asp:HiddenField ID="ModalProductId" runat="server" ClientIDMode="Static" Value="" />
+
                                             <asp:Button ID="btnAddToCart" runat="server" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" Text="Add to cart" OnClick="btnAddToCart_Click"></asp:Button>
                                         </div>
                                     </div>
@@ -663,6 +665,10 @@
 
                     // ---- Read data attributes from the clicked link (a)----
                     var id = $link.data('id');
+
+
+                    $('#ModalProductId').val(id)
+
                     var name = $link.data('name');
                     var price = $link.data('price');
                     var description = $link.data('description');

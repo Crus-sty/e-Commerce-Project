@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -150,6 +151,17 @@ namespace Game_Grid
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
             // Add code to handle adding item to cart
+
+            string productId = ModalProductId.Value;  //Getting Modal Product ID
+
+            int id = Convert.ToInt32(productId);
+
+            string qtyRaw = Request.Form["num-product"];
+            int quantity = int.TryParse(qtyRaw, out int qty) ? qty : 1; // Default to 1 if parsing fails
+
+
+
+
         }
     }
 }

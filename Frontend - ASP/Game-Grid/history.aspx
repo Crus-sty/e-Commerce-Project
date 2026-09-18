@@ -33,13 +33,7 @@
                                     <td class="column-4">[Status]</td>
 
                                     <td class="column-5">
-                                        <!-- Remove button -->
-                                        <div class="block2-txt-child2 flex-r p-t-3">
-                                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="btnRemove_Click">
-                                                <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                            </a>
-                                        </div>
+                                        <asp:Button ID="btnViewOrder" runat="server" Text="View Order" CssClass="btn btn-primary mt-3" OnClick="btnViewOrder_Click"></asp:Button>
                                     </td>
                                 </tr>
 
@@ -58,12 +52,8 @@
                                             <td class="column-4"><%# Eval("Status") %></td>
 
                                             <td class="column-5">
-                                                <div class="block2-txt-child2 flex-r p-t-3">
-                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                                    </a>
-                                                </div>
+                                                <asp:Button ID="btnViewOrder" runat="server" Text="View Order" CssClass="btn btn-primary mt-3" OnClick="btnViewOrder_Click"></asp:Button>
+                                            </td>
                                             </td>
                                         </tr>
                                     </ItemTemplate>
