@@ -43,6 +43,10 @@ namespace Game_Grid
             txt_image3.Enabled = true;
         }
 
+        protected void btndeleteproduct_Click(object sender, EventArgs e)
+        {
+
+        }
         protected void btnaddproduct_Click(object sender, EventArgs e)
         {
             txt_id.Enabled = false;

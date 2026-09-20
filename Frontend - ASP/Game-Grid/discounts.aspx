@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="discounts.aspx.cs" Inherits="Game_Grid.promo_codes" %>
+﻿<%@ Page Title="Discounts" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="discounts.aspx.cs" Inherits="Game_Grid.promo_codes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

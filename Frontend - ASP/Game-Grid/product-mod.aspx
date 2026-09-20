@@ -15,7 +15,7 @@
 
 
                 <div class="col-lg-5 col-xl-5 m-lr-auto m-b-50">
-                    <div class="m-l-15 m-r--28 m-lr-0-xl">
+                    <div class="m-l-5 m-r--8 m-lr-0-xl">
 
                         <h3 class="mtext-111 cl2 p-b-16">Modify Product</h3>
                         <div class="row">
@@ -101,63 +101,68 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- shopping Cart -->
+                <!-- shopping Cart -->
 
-            <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
-                <div class="m-l-25 m-r--38 m-lr-0-xl">
-                    <div class="wrap-table-shopping-cart">
-                        <table class="table-shopping-cart">
-                            <tr class="table_head">
-                                <th class="column-1">Product</th>
-                                <th class="column-2"></th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Quantity</th>
-                                <th class="column-5"></th>
-                            </tr>
+                <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart">
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">Product</th>
+                                    <th class="column-2"></th>
+                                    <th class="column-3">Price</th>
+                                    <th class="column-4">Quantity</th>
+                                    <th class="column-5"></th>
+                                </tr>
 
-                            <!-- Repeater control to display cart items dynamically from the data source. 
+                                <!-- Repeater control to display cart items dynamically from the data source. 
                             Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
 
-                            <asp:Repeater ID="rptCart" runat="server">
-                                <ItemTemplate>
-                                    <tr class="table_row">
-                                        <td class="column-1">
-                                            <div class="how-itemcart1">
-                                                <img src='<%# Eval("ProductImage") %>' alt="IMG">
-                                                <p class="column-1"><%# Eval("ProductName") %></p>
-                                            </div>
-                                        </td>
-                                        <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
-                                        <td class="column-4">
-                                            <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-minus"></i>
+                                <asp:Repeater ID="rptCart" runat="server">
+                                    <ItemTemplate>
+                                        <tr class="table_row">
+                                            <td class="column-1">
+                                                <div class="how-itemcart1">
+                                                    <img src='<%# Eval("ProductImage") %>' alt="IMG">
+                                                    <p class="column-1"><%# Eval("ProductName") %></p>
                                                 </div>
+                                            </td>
+                                            <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
+                                            <td class="column-4">
+                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                                    </div>
 
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
+                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
 
-                                                <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-plus"></i>
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                </ItemTemplate>
-                            </asp:Repeater>
+                                            </td>
+                                    </ItemTemplate>
+                                </asp:Repeater>
 
 
-                        </table>
+                            </table>
+                        </div>
+
+
                     </div>
-
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <asp:Button ID="btn_addproduct" runat="server" Text="Add Product" CssClass="btn btn-primary mt-3" OnClick="btnaddproduct_Click" />
+                </div>
+                <div class="col-md-6">
+                    <asp:Button ID="btn_deleteproduct" runat="server" Text="Delete Product" CssClass="btn btn-primary mt-3" OnClick="btndeleteproduct_Click" />
                 </div>
             </div>
         </div>
-        <div class="row">
-            <asp:Button ID="btn_addproduct" runat="server" Text="Add Product" CssClass="btn btn-primary mt-3" OnClick="btnaddproduct_Click" />
-        </div>
-    </div>
+
     </div>
 
 </asp:Content>
