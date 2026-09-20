@@ -162,12 +162,11 @@
                                                     <div class="card-body">
                                                         <h5 class="card-title text-primary">Congratulations Team! 🎉</h5>
                                                         <p class="mb-4">
-                                                            You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                            your profile.
+                                                            We have done <span class="fw-bold">72%</span> more sales today. Check the Orders Section
                          
                                                         </p>
 
-                                                        <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                                                        <a href="/admin/orders" class="btn btn-sm btn-outline-primary">View Orders</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 text-center text-sm-left">
@@ -435,7 +434,7 @@
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Monitors & Displays</h6>
-                                                                <small class="text-muted">Mobile, Earbuds, TV</small>
+                                                                <small class="text-muted">Screens, Monitors, TV</small>
                                                             </div>
                                                             <div class="user-progress">
                                                                 <small class="fw-semibold">82.5k</small>
@@ -449,7 +448,7 @@
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">PC Components</h6>
-                                                                <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                                                                <small class="text-muted">CPU, GPU, RAM</small>
                                                             </div>
                                                             <div class="user-progress">
                                                                 <small class="fw-semibold">23.8k</small>
@@ -463,66 +462,66 @@
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Console Gaming</h6>
-                                                                <small class="text-muted">Fine Art, Dining</small>
+                                                                <small class="text-muted">Controllers, Consoles</small>
                                                             </div>
                                                             <div class="user-progress">
                                                                 <small class="fw-semibold">849k</small>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="d-flex">
+                                                    <li class="d-flex mb-4 pb-1">
                                                         <div class="avatar flex-shrink-0 me-3">
                                                             <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
                                                         </div>
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Cables & Adapters</h6>
-                                                                <small class="text-muted">Football, Cricket Kit</small>
+                                                                <small class="text-muted">Chargers, Power Cables,Camera Adapters</small>
                                                             </div>
                                                             <div class="user-progress">
-                                                                <small class="fw-semibold">99</small>
+                                                                <small class="fw-semibold">700</small>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="d-flex">
+                                                    <li class="d-flex mb-4 pb-1">
                                                         <div class="avatar flex-shrink-0 me-3">
                                                             <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
                                                         </div>
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Headphones</h6>
-                                                                <small class="text-muted">Football, Cricket Kit</small>
+                                                                <small class="text-muted">Wireless, Over-ear, On-ear</small>
                                                             </div>
                                                             <div class="user-progress">
-                                                                <small class="fw-semibold">99</small>
+                                                                <small class="fw-semibold">5K</small>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="d-flex">
+                                                    <li class="d-flex mb-4 pb-1">
                                                         <div class="avatar flex-shrink-0 me-3">
                                                             <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
                                                         </div>
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Speakers</h6>
-                                                                <small class="text-muted">Football, Cricket Kit</small>
+                                                                <small class="text-muted">Bluetooth, Portable, Home</small>
                                                             </div>
                                                             <div class="user-progress">
-                                                                <small class="fw-semibold">99</small>
+                                                                <small class="fw-semibold">9K</small>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="d-flex">
+                                                    <li class="d-flex mb-4 pb-1">
                                                         <div class="avatar flex-shrink-0 me-3">
                                                             <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
                                                         </div>
                                                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">Extras</h6>
-                                                                <small class="text-muted">Football, Cricket Kit</small>
+                                                                <small class="text-muted">Gaming Chairs, Lighting</small>
                                                             </div>
                                                             <div class="user-progress">
-                                                                <small class="fw-semibold">99</small>
+                                                                <small class="fw-semibold">55</small>
                                                             </div>
                                                         </div>
                                                     </li>

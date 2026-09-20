@@ -15,24 +15,24 @@
         <div class="row">
 
     <div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
-        <div class="m-l-25 m-r--38 m-lr-0-xl">
+        <div class="m-l-15 m-r--38 m-lr-0-xl">
             <div class="wrap-table-shopping-cart">
                 <table class="table-shopping-cart">
                     <tr class="table_head">
                         <th class="column-1">Order No.</th>
                         <th class="column-2">Number of Items</th>
-                        <th class="column-3">Total Price</th>
-                        <th class="column-4">Status</th>
-                        <th class="column-5">Manage / Modify</th>
+                        <th class="column-2">Total Price</th>
+                        <th class="column-3">Status</th>
+                        <th class="column-3">Manage / Modify</th>
                     </tr>
 
                     <tr class="table_row">
                                 <td class="column-1">[Order No.]</td>
                                 <td class="column-2">[Number of Items]</td>
-                                <td class="column-3">[Total Price]</td>
-                                <td class="column-4">[Status]</td>
+                                <td class="column-2">[Total Price]</td>
+                                <td class="column-3">[Status]</td>
 
-                                <td class="column-5">
+                                <td class="column-3">
                                     <!-- Remove button -->
                                     <div class="block2-txt-child2 flex-r p-t-3">
                                         <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="btnRemove_Click">
@@ -54,13 +54,13 @@
                                     </div>
                                 </td>
                                 <td class="column-2"><%# Eval("NumberOfItems") %></td>
-                                <td class="column-3"><%# Eval("TotalPrice", "{0:F2}") %></td>
-                                <td class="column-4"><%# Eval("Status") %></td>
+                                <td class="column-2"><%# Eval("TotalPrice", "{0:F2}") %></td>
+                                <td class="column-3"><%# Eval("Status") %></td>
 
-                                <td class="column-5">
+                                <td class="column-3">
                                     <div class="block2-txt-child2 flex-r p-t-3">
                                         <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+                                            <img class="icon-heart1 dis-block trans-04" src="/images/icons/icon-heart-01.png" alt="ICON">
                                             <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/images/icons/icon-heart-02.png" alt="ICON">
                                         </a>
                                     </div>
