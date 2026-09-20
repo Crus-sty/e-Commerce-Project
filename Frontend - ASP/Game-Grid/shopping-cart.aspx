@@ -15,8 +15,7 @@
 			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <span class="stext-109 cl4">Cart
-            </span>
+            <span class="stext-109 cl4">Cart </span>
         </div>
     </div>
 
@@ -151,6 +150,22 @@
 
                         </div>
                         <!-- FINAL TOTAL -->
+                        <div class="flex-w flex-t p-t-27 p-b-33">
+                            <div class="size-208">
+                                <span id="lblDiscountLabel" class="mtext-101 cl2">Discount: </span>
+
+                            </div>
+                            <div class="size-209 p-t-1">
+                                <span class="mtext-110 cl2">
+                                    <asp:Label ID="lblDiscount" runat="server" Text="- R 0.00">
+
+                                    </asp:Label>
+
+                                </span>
+
+                            </div>
+
+                        </div>
                         <div class="flex-w flex-t p-t-27 p-b-33">
                             <div class="size-208">
                                 <span class="mtext-101 cl2">Total: </span>

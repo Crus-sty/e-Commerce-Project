@@ -34,7 +34,12 @@ namespace Game_Grid
 
         protected void btnApplyCoupon_Click(object sender, EventArgs e)
         {
+            string newtottal = null;
             string couponCode = txtCouponCode.Text.Trim();
+            Session["couponcode"] = couponCode;
+            Session["discount"] = 0.0; //Percentage discount, 10% discount would be 0.1
+
+
             if (string.IsNullOrEmpty(couponCode))
             {
                 lblCouponMessage.ForeColor = System.Drawing.Color.Red;
@@ -43,7 +48,12 @@ namespace Game_Grid
             }
             else
             {
-
+                txtCouponCode.Enabled = false;
+                lblDiscount.Visible = true;
+                lblCouponMessage.Visible = true;
+                lblDiscount.Text = "";
+                newtottal = "";
+                lblTotal.Text = newtottal;
             }
         }
         /*
