@@ -24,5 +24,11 @@ namespace Game_Grid
 
         [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
+
+        [JsonProperty("imageUrl2")]
+        public string ImageUrl2 { get; set; }
+
+        [JsonProperty("imageUrl3")]
+        public string ImageUrl3 { get; set; }
     }
 }
