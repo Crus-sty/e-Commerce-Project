@@ -51,6 +51,14 @@ public class ProductService {
                 request.getImageUrl()
         );
 
+        product.setImageUrl2(
+                request.getImageUrl2()
+        );
+
+        product.setImageUrl3(
+                request.getImageUrl3()
+        );
+
         return productRepository.save(product);
     }
 
@@ -116,6 +124,13 @@ public class ProductService {
                 request.getImageUrl()
         );
 
+        product.setImageUrl2(
+                request.getImageUrl2()
+        );
+
+        product.setImageUrl3(
+                request.getImageUrl3()
+        );
 
         return productRepository.save(product);
     }
