@@ -1,232 +1,95 @@
-using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace Game_Grid
 {
     public static class ApiClient
     {
-        // Spring Boot backend
-        private const string BASE_URL =
-            "http://localhost:8080";
+        private static readonly string BaseUrl =
+            ConfigurationManager.AppSettings["ApiBaseUrl"] ?? "http://localhost:8080";
 
-       
-        // GET
-
-        public static T Get<T>(string endpoint)
+        private static HttpClient CreateClient()
         {
-            using (HttpClient client = new HttpClient())
+            var client = new HttpClient { BaseAddress = new Uri(BaseUrl) };
+
+            // Read the token from the current ASP.NET session
+            var token = HttpContext.Current?.Session?["Token"] as string;
+
+            if (!string.IsNullOrEmpty(token))
             {
-                // Get JWT token from Session
-                string token =
-                    HttpContext.Current.Session["AuthToken"] as string;
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token.Trim());
+            }
 
-                // Add JWT token
-                if (!string.IsNullOrEmpty(token))
-                {
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue(
-                            "Bearer",
-                            token);
-                }
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Call Spring Boot
-                HttpResponseMessage response =
-                    client.GetAsync(
-                        BASE_URL + endpoint).Result;
+            return client;
+        }
 
-                // Read response
-                string json =
-                    response.Content.ReadAsStringAsync().Result;
-
-                // Check for error
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception(
-                        "API Error: "
-                        + response.StatusCode
-                        + " - "
-                        + json);
-                }
-
-                // Convert JSON to C# object
-                return JsonConvert.DeserializeObject<T>(json);
+        public static T Get<T>(string path)
+        {
+            using (var client = CreateClient())
+            {
+                var response = client.GetAsync(path).GetAwaiter().GetResult();
+                return HandleResponse<T>(response);
             }
         }
 
-
-        // POST
-
-        public static T Post<T>(
-            string endpoint,
-            object data)
+        public static T Delete<T>(string path)
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = CreateClient())
             {
-                // Get JWT token
-                string token =
-                    HttpContext.Current.Session["AuthToken"] as string;
-
-                // Add JWT token
-                if (!string.IsNullOrEmpty(token))
-                {
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue(
-                            "Bearer",
-                            token);
-                }
-
-                // Convert object to JSON
-                string json =
-                    JsonConvert.SerializeObject(data);
-
-                StringContent content =
-                    new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-
-                // Send POST request
-                HttpResponseMessage response =
-                    client.PostAsync(
-                        BASE_URL + endpoint,
-                        content).Result;
-
-                // Read response
-                string result =
-                    response.Content.ReadAsStringAsync().Result;
-
-                // Check for error
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception(
-                        "API Error: "
-                        + response.StatusCode
-                        + " - "
-                        + result);
-                }
-
-                // If there is no response body
-                if (string.IsNullOrWhiteSpace(result))
-                {
-                    return default(T);
-                }
-
-                // Convert JSON response
-                return JsonConvert.DeserializeObject<T>(result);
+                var response = client.DeleteAsync(path).GetAwaiter().GetResult();
+                return HandleResponse<T>(response);
             }
         }
 
-        // PUT
-     
-        public static T Put<T>(
-            string endpoint,
-            object data)
+        public static T Post<T>(string path, object body)
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = CreateClient())
             {
-                // Get JWT token
-                string token =
-                    HttpContext.Current.Session["AuthToken"] as string;
-
-                // Add JWT token
-                if (!string.IsNullOrEmpty(token))
-                {
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue(
-                            "Bearer",
-                            token);
-                }
-
-                // Convert data to JSON
-                string json =
-                    JsonConvert.SerializeObject(data);
-
-                StringContent content =
-                    new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-
-                // Send PUT request
-                HttpResponseMessage response =
-                    client.PutAsync(
-                        BASE_URL + endpoint,
-                        content).Result;
-
-                // Read response
-                string result =
-                    response.Content.ReadAsStringAsync().Result;
-
-                // Check for error
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception(
-                        "API Error: "
-                        + response.StatusCode
-                        + " - "
-                        + result);
-                }
-
-                // Convert response
-                if (string.IsNullOrWhiteSpace(result))
-                {
-                    return default(T);
-                }
-
-                return JsonConvert.DeserializeObject<T>(result);
+                var json = JsonConvert.SerializeObject(body);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                var response = client.PostAsync(path, content).GetAwaiter().GetResult();
+                return HandleResponse<T>(response);
             }
         }
 
-        // DELETE
-        public static T Delete<T>(string endpoint)
+        public static T Put<T>(string path, object body)
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = CreateClient())
             {
-                // Get JWT token
-                string token =
-                    HttpContext.Current.Session["Token"] as string;
-
-                // Add JWT token
-                if (!string.IsNullOrEmpty(token))
-                {
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue(
-                            "Bearer",
-                            token);
-                }
-
-                // Send DELETE request
-                HttpResponseMessage response = client.DeleteAsync(BASE_URL + endpoint).Result;
-                   
-
-
-                // Read response
-                string result = response.Content.ReadAsStringAsync().Result;
-                   
-
-                // Check for error
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception(
-                        "API Error: "
-                        + response.StatusCode
-                        + " - "
-                        + result);
-                }
-
-                // If there is no response
-                if (string.IsNullOrWhiteSpace(result))
-                {
-                    return default(T);
-                }
-
-                // Convert response
-                return JsonConvert.DeserializeObject<T>(result);
+                var json = JsonConvert.SerializeObject(body);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                var response = client.PutAsync(path, content).GetAwaiter().GetResult();
+                return HandleResponse<T>(response);
             }
+        }
+
+        private static T HandleResponse<T>(HttpResponseMessage response)
+        {
+            string body = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                HttpContext.Current?.Session?.Clear();
+                HttpContext.Current?.Response?.Redirect("/login");
+                return default(T);
+            }
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"API {response.StatusCode}: {body}");
+
+            if (typeof(T) == typeof(string))
+                return (T)(object)body;
+
+            return JsonConvert.DeserializeObject<T>(body);
         }
     }
 }

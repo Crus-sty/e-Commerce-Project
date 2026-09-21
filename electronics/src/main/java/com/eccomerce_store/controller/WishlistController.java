@@ -1,64 +1,60 @@
 package com.eccomerce_store.controller;
 
-import com.eccomerce_store.electronics.User;
-import com.eccomerce_store.electronics.WishlistItem;
-import com.eccomerce_store.repository.UserRepository;
-import com.eccomerce_store.repository.WishlistItemRepository;
+import com.eccomerce_store.dto.WishlistItemDto;
+import com.eccomerce_store.service.WishlistService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/wishlist")
 @CrossOrigin
 public class WishlistController {
 
-    private final WishlistItemRepository wishlistRepo;
-    private final UserRepository userRepo;
+    private final WishlistService wishlistService;
 
-    public WishlistController(WishlistItemRepository wishlistRepo,
-                              UserRepository userRepo) {
-        this.wishlistRepo = wishlistRepo;
-        this.userRepo = userRepo;
+    public WishlistController(WishlistService wishlistService) {
+        this.wishlistService = wishlistService;
     }
-
+    // GET -list the current user's wishlist
     @GetMapping
-    public ResponseEntity<?> getWishlist(Authentication auth) {
-        User user = userRepo.findByUsername(auth.getName()).orElse(null);
-        if (user == null) return ResponseEntity.status(401).body("User not found.");
-
-        List<Map<String, Object>> items = wishlistRepo.findByUserId(user.getId())
-                .stream()
-                .map(w -> {
-                    Map<String, Object> m = new HashMap<>();
-                    m.put("wishlistItemId", w.getId());
-                    m.put("productId", w.getProduct().getId());
-                    m.put("productName", w.getProduct().getName());
-                    m.put("productImage", w.getProduct().getImageUrl());
-                    m.put("price", w.getProduct().getPrice());
-                    m.put("inStock", w.getProduct().getStockQuantity() > 0);
-                    return m;
-                })
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(items);
+    public ResponseEntity<?> getWishlist(Authentication authentication) {
+        try {
+            String username = authentication.getName();
+            List<WishlistItemDto> items =
+                    wishlistService.getWishlistForUser(username);
+            return ResponseEntity.ok(items);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+    // POST add a product
+    @PostMapping("/add/{productId}")
+    public ResponseEntity<?> add(
+            @PathVariable Long productId,
+            Authentication authentication) {
+        try {
+            String username = authentication.getName();
+            wishlistService.addToWishlist(username, productId);
+            return ResponseEntity.ok("Product added to wishlist.");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
+    // DELETE /api/wishlist/remove/{productId} — remove a produc
     @DeleteMapping("/remove/{productId}")
-    public ResponseEntity<?> remove(Authentication auth, @PathVariable Long productId) {
-        User user = userRepo.findByUsername(auth.getName()).orElse(null);
-        if (user == null) return ResponseEntity.status(401).body("User not found.");
-
-        return wishlistRepo.findByUserIdAndProductId(user.getId(), productId)
-                .map(w -> {
-                    wishlistRepo.delete(w);
-                    return ResponseEntity.ok("Removed from wishlist.");
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> remove(
+            @PathVariable Long productId,
+            Authentication authentication) {
+        try {
+            String username = authentication.getName();
+            wishlistService.removeFromWishlist(username, productId);
+            return ResponseEntity.ok("Product removed from wishlist.");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 }
