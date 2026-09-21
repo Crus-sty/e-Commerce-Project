@@ -51,6 +51,15 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.TextBox txt_name;
 
         /// <summary>
+        /// txt_brand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_brand;
+
+        /// <summary>
         /// txt_price control.
         /// </summary>
         /// <remarks>

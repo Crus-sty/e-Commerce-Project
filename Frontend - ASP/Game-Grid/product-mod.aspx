@@ -1,4 +1,10 @@
-﻿<%@ Page Title="Product Modification" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="product-mod.aspx.cs" Inherits="Game_Grid.product_mod" %>
+﻿<%@ Page Title="Product Modification"
+    Language="C#"
+    MasterPageFile="~/Admin.Master"
+    AutoEventWireup="true"
+    Async="true"
+    CodeBehind="product-mod.aspx.cs"
+    Inherits="Game_Grid.product_mod" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -34,56 +40,69 @@
 
                         <div class="form-group">
                             <label id="p-name">Product Name</label>
-                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Name]"></asp:TextBox>
+                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" placeholder="[Product Name]"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <label id="p-brand">Product Brand</label>
+                               <asp:TextBox ID="txt_brand" runat="server"  CssClass="form-control"  placeholder="[Product Brand]"> </asp:TextBox>
                         </div>
 
                         <div class="form-group">
                             <label id="p-price">Product Price</label>
-                            <asp:TextBox ID="txt_price" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Price]"></asp:TextBox>
+                            <asp:TextBox ID="txt_price" runat="server" CssClass="form-control"  placeholder="[Product Price]"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
                             <label id="p-qty">Product Quantity</label>
-                            <asp:TextBox ID="txt_qty" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Quantity]"></asp:TextBox>
+                            <asp:TextBox ID="txt_qty" runat="server" CssClass="form-control"  placeholder="[Product Quantity]"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label id="p-desc">Product Description</label>
-                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Description]"></asp:TextBox>
+                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control"  placeholder="[Product Description]"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
                             <label id="p-features">Product Category</label>
                             <!-- <asp:TextBox ID="txt_features" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Features]"></asp:TextBox> -->
-                            <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Category]">
+                           <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
 
-                                <asp:ListItem Text="Choose Product Category" Value="" />
-                                <asp:ListItem Text="Monitors & Displays" Value="Monitors & Displays" />
-                                <asp:ListItem Text="PC Components" Value="PC Components" />
-                                <asp:ListItem Text="Console Gaming" Value="Console Gaming" />
-                                <asp:ListItem Text="PC Gaming" Value="PC Gaming" />
-                                <asp:ListItem Text="Gaming Laptops" Value="Gaming Laptops" />
-                                <asp:ListItem Text="Speakers" Value="Speakers" />
-                                <asp:ListItem Text="Headphones" Value="Headphones" />
-                                <asp:ListItem Text="Cables & Adapters" Value="Cables & Adapters" />
-                                <asp:ListItem Text="Extras" Value="Extras" />
+    <asp:ListItem Text="Choose Product Category" Value="" />
 
-                            </asp:DropDownList>
+    <asp:ListItem Text="Monitors & Displays" Value="1" />
+
+    <asp:ListItem Text="PC Components" Value="2" />
+
+    <asp:ListItem Text="Console Gaming" Value="3" />
+
+    <asp:ListItem Text="PC Gaming" Value="4" />
+
+    <asp:ListItem Text="Gaming Laptops" Value="5" />
+
+    <asp:ListItem Text="Speakers" Value="6" />
+
+    <asp:ListItem Text="Headphones" Value="7" />
+
+    <asp:ListItem Text="Cables & Adapters" Value="8" />
+
+    <asp:ListItem Text="Extras" Value="9" />
+
+</asp:DropDownList>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label id="p-image1">Product Image 1</label>
-                        <asp:TextBox ID="txt_image1" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 1]"></asp:TextBox>
+                        <asp:TextBox ID="txt_image1" runat="server" CssClass="form-control"  placeholder="[Product Image 1]"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
                         <label id="p-image2">Product Image 2</label>
-                        <asp:TextBox ID="txt_image2" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 2]"></asp:TextBox>
+                        <asp:TextBox ID="txt_image2" runat="server" CssClass="form-control"  placeholder="[Product Image 2]"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
                         <label id="p-image3">Product Image 3</label>
-                        <asp:TextBox ID="txt_image3" runat="server" CssClass="form-control" Enabled="false" placeholder="[Product Image 3]"></asp:TextBox>
+                        <asp:TextBox ID="txt_image3" runat="server" CssClass="form-control"  placeholder="[Product Image 3]"></asp:TextBox>
                     </div>
 
 
@@ -119,31 +138,37 @@
                                 <!-- Repeater control to display cart items dynamically from the data source. 
                             Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
 
-                                <asp:Repeater ID="rptCart" runat="server">
-                                    <ItemTemplate>
-                                        <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="how-itemcart1">
-                                                    <img src='<%# Eval("ProductImage") %>' alt="IMG">
-                                                    <p class="column-1"><%# Eval("ProductName") %></p>
-                                                </div>
-                                            </td>
-                                            <td class="column-3"><%# Eval("ProductPrice", "{0:F2}") %></td>
-                                            <td class="column-4">
-                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                                    </div>
+                           <asp:Repeater ID="rptCart" runat="server">
+    <ItemTemplate>
+        <tr class="table_row">
 
-                                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product<%# Eval("ProductID") %>" value="<%# Eval("Quantity") %>" />
+            <td class="column-1">
+                <div class="how-itemcart1">
+                    <img src='<%# Eval("imageUrl") %>'
+                         alt="Product"
+                         style="width:80px;height:80px;object-fit:contain;" />
+                </div>
+            </td>
 
-                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                    </ItemTemplate>
-                                </asp:Repeater>
+            <td class="column-2">
+                <%# Eval("name") %>
+            </td>
+
+            <td class="column-3">
+                R <%# Eval("price", "{0:F2}") %>
+            </td>
+
+            <td class="column-4">
+                <%# Eval("stockQuantity") %>
+            </td>
+
+            <td class="column-5">
+                ID: <%# Eval("id") %>
+            </td>
+
+        </tr>
+    </ItemTemplate>
+</asp:Repeater>
 
 
                             </table>
