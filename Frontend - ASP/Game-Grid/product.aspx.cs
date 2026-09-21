@@ -19,9 +19,7 @@ namespace Game_Grid
             }
         }
 
-        /// <summary>
-        /// Maps a URL-friendly category slug to the numeric Category ID used by the backend.
-        /// </summary>
+      
         private string GetCategoryIdFromSlug(string slug)
         {
             if (string.IsNullOrWhiteSpace(slug)) return null;
