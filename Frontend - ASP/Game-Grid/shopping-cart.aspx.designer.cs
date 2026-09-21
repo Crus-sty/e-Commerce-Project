@@ -15,6 +15,15 @@ namespace Game_Grid
     {
 
         /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
         /// rptCart control.
         /// </summary>
         /// <remarks>
@@ -24,22 +33,31 @@ namespace Game_Grid
         protected global::System.Web.UI.WebControls.Repeater rptCart;
 
         /// <summary>
-        /// txtCouponCode control.
+        /// pnlEmptyCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCouponCode;
+        protected global::System.Web.UI.WebControls.Panel pnlEmptyCart;
 
         /// <summary>
-        /// lblCouponMessage control.
+        /// txtCoupon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCouponMessage;
+        protected global::System.Web.UI.WebControls.TextBox txtCoupon;
+
+        /// <summary>
+        /// btnApplyCoupon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApplyCoupon;
 
         /// <summary>
         /// lblSubtotal control.
@@ -67,15 +85,6 @@ namespace Game_Grid
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblShipping;
-
-        /// <summary>
-        /// lblDiscount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDiscount;
 
         /// <summary>
         /// lblTotal control.

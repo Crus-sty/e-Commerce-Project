@@ -31,6 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 path.startsWith("/api/products") ||
                 path.equals("/api/products/")||
                 path.equals("/api/admin/create");
+
     }
 
     @Override
