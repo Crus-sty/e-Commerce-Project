@@ -56,7 +56,7 @@ public class SecurityConfig {
                                 "/api/products/**",
                                 "/api/admin/create"
                         ).permitAll()
-
+                        .requestMatchers("/error").permitAll()
                         // Admin endpoints
                         .requestMatchers("/api/admin/**")
                         .hasRole("ADMIN")

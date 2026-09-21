@@ -8,31 +8,28 @@ import java.util.List;
 //The @Entity annotation tells Spring/JPA that this class represents a table in the database
 @Entity
 
-@Table(name = "orders")
+@Table(name = "user_order")
 public class Order
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "OrderID")
     private Long id;
 
     @ManyToOne
-
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "UserID", nullable = false)
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "TotalAmount", nullable = false)
     private double totalAmount;
 
-    @Column(nullable = false)
+    @Column(name = "Status", nullable = false)
     private String status;
 
-     //Stores the address where the order should be delivered
-    @Column(nullable = false)
+    @Column(name = "ShippingAddress", nullable = false)
     private String shippingAddress;
 
-
-     //Stores the payment method selected by the user
-    @Column(nullable = false)
+    @Column(name = "PaymentMethod", nullable = false)
     private String paymentMethod;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Game_Grid
 {
@@ -35,207 +31,178 @@ namespace Game_Grid
                 }
             }
 
-                int cartTotal = GetCartItemCount();
-                int wishlistTotal = GetWishlistItemCount();
+            int cartTotal = GetCartItemCount();
+            int wishlistTotal = GetWishlistItemCount();
 
-                cartIcon.Attributes["data-notify"] = cartTotal.ToString();
-                wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+            cartIcon.Attributes["data-notify"] = cartTotal.ToString();
+            wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
 
-                SetActiveMenu();
-
-
-        }
-        
-
-protected void accountLink_Click(object sender, EventArgs e)
-        {
-            if (Session["email"] != null)
-            {
-
-                Response.Redirect("/account");
-            }
-            else
-            {
-                Response.Redirect("/login");
-            }
-        }
-
-      
-        private void ShowAlert(string message)
-        {
-            string safe = message
-                .Replace("\\", "\\\\")
-                .Replace("'", "\\'")
-                .Replace("\r", "")
-                .Replace("\n", "\\n");
-
-            Page.ClientScript.RegisterStartupScript(
-                this.GetType(),
-                "alert_" + Guid.NewGuid().ToString("N"),
-                "alert('" + safe + "');",
-                true
-            );
-        }
-        protected async void btnAddToCart_Click(object sender, EventArgs e)
-
-        {
-            string token = Session["Token"] as string;
-
-            if (string.IsNullOrEmpty(token))
-            {
-                Response.Write("<h2>TOKEN IS EMPTY</h2>");
-                return;
-            }
-
-          
-              try
-              {
-                  // Get product ID from the hidden field
-                  int productId;
-
-                  if (!int.TryParse(hfProductId.Value, out productId))
-                  {
-                      return;
-                  }
-
-                  // Get quantity from the quantity textbox
-                  int quantity;
-
-                  if (!int.TryParse(txtQuantity.Text, out quantity))
-                  {
-                      quantity = 1;
-                  }
-
-                  if (quantity <= 0)
-                  {
-                      quantity = 1;
-                  }
-
-                // Create cart object
-                var cartItem = new
-                {
-                    productId = productId,
-                    quantity = quantity,
-                   
-                };
-
-                string json = JsonConvert.SerializeObject(cartItem);
-
-                  using (HttpClient client = new HttpClient())
-                  {
-                      // IMPORTANT:
-                      // Send the JWT token to Spring Boot
-                      client.DefaultRequestHeaders.Authorization =
-                          new AuthenticationHeaderValue("Bearer", token);
-
-                      StringContent content = new StringContent(
-                          json,
-                          Encoding.UTF8,
-                          "application/json"
-                      );
-
-                      HttpResponseMessage response =
-                          await client.PostAsync(
-                              "http://localhost:8080/api/cart/add",
-                              content
-                          );
-
-                      string responseText =
-                          await response.Content.ReadAsStringAsync();
-
-                      if (response.IsSuccessStatusCode)
-                      {
-                          // Product successfully added
-                          Response.Redirect("shopping-cart.aspx");
-                      }
-                      else if (response.StatusCode ==
-                               System.Net.HttpStatusCode.Unauthorized)
-                      {
-                          // Token was rejected by Spring Boot
-                          Session.Remove("Token");
-
-                          Response.Redirect("login.aspx");
-                      }
-                      else
-                      {
-                          // Show the actual backend error
-                          Response.Write(
-                              "Could not add to cart. Status: " +
-                              response.StatusCode +
-                              "<br/>" +
-                              responseText
-                          );
-                      }
-                  }
-              }
-              catch (Exception ex)
-              {
-                  Response.Write(
-                      "Error adding to cart: " +
-                      ex.Message
-                  );
-              }
-        }
-    
-
-        protected void btnSubscribe_Click(object sender, EventArgs e)
-        {
-            // Add code to handle newsletter subscription
-
-        }
-
-        protected void btnSignUp_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/sign-up");
-        }
-
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/login");
+            SetActiveMenu();
         }
 
         protected void btnHistory_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/account/history", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void btn_Orderhistory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/account/history", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void accountLink_Click(object sender, EventArgs e)
+        {
             if (Session["email"] != null)
             {
-                Response.Redirect("/account/history");
+                Response.Redirect("/account", false);
             }
             else
             {
-                Response.Redirect("/login");
+                Response.Redirect("/login", false);
             }
+
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void btnSignUp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/sign-up", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/login", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("/home");
+
+            Response.Redirect("/home", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
-        protected void btn_Orderhistory_Click(object sender, EventArgs e)
+
+        protected async void btnAddToCart_Click(object sender, EventArgs e)
         {
-            if (Session["email"] != null)
+            string token = Session["Token"] as string;
+
+            if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("/account/history");
+                Response.Redirect("/login", false);
+                Context.ApplicationInstance.CompleteRequest();
+                return;
             }
-            else
+
+            try
             {
-                Response.Redirect("/login");
+                int productId;
+
+                if (!int.TryParse(hfProductId.Value, out productId))
+                {
+                    ShowAlert("Invalid product.");
+                    return;
+                }
+
+                int quantity;
+
+                if (!int.TryParse(txtQuantity.Text, out quantity))
+                {
+                    quantity = 1;
+                }
+
+                if (quantity <= 0)
+                {
+                    quantity = 1;
+                }
+
+                var cartItem = new
+                {
+                    productId = productId,
+                    quantity = quantity
+                };
+
+                string json = JsonConvert.SerializeObject(cartItem);
+
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", token);
+
+                    StringContent content = new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json"
+                    );
+
+                    HttpResponseMessage response =
+                        await client.PostAsync(
+                            "http://localhost:8080/api/cart/add",
+                            content
+                        );
+
+                    string responseText =
+                        await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Response.Redirect("/cart", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                    }
+                    else if (response.StatusCode ==
+                             System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        Session.Remove("Token");
+                        Session.Remove("email");
+
+                        Response.Redirect("/login", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                    }
+                    else
+                    {
+                        Response.Write(
+                            "Could not add to cart. Status: " +
+                            response.StatusCode +
+                            "<br/>" +
+                            responseText
+                        );
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(
+                    "Error adding to cart: " +
+                    ex.Message
+                );
             }
         }
 
+        protected void btnSubscribe_Click(object sender, EventArgs e)
+        {
+            // Newsletter subscription code can be added here.
+        }
 
-        //Helper Functions No Parameters
         private int GetCartItemCount()
         {
             if (Session["CartCount"] != null)
+            {
                 return Convert.ToInt32(Session["CartCount"]);
+            }
+
             return 0;
         }
 
         private int GetWishlistItemCount()
         {
             if (Session["WishlistCount"] != null)
+            {
                 return Convert.ToInt32(Session["WishlistCount"]);
+            }
+
             return 0;
         }
 
@@ -248,7 +215,6 @@ protected void accountLink_Click(object sender, EventArgs e)
             aboutMenu.Attributes["class"] = "";
             contactMenu.Attributes["class"] = "";
 
-            // Apply to the right one
             switch (current)
             {
                 case "home.aspx":
@@ -267,6 +233,22 @@ protected void accountLink_Click(object sender, EventArgs e)
                     contactMenu.Attributes["class"] = "active-menu";
                     break;
             }
+        }
+
+        private void ShowAlert(string message)
+        {
+            string safe = message
+                .Replace("\\", "\\\\")
+                .Replace("'", "\\'")
+                .Replace("\r", "")
+                .Replace("\n", "\\n");
+
+            Page.ClientScript.RegisterStartupScript(
+                this.GetType(),
+                "alert_" + Guid.NewGuid().ToString("N"),
+                "alert('" + safe + "');",
+                true
+            );
         }
     }
 }

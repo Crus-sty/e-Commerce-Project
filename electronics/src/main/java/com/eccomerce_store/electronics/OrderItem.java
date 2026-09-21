@@ -5,7 +5,7 @@ import jakarta.persistence.*;
  // This class represents one product inside an order
 @Entity
 
-@Table(name = "order_items")
+@Table(name = "orderitem")
 public class OrderItem
 {
     @Id
@@ -14,18 +14,18 @@ public class OrderItem
 
     @ManyToOne
 
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "OrderID", nullable = false)
     private Order order;
 
     @ManyToOne
 
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "productID", nullable = false)
     private Product product;
 
-    @Column(nullable = false)
+    @Column(name="Quantity",nullable = false)
     private int quantity;
 
-    @Column(nullable = false)
+    @Column(name="UnitPrice",nullable = false)
     private double price;
 
     public OrderItem()

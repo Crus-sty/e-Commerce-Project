@@ -2,8 +2,6 @@ package com.eccomerce_store.service;
 
 import com.eccomerce_store.dto.CheckoutRequest;
 import com.eccomerce_store.dto.CheckoutResponse;
-import com.eccomerce_store.dto.PaymentRequest;
-import com.eccomerce_store.dto.PaymentResponse;
 import com.eccomerce_store.electronics.Cart;
 import com.eccomerce_store.electronics.CartItem;
 import com.eccomerce_store.electronics.Order;
@@ -15,63 +13,96 @@ import com.eccomerce_store.repository.CartRepository;
 import com.eccomerce_store.repository.OrderRepository;
 import com.eccomerce_store.repository.ProductRepository;
 import com.eccomerce_store.repository.UserRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CheckoutService
 {
-    private final PaymentService paymentService;
-
     private final UserRepository userRepository;
-
     private final CartRepository cartRepository;
-
     private final CartItemRepository cartItemRepository;
-
     private final ProductRepository productRepository;
-
     private final OrderRepository orderRepository;
 
-    public CheckoutService(UserRepository userRepository, CartRepository cartRepository, CartItemRepository cartItemRepository, ProductRepository productRepository, OrderRepository orderRepository, PaymentService paymentService)
+    public CheckoutService(
+            UserRepository userRepository,
+            CartRepository cartRepository,
+            CartItemRepository cartItemRepository,
+            ProductRepository productRepository,
+            OrderRepository orderRepository)
     {
         this.userRepository = userRepository;
         this.cartRepository = cartRepository;
         this.cartItemRepository = cartItemRepository;
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
-        this.paymentService = paymentService;
     }
 
     @Transactional
-    public CheckoutResponse checkout(String username, CheckoutRequest request)
+    public CheckoutResponse checkout(
+            String username,
+            CheckoutRequest request)
     {
-        //Finds the logged-in user
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (request.getShippingAddress() == null || request.getShippingAddress().trim().isEmpty())
+        // FIND LOGGED-IN USER
+        User user = userRepository
+                .findByUsername(username)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+
+
+        //  VALIDATE SHIPPING ADDRESS
+
+
+        if (request == null)
+        {
+            throw new RuntimeException("Checkout information is required");
+        }
+
+        if (request.getShippingAddress() == null ||
+                request.getShippingAddress().trim().isEmpty())
         {
             throw new RuntimeException("Shipping address is required");
         }
 
-        if (request.getPaymentMethod() == null || request.getPaymentMethod().trim().isEmpty())
+
+        //  VALIDATE PAYMENT METHOD
+
+
+        if (request.getPaymentMethod() == null ||
+                request.getPaymentMethod().trim().isEmpty())
         {
             throw new RuntimeException("Payment method is required");
         }
 
-        //Finds the user's cart
-        Cart cart = cartRepository.findByUserId(user.getId()).orElseThrow(() -> new RuntimeException("Cart not found"));
 
-        //Gets cart items
-        var cartItems = cartItemRepository.findByCartId(cart.getId());
+
+        //  FIND USER CART
+
+
+        Cart cart = cartRepository
+                .findByUserId(user.getId())
+                .orElseThrow(() ->
+                        new RuntimeException("Cart not found"));
+
+
+
+        // GET CART ITEMS
+
+
+        var cartItems =
+                cartItemRepository.findByCartId(cart.getId());
 
         if (cartItems.isEmpty())
         {
             throw new RuntimeException("Your cart is empty");
         }
 
-        //Calculates the order total
-        double total = 0;
+        //  CALCULATE SUBTOTAL
+        double subtotal = 0;
 
         for (CartItem cartItem : cartItems)
         {
@@ -79,56 +110,59 @@ public class CheckoutService
 
             int quantity = cartItem.getQuantity();
 
-            // Checks stock before payment
+            // Check stock
             if (product.getStockQuantity() < quantity)
             {
-                throw new RuntimeException("Not enough stock for product: " + product.getName());
+                throw new RuntimeException(
+                        "Not enough stock for product: "
+                                + product.getName());
             }
 
-            double subtotal = product.getPrice() * quantity;
+            double itemSubtotal =
+                    product.getPrice() * quantity;
 
-            total += subtotal;
+            subtotal += itemSubtotal;
         }
 
-        //Creates PaymentRequest
-        PaymentRequest paymentRequest = new PaymentRequest();
+        // CALCULATE VAT
 
-        paymentRequest.setCardNumber(request.getCardNumber());
+        double vat = subtotal * 0.15;
 
-        paymentRequest.setExpiryMonth(request.getExpiryMonth());
+        // CALCULATE SHIPPING
+        double shipping = subtotal > 0 ? 300.0 : 0.0;
 
-        paymentRequest.setExpiryYear(request.getExpiryYear());
+        // CALCULATE FINAL TOTAL
+        double total = subtotal + vat + shipping;
 
-        paymentRequest.setCvv(request.getCvv());
 
-        PaymentResponse paymentResponse = paymentService.processPayment(paymentRequest, total);
 
-        //Checks whether payment succeeded
-        if (!paymentResponse.isSuccess())
-        {
-            throw new RuntimeException("Payment failed: " + paymentResponse.getMessage());
-        }
+        //  CREATE ORDER
 
-        //Creates the order
+
         Order order = new Order();
 
         order.setUser(user);
 
-        order.setShippingAddress(request.getShippingAddress());
+        order.setShippingAddress(
+                request.getShippingAddress());
 
-        order.setPaymentMethod(request.getPaymentMethod());
+        order.setPaymentMethod(
+                request.getPaymentMethod());
 
         order.setStatus("PLACED");
 
         order.setTotalAmount(total);
 
-        // Creates OrderItems
+
+
+        // CREATE ORDER ITEMS
+
+
         for (CartItem cartItem : cartItems)
         {
             Product product = cartItem.getProduct();
 
             int quantity = cartItem.getQuantity();
-
 
             OrderItem orderItem = new OrderItem();
 
@@ -140,19 +174,33 @@ public class CheckoutService
 
             orderItem.setPrice(product.getPrice());
 
-
             order.getOrderItems().add(orderItem);
 
-            // Reduce product stock
-            product.setStockQuantity(product.getStockQuantity() - quantity);
+
+            // Reduce stock
+            product.setStockQuantity(
+                    product.getStockQuantity() - quantity);
 
             productRepository.save(product);
         }
 
-        Order savedOrder = orderRepository.save(order);
+
+
+        //  SAVE ORDER
+
+        Order savedOrder =
+                orderRepository.save(order);
+        //  CLEAR CART
 
         cartItemRepository.deleteAll(cartItems);
-
-        return new CheckoutResponse(savedOrder.getId(), user.getId(), savedOrder.getTotalAmount(), savedOrder.getStatus(), savedOrder.getShippingAddress(), savedOrder.getPaymentMethod());
+        //  RETURN RESPONSE
+        return new CheckoutResponse(
+                savedOrder.getId(),
+                user.getId(),
+                savedOrder.getTotalAmount(),
+                savedOrder.getStatus(),
+                savedOrder.getShippingAddress(),
+                savedOrder.getPaymentMethod()
+        );
     }
 }

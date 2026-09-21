@@ -1,10 +1,6 @@
 ﻿using Game_Grid.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Game_Grid
@@ -27,34 +23,52 @@ namespace Game_Grid
 
         private void BindWishlist()
         {
+            // --- DEBUG ---
+            var token = Session["Token"] as string;
+            litMessage.Text = "<div style='color:orange'>DEBUG Token=" +
+                (string.IsNullOrEmpty(token) ? "(null or empty)" : "[" + token.Substring(0, Math.Min(20, token.Length)) + "...]") +
+                "</div>";
+            // --- END DEBUG ---
             try
             {
                 var items = ApiClient.Get<List<WishlistItemDto>>("/api/wishlist");
+
                 rptWishlist.DataSource = items ?? new List<WishlistItemDto>();
                 rptWishlist.DataBind();
             }
             catch (Exception ex)
             {
-                litMessage.Text = "<div class='alert alert-danger'>" + ex.Message + "</div>";
+                litMessage.Text =
+                    "<div class='alert alert-danger'>Could not load wishlist: "
+                    + Server.HtmlEncode(ex.Message) + "</div>";
             }
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
             var link = (LinkButton)sender;
-            long productId = long.Parse(link.CommandArgument.ToString());
+
+            if (!long.TryParse(link.CommandArgument, out long productId))
+            {
+                litMessage.Text =
+                    "<div class='alert alert-danger'>Invalid product id.</div>";
+                return;
+            }
 
             try
             {
                 ApiClient.Delete<string>($"/api/wishlist/remove/{productId}");
                 BindWishlist();
+
+                litMessage.Text =
+                    "<div class='alert alert-success'>Item removed from wishlist.</div>";
             }
             catch (Exception ex)
             {
-                litMessage.Text = "<div class='alert alert-danger'>" + ex.Message + "</div>";
+                litMessage.Text =
+                    "<div class='alert alert-danger'>Could not remove item: "
+                    + Server.HtmlEncode(ex.Message) + "</div>";
             }
         }
     }
-
-
 }
