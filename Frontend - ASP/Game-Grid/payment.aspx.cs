@@ -157,13 +157,12 @@ namespace Game_Grid
                         _subtotal * 0.15m;
 
                     _shipping =
-                        _subtotal > 0
+                        _subtotal < 1600
                             ? 300m
                             : 0m;
 
                     _total =
                         _subtotal +
-                        _vat +
                         _shipping;
 
 

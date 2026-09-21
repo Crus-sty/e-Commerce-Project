@@ -144,6 +144,12 @@ namespace Game_Grid
                 case "extras":
                     btn_extras.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
                     break;
+                case "console-gaming":
+                    btn_console.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
+                case "pc-gaming":
+                    btn_console.Attributes["class"] = "stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1";
+                    break;
             }
         }
     }

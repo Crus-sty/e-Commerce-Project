@@ -281,7 +281,7 @@
                                 <div class="size-208">
 
                                     <span class="stext-110 cl2">
-                                        VAT (15%):
+                                        VAT Included(15%):
                                     </span>
 
                                 </div>

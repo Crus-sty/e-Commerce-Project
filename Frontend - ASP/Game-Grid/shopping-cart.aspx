@@ -102,15 +102,31 @@
     ContentPlaceHolderID="ContentPlaceHolder1"
     runat="server">
 
-    <!-- Page Header -->
-    <section class="bg-img1 txt-center p-lr-15 p-t-100 p-b-40"
-        style="background-image: url('/images/bg-01.jpg');">
+    <!-- Breadcrumb -->
+<div class="container">
 
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+
+        <a href="/home"
+            class="stext-109 cl8 hov-cl1 trans-04">
+            Home
+
+            <i class="fa fa-angle-right m-l-9 m-r-10"
+                aria-hidden="true"></i>
+        </a>
+
+
+        <span class="stext-109 cl4">
+            Cart
+        </span>
+
+    </div>
+
+</div>
+    <!-- Page Header -->
         <h2 class="ltext-105 cl0 txt-center">
             Shopping Cart
         </h2>
-
-    </section>
 
 
     <!-- Shopping Cart -->
@@ -381,7 +397,7 @@
                         <div class="cart-summary-row">
 
                             <span class="stext-110 cl2">
-                                VAT (15%)
+                                VAT Included(15%)
                             </span>
 
                             <span class="stext-110 cl2">
