@@ -18,11 +18,11 @@
     totalRevenueChartOptions = {
       series: [
         {
-          name: '2021',
+          name: '2026',
           data: [18, 7, 15, 29, 18, 12, 9]
         },
         {
-          name: '2020',
+          name: '2025',
           data: [-13, -18, -9, -14, -5, -17, -15]
         }
       ],
@@ -427,7 +427,7 @@
         width: 130,
         type: 'donut'
       },
-      labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
+      labels: ['Diaplays', 'Gaming', 'Cables & Adapters', 'Headphones'],
       series: [85, 15, 50, 50],
       colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success],
       stroke: {

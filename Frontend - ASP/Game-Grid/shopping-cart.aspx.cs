@@ -104,17 +104,17 @@ namespace Game_Grid
             // Shipping
             decimal shipping = 0;
 
-            if (subtotal > 0)
+            if (subtotal < 1600 && subtotal > 0)
             {
                 shipping = 300;
             }
 
-            decimal total = subtotal + vat + shipping;
+            decimal total = subtotal + shipping;
 
-            lblSubtotal.Text = "R " + subtotal.ToString("F2");
-            lblVat.Text = "R " + vat.ToString("F2");
-            lblShipping.Text = "R " + shipping.ToString("F2");
-            lblTotal.Text = "R " + total.ToString("F2");
+            lblSubtotal.Text = subtotal.ToString("F2");
+            lblVat.Text = vat.ToString("F2");
+            lblShipping.Text = shipping.ToString("F2");
+            lblTotal.Text = total.ToString("F2");
         }
 
 
