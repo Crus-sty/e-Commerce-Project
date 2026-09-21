@@ -653,23 +653,29 @@
             $(document).ready(function () {
 
             
-                 // Populate Quick View modal on click
-              
-                $('.js-show-modal1').on('click', function () {
+                // Populate Quick View modal on click
+                $('.js-show-modal1').on('click', function(e) {
+
+                    e.preventDefault();
 
                     var $link = $(this);
 
-                    // Read data attributes from the clicked link
-                    var id = $link.data('id');
-                    var name = $link.data('name');
-                    var price = $link.data('price');
-                    var description = $link.data('description');
+                    var id = $link.attr('data-id');
+                    var name = $link.attr('data-name');
+                    var price = $link.attr('data-price');
+                    var description = $link.attr('data-description');
 
-                    var image1 = $link.data('imageurl1');
-                    var image2 = $link.data('imageurl2');
-                    var image3 = $link.data('imageurl3');
+                    var image1 = $link.attr('data-imageurl1');
+                    var image2 = $link.attr('data-imageurl2');
+                    var image3 = $link.attr('data-imageurl3');
 
-                    // Fill text fields
+                    // Store product ID
+                    $('#hfProductId').val(id);
+
+                    // Reset quantity
+                    $('#txtQuantity').val(1);
+
+                    // Fill modal
                     $('#modalProductName').text(name);
                     $('#modalProductPrice').text('R ' + price);
                     $('#modalProductDescription').text(description);
@@ -678,13 +684,6 @@
                     SetImage('#modalProductImage2', '#modalProductImage2-div', image2, name);
                     SetImage('#modalProductImage3', '#modalProductImage3-div', image3, name);
 
-                    //Store the selected product ID in the hidden field
-                    $('#hfProductId').val(id);
-
-                    //Reset quantity to 1
-                    $('#txtQuantity').val(1);
-
-                    // slick slider
                     var $slick3 = $('.js-modal1 .slick3');
 
                     if ($slick3.hasClass('slick-initialized')) {
@@ -704,14 +703,13 @@
                         dots: true,
                         appendDots: $('.js-modal1 .wrap-slick3-dots'),
                         dotsClass: 'slick3-dots',
-                        customPaging: function (slick, index) {
+                        customPaging: function(slick, index) {
                             var thumb = $(slick.$slides[index]).find('img').attr('src');
                             return '<img src="' + thumb + '"/><div class="slick3-dot-overlay"></div>';
                         }
                     });
 
                 });
-
 
              
                  // Helper — sets the URL in three places

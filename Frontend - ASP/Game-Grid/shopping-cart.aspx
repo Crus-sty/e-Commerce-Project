@@ -1,137 +1,465 @@
-﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="shopping-cart.aspx.cs" 
-    Inherits="Game_Grid.shopping_cart" Async="true" %> 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="Shopping Cart"
+    Language="C#"
+    MasterPageFile="~/Main-2.Master"
+    AutoEventWireup="true"
+    CodeBehind="shopping-cart.aspx.cs"
+    Inherits="Game_Grid.shopping_cart"
+    Async="true" %>
+
+<asp:Content ID="HeadContent"
+    ContentPlaceHolderID="head"
+    runat="server">
+
+    <style>
+        .cart-product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .cart-quantity-input {
+            width: 70px;
+            height: 40px;
+            border: 1px solid #e6e6e6;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .cart-action-button {
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            margin: 3px;
+            color: white;
+        }
+
+        .cart-update-button {
+            background-color: #717fe0;
+        }
+
+        .cart-remove-button {
+            background-color: #e65540;
+        }
+
+        .cart-summary-box {
+            border: 1px solid #e6e6e6;
+            padding: 30px;
+        }
+
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .cart-summary-total {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-coupon-input {
+            width: 100%;
+            height: 45px;
+            border: 1px solid #e6e6e6;
+            padding: 10px;
+        }
+
+        .cart-coupon-button {
+            height: 45px;
+            background-color: #222222;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        .cart-message {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .cart-table-wrapper {
+                overflow-x: auto;
+            }
+
+            .cart-table {
+                min-width: 800px;
+            }
+        }
+    </style>
+
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
-    <!-- ========================================================= --> <!-- SHOPPING CART --> <!-- ========================================================= --> 
-    <div class="bg0 p-t-75 p-b-85"> <div class="container"> <div class="row">
-        <!-- ================================================= --> <!-- CART ITEMS -->
-    
-        <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50"> 
-            <div class="m-l-25 m-r--38 m-lr-0-xl"> 
-                <div class="wrap-table-shopping-cart"> 
-                    <table class="table-shopping-cart">
-                        <!-- TABLE HEADER -->
-                        <tr class="table_head"> 
-                            <th class="column-1"> Product </th> 
-                            <th class="column-2"> </th> 
-                            <th class="column-3"> Price </th>
-                            <th class="column-4"> Quantity </th> 
-                            <th class="column-5"> Total </th> 
 
-                        </tr> 
-                        <!-- ================================================= --> 
-                        <!-- CART REPEATER --> <!-- ================================================= --> 
-                        <asp:Repeater ID="rptCart" runat="server"> <ItemTemplate> <tr class="table_row"> 
-                            <!-- PRODUCT IMAGE -->
-                            <td class="column-1"> <div class="how-itemcart1">
-                                <img src='<%# Eval("ProductImage") %>' alt="Product Image" style="max-width: 80px; max-height: 80px;" /> 
 
-                                                  </div> 
+<asp:Content ID="MainContent"
+    ContentPlaceHolderID="ContentPlaceHolder1"
+    runat="server">
 
-                            </td> <!-- PRODUCT NAME --> <td class="column-2"> <%# Eval("ProductName") %> </td>
-                            <!-- PRODUCT PRICE --> <td class="column-3"> R <%# Eval("ProductPrice", "{0:F2}") %> </td> 
-                            <!-- QUANTITY --> <td class="column-4"> <div class="wrap-num-product flex-w m-l-auto m-r-0"> 
-                                <!-- QUANTITY INPUT --> 
-                                <input class="mtext-104 cl3 txt-center num-product" type="number" min="0" name='quantity_<%# Eval("ProductID") %>' value='<%# Eval("Quantity") %>' /> 
+    <!-- Page Header -->
+    <section class="bg-img1 txt-center p-lr-15 p-t-100 p-b-40"
+        style="background-image: url('/images/bg-01.jpg');">
 
-                                                                    </div> <br /> <!-- UPDATE BUTTON --> 
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("ProductID") %>' OnClick="btnUpdate_Click" /> 
-                                <br /> <br /> <!-- REMOVE BUTTON --> 
-                                <asp:Button ID="btnRemove" runat="server" Text="Remove" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("ProductID") %>' OnClick="btnRemove_Click" /> </td>
-                            <!-- PRODUCT TOTAL --> 
-                            <td class="column-5"> R <%# Eval("Total", "{0:F2}") %> </td>
-                     </tr> </ItemTemplate> </asp:Repeater> </table> </div> 
-                <!-- ================================================= -->
-                <!-- COUPON / UPDATE CART AREA --> 
-                <!-- ================================================= --> 
-                <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm"> <!-- COUPON --> 
-                    <div class="flex-w flex-m m-r-20 m-tb-5"> 
-                        <asp:TextBox runat="server" cssclass="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code" id="txtCouponCode" /> 
-                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" OnClick="btnApplyCoupon_Click"> Apply coupon </div>
-                        <asp:Label ID="lblCouponMessage" runat="server" />
-                    </div> 
+        <h2 class="ltext-105 cl0 txt-center">
+            Shopping Cart
+        </h2>
 
-                </div> 
+    </section>
 
-            </div> 
 
-        </div> 
-    
-        <!-- CART TOTALS -->
-        <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50"> 
-            <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-30 m-r-15 m-lr-0-xl p-lr-15-sm"> 
-                <!-- CART TOTALS TITLE --> <h4 class="mtext-109 cl2 p-b-30"> Cart Totals </h4>
-               <!-- SUBTOTAL -->
-            
-                <div class="flex-w flex-t bor12 p-b-13"> 
-                    <div class="size-208"> 
-                        <span class="stext-110 cl2"> Subtotal: </span>
+    <!-- Shopping Cart -->
+    <section class="bg0 p-t-75 p-b-85">
 
-                    </div> 
-                    <div class="size-209"> 
-                        <span class="mtext-110 cl2"> 
-                            <asp:Label ID="lblSubtotal" runat="server" Text="R 0.00">
+        <div class="container">
 
-                            </asp:Label> </span> 
+            <!-- Message -->
+            <asp:Label
+                ID="lblMessage"
+                runat="server"
+                CssClass="cart-message">
+            </asp:Label>
 
-                    </div> 
-               
-                    <!-- VAT --> 
-                    <div class="size-208">
-                        <span class="stext-110 cl2"> VAT Included: (15%) 
 
-                        </span>
+            <div class="row">
 
-                    </div> 
-                    <div class="size-209"> 
-                        <span class="mtext-110 cl2"> 
-                            <asp:Label ID="lblVat" runat="server" Text="R 0.00">
+                <!-- Cart Items -->
+                <div class="col-lg-8 m-lr-auto m-b-50">
 
-                            </asp:Label> 
+                    <div class="cart-table-wrapper">
 
-                        </span> 
+                        <table class="table-shopping-cart cart-table">
 
-                    </div> 
-                    <!-- SHIPPING --> 
-                    <div class="size-208"> 
-                        <span class="stext-110 cl2"> Shipping: </span>
+                            <thead>
+                                <tr class="table_head">
 
-                    </div> 
-                    <div class="size-209"> 
-                        <span class="mtext-110 cl2"> 
-                            <asp:Label ID="lblShipping" runat="server" Text="R 300.00"> 
+                                    <th class="column-1">
+                                        Product
+                                    </th>
 
-                            </asp:Label>
+                                    <th class="column-2">
+                                        Name
+                                    </th>
 
-                        </span> 
+                                    <th class="column-3">
+                                        Price
+                                    </th>
 
-                    </div> 
+                                    <th class="column-4">
+                                        Quantity
+                                    </th>
 
-                </div> <!-- FINAL TOTAL --> 
-                <div class="flex-w flex-t p-t-27 p-b-33">
-                    <div class="size-208"> <span class="mtext-101 cl2"> Total: </span> 
+                                    <th class="column-5">
+                                        Total
+                                    </th>
 
-                    </div> 
-                    <div class="size-209 p-t-1"> 
-                        <span class="mtext-110 cl2">
-                            <asp:Label ID="lblTotal" runat="server" Text="R 0.00">
+                                    <th class="column-6">
+                                        Actions
+                                    </th>
 
-                            </asp:Label> 
+                                </tr>
+                            </thead>
 
-                        </span> 
+
+                            <tbody>
+
+                                <asp:Repeater
+                                    ID="rptCart"
+                                    runat="server">
+
+                                    <ItemTemplate>
+
+                                        <tr class="table_row">
+
+                                            <!-- Product Image -->
+                                            <td class="column-1">
+
+                                                <div class="how-itemcart1">
+
+                                                    <img
+                                                        src='<%# Eval("ProductImage") %>'
+                                                        alt='<%# Eval("ProductName") %>'
+                                                        class="cart-product-image"
+                                                        onerror="this.src='/images/no-image.png';" />
+
+                                                </div>
+
+                                            </td>
+
+
+                                            <!-- Product Name -->
+                                            <td class="column-2">
+
+                                                <span class="stext-105 cl2">
+
+                                                    <%# Eval("ProductName") %>
+
+                                                </span>
+
+                                            </td>
+
+
+                                            <!-- Product Price -->
+                                            <td class="column-3">
+
+                                                <span class="stext-105 cl2">
+
+                                                    R <%# Eval("ProductPrice", "{0:N2}") %>
+
+                                                </span>
+
+                                            </td>
+
+
+                                            <!-- Quantity -->
+                                            <td class="column-4">
+
+                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
+
+                                                    <input
+                                                        type="number"
+                                                        name='<%# "quantity_" + Eval("ProductID") %>'
+                                                        value='<%# Eval("Quantity") %>'
+                                                        min="1"
+                                                        class="mtext-104 cl3 txt-center num-product cart-quantity-input" />
+
+                                                </div>
+
+                                            </td>
+
+
+                                            <!-- Item Total -->
+                                            <td class="column-5">
+
+                                                <span class="stext-105 cl2">
+
+                                                    R <%# Eval("Total", "{0:N2}") %>
+
+                                                </span>
+
+                                            </td>
+
+
+                                            <!-- Actions -->
+                                            <td class="column-6">
+
+                                                <asp:Button
+                                                    ID="btnUpdate"
+                                                    runat="server"
+                                                    Text="Update"
+                                                    CssClass="cart-action-button cart-update-button"
+                                                    CommandArgument='<%# Eval("ProductID") %>'
+                                                    OnClick="btnUpdate_Click" />
+
+                                                <asp:Button
+                                                    ID="btnRemove"
+                                                    runat="server"
+                                                    Text="Remove"
+                                                    CssClass="cart-action-button cart-remove-button"
+                                                    CommandArgument='<%# Eval("ProductID") %>'
+                                                    OnClick="btnRemove_Click"
+                                                    OnClientClick="return confirm('Remove this product from your cart?');" />
+
+                                            </td>
+
+                                        </tr>
+
+                                    </ItemTemplate>
+
+                                </asp:Repeater>
+
+                            </tbody>
+
+                        </table>
 
                     </div>
 
-                </div> <!-- CHECKOUT BUTTON --> 
-                <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClick="btnCheckout_Click"></asp:Button>
+
+                    <!-- Empty Cart -->
+                    <asp:Panel
+                        ID="pnlEmptyCart"
+                        runat="server"
+                        Visible="false"
+                        CssClass="empty-cart-message">
+
+                        <h4 class="mtext-109 cl2 p-b-20">
+                            Your cart is empty
+                        </h4>
+
+                        <a
+                            href="/shop"
+                            class="flex-c-m stext-101 cl0 size-118 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+
+                            Continue Shopping
+
+                        </a>
+
+                    </asp:Panel>
+
+
+                    <!-- Continue Shopping -->
+                    <div class="flex-w flex-sb-m p-t-18">
+
+                        <a
+                            href="/shop"
+                            class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04">
+
+                            Continue Shopping
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Cart Summary -->
+                <div class="col-lg-4 m-lr-auto m-b-50">
+
+                    <div class="cart-summary-box">
+
+                        <h4 class="mtext-109 cl2 p-b-30">
+                            Cart Totals
+                        </h4>
+
+
+                        <!-- Coupon -->
+                        <div class="p-b-30">
+
+                            <h5 class="stext-110 cl2 p-b-10">
+                                Coupon Code
+                            </h5>
+
+                            <asp:TextBox
+                                ID="txtCoupon"
+                                runat="server"
+                                CssClass="cart-coupon-input"
+                                placeholder="Enter coupon code">
+                            </asp:TextBox>
+
+                            <div class="p-t-10">
+
+                                <asp:Button
+                                    ID="btnApplyCoupon"
+                                    runat="server"
+                                    Text="Apply Coupon"
+                                    CssClass="cart-coupon-button"
+                                    OnClick="btnApplyCoupon_Click" />
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Subtotal -->
+                        <div class="cart-summary-row">
+
+                            <span class="stext-110 cl2">
+                                Subtotal
+                            </span>
+
+                            <span class="stext-110 cl2">
+
+                                R
+                                <asp:Label
+                                    ID="lblSubtotal"
+                                    runat="server"
+                                    Text="0.00">
+                                </asp:Label>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- VAT -->
+                        <div class="cart-summary-row">
+
+                            <span class="stext-110 cl2">
+                                VAT (15%)
+                            </span>
+
+                            <span class="stext-110 cl2">
+
+                                R
+                                <asp:Label
+                                    ID="lblVat"
+                                    runat="server"
+                                    Text="0.00">
+                                </asp:Label>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Shipping -->
+                        <div class="cart-summary-row">
+
+                            <span class="stext-110 cl2">
+                                Shipping
+                            </span>
+
+                            <span class="stext-110 cl2">
+
+                                R
+                                <asp:Label
+                                    ID="lblShipping"
+                                    runat="server"
+                                    Text="0.00">
+                                </asp:Label>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Total -->
+                        <div class="cart-summary-row cart-summary-total">
+
+                            <span class="stext-110 cl2">
+                                Total
+                            </span>
+
+                            <span class="stext-110 cl2">
+
+                                R
+                                <asp:Label
+                                    ID="lblTotal"
+                                    runat="server"
+                                    Text="0.00">
+                                </asp:Label>
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Checkout -->
+                        <div class="p-t-30">
+
+                            <asp:Button
+                                ID="btnCheckout"
+                                runat="server"
+                                Text="Proceed to Checkout"
+                                CssClass="flex-c-m stext-101 cl0 size-101 bg3 bor1 hov-btn3 p-lr-15 trans-04 w-full"
+                                OnClick="btnCheckout_Click" />
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
-         </div>
-               </div> 
 
-    </div> 
+    </section>
 
 </asp:Content>

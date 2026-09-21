@@ -1,390 +1,368 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 namespace Game_Grid
 {
     public partial class shopping_cart : System.Web.UI.Page
     {
-        // Cart API
         private const string API_URL = "http://localhost:8080/api/cart";
-
 
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Load the cart
-                //await LoadCart();
+                await LoadCart();
             }
         }
 
-        protected void btnCheckout_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/cart/checkout");
-        }
-
-        protected void btnApplyCoupon_Click(object sender, EventArgs e)
-        {
-            string couponCode = txtCouponCode.Text.Trim();
-            if (string.IsNullOrEmpty(couponCode))
-            {
-                lblCouponMessage.ForeColor = System.Drawing.Color.Red;
-                lblCouponMessage.Text = "Please enter a coupon code.";
-                return;
-            }
-            else
-            {
-
-            }
-        }
-        /*
         // LOAD CART
+  
         private async Task LoadCart()
         {
+            string token = Session["Token"] as string;
+
+            // User is not logged in
+            if (string.IsNullOrEmpty(token))
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
             try
             {
-                // Get JWT token from session
-                string token = Session["Token"] as string;
-
-                // If user is nott logged in
-                if (string.IsNullOrEmpty(token))
-                {
-                    Response.Redirect("login.aspx");
-                    return;
-                }
-
-
                 using (HttpClient client = new HttpClient())
                 {
-                    // Send JWT token 
                     client.DefaultRequestHeaders.Authorization =
                         new AuthenticationHeaderValue("Bearer", token);
 
-
-                    // Call Spring Boot
                     HttpResponseMessage response =
                         await client.GetAsync(API_URL);
 
-
-                    // Check response
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        Response.Write(
-                            "<script>alert('Could not load cart. Status: "
-                            + response.StatusCode
-                            + "');</script>");
-
-                        return;
-                    }
-
-
-                    // Read JSON response
-                    string json =
-                        await response.Content.ReadAsStringAsync();
-
-
-                    // Convert JSON into CartResponse object
-                    CartResponse cart = JsonConvert.DeserializeObject<CartResponse>(json);
-
-
-
-                    if (cart != null)
-                    {
-                        // Display cart items
-                        rptCart.DataSource = cart.items;
-                        rptCart.DataBind();
-
-
-                        // Subtotal
-                        lblSubtotal.Text = "R " + cart.total.ToString("F2");
-
-
-
-                        // VAT
-                        double vat = cart.total * 0.15;
-
-                        lblVat.Text = "R " + vat.ToString("F2");
-
-
-
-                        // Shipping
-                        double shipping = 300.00;
-
-                        lblShipping.Text = "R " + shipping.ToString("F2");
-
-
-
-                        // Final total
-                        double finalTotal = cart.total + shipping;
-
-
-                        lblTotal.Text = "R " + finalTotal.ToString("F2");
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write(
-                    "<script>alert('Error loading cart: "
-                    + ex.Message.Replace("'", "")
-                    + "');</script>");
-            }
-        }*/
-        protected async void btnRemove_Click(object sender, EventArgs e)
-        {
-            /*try
-            {
-                // Get JWT token
-                string token = Session["Token"] as string;
-
-                // Check if user is logged in
-                if (string.IsNullOrEmpty(token))
-                {
-                    Response.Redirect("login.aspx");
-                    return;
-                }
-
-                // Get the Product ID from the Remove button
-                string productId =
-                    ((System.Web.UI.WebControls.Button)sender).CommandArgument;
-
-                using (HttpClient client = new HttpClient())
-                {
-                    // Send JWT token
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", token);
-
-                    // Call Spring Boot DELETE endpoint
-                    HttpResponseMessage response =
-                        await client.DeleteAsync(
-                            API_URL + "/remove/" + productId);
-
-                    // If successful
                     if (response.IsSuccessStatusCode)
                     {
-                        // Reload cart
-                        await LoadCart();
+                        string json = await response.Content.ReadAsStringAsync();
+
+                        CartResponse cart =
+                            JsonConvert.DeserializeObject<CartResponse>(json);
+
+                        if (cart != null && cart.items != null)
+                        {
+                            rptCart.DataSource = cart.items;
+                            rptCart.DataBind();
+
+                            CalculateTotals(cart.items);
+                        }
+                        else
+                        {
+                            rptCart.DataSource = new List<CartItemDto>();
+                            rptCart.DataBind();
+
+                            CalculateTotals(new List<CartItemDto>());
+                        }
+                    }
+                    else if (response.StatusCode ==
+                             System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        Session.Clear();
+                        Response.Redirect("login.aspx");
                     }
                     else
                     {
-                        string message =
-                            await response.Content.ReadAsStringAsync();
-
-                        Response.Write(
-                            "<script>alert('"
-                            + message.Replace("'", "")
-                            + "');</script>");
+                        lblMessage.Text =
+                            "Could not load cart. Status: " +
+                            response.StatusCode;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(
-                    "<script>alert('Error removing product: "
-                    + ex.Message.Replace("'", "")
-                    + "');</script>");
-            }*/
+                lblMessage.Text =
+                    "Error loading cart: " + ex.Message;
+            }
         }
 
-        // UPDATE QUANTITY
+        
+        // CALCULATE TOTALS
+     
+        private void CalculateTotals(List<CartItemDto> items)
+        {
+            decimal subtotal = 0;
+
+            foreach (CartItemDto item in items)
+            {
+                subtotal += item.Total;
+            }
+
+            // VAT = 15%
+            decimal vat = subtotal * 0.15m;
+
+            // Shipping
+            decimal shipping = 0;
+
+            if (subtotal > 0)
+            {
+                shipping = 300;
+            }
+
+            decimal total = subtotal + vat + shipping;
+
+            lblSubtotal.Text = "R " + subtotal.ToString("F2");
+            lblVat.Text = "R " + vat.ToString("F2");
+            lblShipping.Text = "R " + shipping.ToString("F2");
+            lblTotal.Text = "R " + total.ToString("F2");
+        }
+
+
+        // UPDATE CART ITEM
+       
         protected async void btnUpdate_Click(object sender, EventArgs e)
         {
-            /*try
+            string token = Session["Token"] as string;
+
+            if (string.IsNullOrEmpty(token))
             {
-                // Get JWT token
-                string token = Session["Token"] as string;
+                Response.Redirect("login.aspx");
+                return;
+            }
+
+            try
+            {
+                // Get product ID from the button that was clicked
+                System.Web.UI.WebControls.Button button = (System.Web.UI.WebControls.Button)sender;
 
 
-                // Check login
-                if (string.IsNullOrEmpty(token))
-                {
-                    Response.Redirect("login.aspx");
-                    return;
-                }
+                int productId = Convert.ToInt32(button.CommandArgument);
 
 
-                // Get product ID from button
-                string productId =
-                    ((System.Web.UI.WebControls.Button)sender)
-                    .CommandArgument;
-
-
-                // Get quantity from the input box
-                string quantityText = Request.Form["quantity_" + productId];
-
+                // Get quantity from the textbox
+                string quantityValue = Request.Form["quantity_" + productId];
 
 
                 int quantity;
 
-
-                // Check quantity
-                if (!int.TryParse(quantityText, out quantity))
+                if (!int.TryParse(quantityValue, out quantity))
                 {
-                    Response.Write(
-                        "<script>alert('Invalid quantity.');</script>");
+                    lblMessage.Text = "Please enter a valid quantity.";
+                    return;
+                }
+
+                if (quantity <= 0)
+                {
+                    lblMessage.Text = "Quantity must be greater than 0.";
 
                     return;
                 }
 
-
                 using (HttpClient client = new HttpClient())
                 {
-                    // Send JWT
-                    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 
-                    // Create request body
-                    var requestObject = new
-                    {
-                        quantity = quantity
-                    };
-
-
-                    // Convert request to JSON
-                    string json = JsonConvert.SerializeObject(requestObject);
-
-
-
+                   
+                
                     StringContent content =
                         new StringContent(
-                            json,
+                            quantity.ToString(),
                             Encoding.UTF8,
-                            "application/json");
+                            "application/json"
+                        );
 
+                    HttpResponseMessage response =
+                        await client.PutAsync(
+                            API_URL + "/update/" + productId,
+                            content
+                        );
 
-                    // Call Spring Boot
-                    HttpResponseMessage response = await client.PutAsync(API_URL + "/update/" + productId, content
-                       );
-
-
-
-
-                    // Check result
                     if (response.IsSuccessStatusCode)
                     {
-                        // Reload cart
+                        lblMessage.Text =
+                            "Cart updated successfully.";
+
                         await LoadCart();
                     }
                     else
                     {
-                        string message =
+                        string error =
                             await response.Content.ReadAsStringAsync();
 
-
-                        Response.Write(
-                            "<script>alert('"
-                            + message.Replace("'", "")
-                            + "');</script>");
+                        lblMessage.Text =
+                            "Could not update cart. " +
+                            "Status: " + response.StatusCode +
+                            " " + error;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(
-                    "<script>alert('Error updating cart: "
-                    + ex.Message.Replace("'", "")
-                    + "');</script>");
+                lblMessage.Text = "Error updating cart: " + ex.Message;
+
             }
-        }*/
+        }
+
+        // REMOVE CART ITEM
+
+        protected async void btnRemove_Click(object sender, EventArgs e)
+        {
+            lblMessage.Text = "REMOVE BUTTON CLICKED";
+
+            string token = Session["Token"] as string;
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
+            try
+            {
+                System.Web.UI.WebControls.Button button =
+                    (System.Web.UI.WebControls.Button)sender;
+
+                // Get product ID
+                int productId;
+
+                if (!int.TryParse(button.CommandArgument, out productId))
+                {
+                    lblMessage.Text =
+                        "Invalid product ID: [" +
+                        button.CommandArgument +
+                        "]";
+
+                    return;
+                }
+
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", token);
+
+                    string url = API_URL + "/remove/" + productId;
+
+                    HttpResponseMessage response =
+                        await client.DeleteAsync(url);
+
+                    string responseText =
+                        await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        lblMessage.Text = "Item removed successfully.";
+
+                        await LoadCart();
+                    }
+                    else
+                    {
+                        lblMessage.Text =
+                            "Remove failed. " +
+                            "Status: " + response.StatusCode +
+                            "<br/>Response: " + responseText;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text =
+                    "Error removing item: " +
+                    ex.Message;
+            }
+        }
+
+
+        // APPLY COUPON
+
+        protected void btnApplyCoupon_Click(object sender, EventArgs e)
+        {
+            string coupon = txtCoupon.Text.Trim();
+
+            if (string.IsNullOrEmpty(coupon))
+            {
+                lblMessage.Text = "Please enter a coupon code.";
+                return;
+            }
+
+            // Coupon functionality 
+       
+            lblMessage.Text = "Coupon functionality is not available yet.";
+        }
+
+
+        // CHECKOUT
+
+        protected void btnCheckout_Click(object sender, EventArgs e)
+        {
+            string token = Session["Token"] as string;
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
+            Response.Redirect("checkout.aspx");
+        }
     }
 
     // CART RESPONSE
 
-    /*public class CartResponse
+    public class CartResponse
     {
         public List<CartItemDto> items { get; set; }
-
-        public double total { get; set; }
     }
 
     // CART ITEM
- 
 
     public class CartItemDto
     {
-        public long cartItemId { get; set; }
-
-        public long productId { get; set; }
+        public int productId { get; set; }
 
         public string productName { get; set; }
 
         public string productImage { get; set; }
 
-        public double price { get; set; }
+        // Must match "price" from Spring Boot
+        public decimal price { get; set; }
 
         public int quantity { get; set; }
 
-        public double subtotal { get; set; }
+        // Must match "subtotal" from Spring Boot
+        public decimal subtotal { get; set; }
 
-        // Properties used by the ASPX Repeater
 
-        public long ProductID
+        // Properties used by the ASPX page
+
+        public int ProductID
         {
-            get
-            {
-                return productId;
-            }
+            get { return productId; }
         }
-
 
         public string ProductName
         {
-            get
-            {
-                return productName;
-            }
+            get { return productName; }
         }
-
 
         public string ProductImage
         {
-            get
-            {
-                return productImage;
-            }
+            get { return productImage; }
         }
 
-
-        public double ProductPrice
+        public decimal ProductPrice
         {
-            get
-            {
-                return price;
-            }
+            get { return price; }
         }
-
 
         public int Quantity
         {
-            get
-            {
-                return quantity;
-            }
+            get { return quantity; }
         }
 
-
-        public double Total
+        public decimal Total
         {
-            get
-            {
-                return subtotal;
-            }
-        }*/
+            get { return subtotal; }
+        }
     }
 }
-
-
-        
-
-    

@@ -259,7 +259,7 @@ public class CartController {
 
     // REMOVE PRODUCT
     // DELETE /api/cart/remove/{productId}
-    @DeleteMapping("/remove/{productId}")
+   @DeleteMapping("/remove/{productId}")
     public ResponseEntity<?> removeFromCart(
             @PathVariable Long productId,
             Authentication authentication) {
@@ -297,4 +297,5 @@ public class CartController {
 
         return ResponseEntity.ok("Product removed from cart.");
     }
+
 }
