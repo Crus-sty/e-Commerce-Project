@@ -89,8 +89,8 @@ namespace Game_Grid
 
                     _subtotal = items.Sum(i => i.Total);
                     _vat = _subtotal * 0.15m;
-                    _shipping = _subtotal > 0 ? 300m : 0m;
-                    _total = _subtotal + _vat + _shipping;
+                    _shipping = _subtotal < 1600 && _subtotal > 0 ? 300m : 0m;
+                    _total = _subtotal + _shipping;
 
                     lblSubtotal.Text = _subtotal.ToString("F2");
                     lblVat.Text = _vat.ToString("F2");
