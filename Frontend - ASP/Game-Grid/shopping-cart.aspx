@@ -452,12 +452,36 @@
 
                         </div>
 
-                    </div>
+                                    </asp:Label>
 
                 </div>
 
-            </div>
+                            </div>
 
+                        </div>
+                        <div class="flex-w flex-t p-t-27 p-b-33">
+                            <div class="size-208">
+                                <span class="mtext-101 cl2">Total: </span>
+
+                            </div>
+                            <div class="size-209 p-t-1">
+                                <span class="mtext-110 cl2">
+                                    <asp:Label ID="lblTotal" runat="server" Text="R 0.00">
+
+                                    </asp:Label>
+
+                                </span>
+
+                            </div>
+
+                        </div>
+                        <!-- CHECKOUT BUTTON -->
+                        <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" CssClass="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClick="btnCheckout_Click"></asp:Button>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </section>

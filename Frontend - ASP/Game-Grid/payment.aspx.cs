@@ -71,6 +71,7 @@ namespace Game_Grid
 
             lblMessage.ForeColor = System.Drawing.Color.Green;
             lblMessage.Text = "Payment successful!";
+            Response.Redirect("/account/history");
         }
     }
 }

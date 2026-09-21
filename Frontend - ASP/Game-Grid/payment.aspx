@@ -1,8 +1,29 @@
-﻿<%@ Page Title="Payment" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="payment.aspx.cs" Inherits="Game_Grid.payment" %>
+﻿<%@ Page Title="Payment" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="payment.aspx.cs" Inherits="Game_Grid.payment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- breadcrumb -->
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="/home" class="stext-109 cl8 hov-cl1 trans-04">Home
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <a href="/cart" class="stext-109 cl8 hov-cl1 trans-04">Cart
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <a href="/cart/checkout" class="stext-109 cl8 hov-cl1 trans-04">Checkout
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">Payment
+            </span>
+        </div>
+    </div>
+
 
     <div class="bg0 p-t-75 p-b-85">
         <div class="container">
@@ -118,12 +139,10 @@
                     </div>
 
                     <div class="row">
-                    <div class="m-t-20">
-                        <asp:Button runat="server" Text="Pay Now" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" OnClick="btnPay_Click">
-                            
-                        </asp:Button>
-                    </div>
+                        <div class="m-t-20">
+                            <asp:Button runat="server" Text="Pay Now" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 pointer" OnClick="btnPay_Click"></asp:Button>
                         </div>
+                    </div>
                 </div>
 
 

@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-                                <a href="shop.aspx" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
+                                <a href="/shop/monitors-and-displays" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
                                 </a>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-                                <a href="shop.aspx" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
+                                <a href="/shop/console-gaming" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
                                 </a>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-                                <a href="shop.aspx" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
+                                <a href="/shop/console-gaming" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop Now
                                 </a>
                             </div>
                         </div>
@@ -183,17 +183,13 @@
                                         data-name='<%# Eval("name") %>'
                                         data-price='<%# Eval("price", "{0:N2}") %>'
                                         data-imageurl1='<%# Eval("imageUrl") %>'
-                                        data-imageurl2='<%# Eval("imageUrl") %>'
-                                        data-imageurl3='<%# Eval("imageUrl") %>'
+                                        data-imageurl2='<%# Eval("imageUrl2") %>'
+                                        data-imageurl3='<%# Eval("imageUrl3") %>'
                                         data-description='<%# Eval("description") %>'>Quick View
 
                                     </a>
 
                                 </div>
-                                <!-- 
-                                        data-imageurl2='< Eval("imageUrl2") %>'
-                                        data-imageurl3='< Eval("imageUrl3") %>' -->
-                                <!-- Product Information -->
                                 <div class="block2-txt flex-w flex-t p-t-14">
 
                                     <div class="block2-txt-child1 flex-col-l">

@@ -1,32 +1,48 @@
 ﻿<%@ Page Title="Checkout" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" CodeBehind="checkout.aspx.cs" Inherits="Game_Grid.checkout" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
-        <div class="bg0 p-t-75 p-b-85">
-  		<div class="container">
-  			<div class="row">
+    <!-- breadcrumb -->
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="/home" class="stext-109 cl8 hov-cl1 trans-04">Home
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
 
-                  
-                    <div class="col-lg-5 col-xl-5 m-lr-auto m-b-50">
-				    <div class="m-l-25 m-r--38 m-lr-0-xl">
-                    
-                        <h3 class="mtext-111 cl2 p-b-16"> Checkout / Complete Purchase</h3>
+            <a href="/cart" class="stext-109 cl8 hov-cl1 trans-04">Cart
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">Checkout
+            </span>
+        </div>
+    </div>
+
+    <div class="bg0 p-t-75 p-b-85">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-5 col-xl-5 m-lr-auto m-b-50">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+
+                        <h3 class="mtext-111 cl2 p-b-16">Checkout / Complete Purchase</h3>
                         <div class="row">
                             <div class="col-md-6">
-                            <div class="form-group">
-                            
-                            <label id="Name"> Name</label>
-                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter your full name"></asp:TextBox>
+                                <div class="form-group">
+
+                                    <label id="Name">Name</label>
+                                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter your full name"></asp:TextBox>
+                                </div>
                             </div>
-                            </div>
-                            
+
                             <div class="col-md-6">
-                            <div class="form-group">
-                            <label id="surName"> Surname</label>
-                            <asp:TextBox ID="txtSurname" runat="server" CssClass="form-control" placeholder="Enter your surname name"></asp:TextBox>
-                            </div>
+                                <div class="form-group">
+                                    <label id="surName">Surname</label>
+                                    <asp:TextBox ID="txtSurname" runat="server" CssClass="form-control" placeholder="Enter your surname name"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
 
@@ -55,26 +71,24 @@
                             <label id="zip">ZIP Code</label>
                             <asp:TextBox ID="txtZip" runat="server" CssClass="form-control" placeholder="Enter your ZIP code"></asp:TextBox>
                         </div>
-                        <asp:Button runat="server" Text="Proceed to Payment" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" onClick="btnPayment_Click">
-				           
-                        </asp:Button>
-                   
-                        </div>
-                        </div>
+                        <asp:Button runat="server" Text="Proceed to Payment" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" OnClick="btnPayment_Click"></asp:Button>
+
+                    </div>
+                </div>
 
                 <!-- shopping Cart -->
-   	
-   				<div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
-   					<div class="m-l-25 m-r--38 m-lr-0-xl">
-   						<div class="wrap-table-shopping-cart">
-   							<table class="table-shopping-cart">
-   								<tr class="table_head">
-   									<th class="column-1">Product</th>
-   									<th class="column-2"></th>
-   									<th class="column-3">Price</th>
-   									<th class="column-4">Quantity</th>
-   									<th class="column-5">Total</th>
-   								</tr>
+
+                <div class="col-lg-7 col-xl-7 m-lr-auto m-b-50">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart">
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">Product</th>
+                                    <th class="column-2"></th>
+                                    <th class="column-3">Price</th>
+                                    <th class="column-4">Quantity</th>
+                                    <th class="column-5">Total</th>
+                                </tr>
 
                                 <!-- Repeater control to display cart items dynamically from the data source. 
                                     Each item in the cart will be displayed in a table row with product image, name, price, quantity input, and total price. -->
@@ -107,18 +121,18 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
 
-   					
-   							</table>
-   						</div>
 
-   						
-   					</div>
-   				</div>
-                </div>
+                            </table>
+                        </div>
 
-                    <asp:Label id="lblError" runat="server" ForeColor="Red" Text=""></asp:Label>
 
+                    </div>
                 </div>
-                </div>
+            </div>
+
+            <asp:Label ID="lblError" runat="server" ForeColor="Red" Text=""></asp:Label>
+
+        </div>
+    </div>
 
 </asp:Content>

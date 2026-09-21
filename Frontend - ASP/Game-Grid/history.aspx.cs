@@ -13,5 +13,10 @@ namespace Game_Grid
         {
 
         }
+        
+        protected void btnViewOrder_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
