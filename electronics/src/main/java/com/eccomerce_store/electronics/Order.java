@@ -2,6 +2,7 @@ package com.eccomerce_store.electronics;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,4 +105,10 @@ public class Order
     {
         this.orderItems = orderItems;
     }
+
+    public Long getOrderId() {
+        return id;
+    }
+
+
 }

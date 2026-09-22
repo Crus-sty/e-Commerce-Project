@@ -22,9 +22,9 @@ public class AdminController {
     }
 
 
-    // ==========================================
+
     // CREATE ADMIN
-    // ==========================================
+
 
     @PostMapping("/create")
     public ResponseEntity<?> createAdmin(
@@ -45,9 +45,7 @@ public class AdminController {
     }
 
 
-    // ==========================================
     // GET ALL ADMINS
-    // ==========================================
 
     @GetMapping
     public ResponseEntity<List<User>> getAllAdmins() {
@@ -58,9 +56,9 @@ public class AdminController {
     }
 
 
-    // ==========================================
+
     // GET ADMIN BY ID
-    // ==========================================
+
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getAdmin(
@@ -79,9 +77,8 @@ public class AdminController {
     }
 
 
-    // ==========================================
+
     // GET ADMIN BY USERNAME
-    // ==========================================
 
     @GetMapping("/username/{username}")
     public ResponseEntity<?> getAdminByUsername(
@@ -100,9 +97,8 @@ public class AdminController {
     }
 
 
-    // ==========================================
+
     // DELETE ADMIN
-    // ==========================================
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAdmin(

@@ -17,6 +17,8 @@ import com.eccomerce_store.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 @Service
 public class CheckoutService
 {
