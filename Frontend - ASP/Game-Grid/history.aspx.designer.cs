@@ -15,21 +15,21 @@ namespace Game_Grid
     {
 
         /// <summary>
-        /// btnViewOrder control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewOrder;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// rptWishlist control.
+        /// rptOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptWishlist;
+        protected global::System.Web.UI.WebControls.Repeater rptOrders;
     }
 }

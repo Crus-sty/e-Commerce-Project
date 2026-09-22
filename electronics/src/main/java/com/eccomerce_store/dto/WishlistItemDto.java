@@ -1,9 +1,6 @@
 package com.eccomerce_store.dto;
 
-/**
- * A flat view of a wishlist item that the ASP.NET page can bind to.
- * Field names are camelCase and match the C# WishlistItemDto properties.
- */
+
 public class WishlistItemDto {
 
     private Long productId;
