@@ -29,7 +29,8 @@ namespace Game_Grid
             // User is not logged in
             if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
                 return;
             }
 
@@ -43,12 +44,15 @@ namespace Game_Grid
                     HttpResponseMessage response =
                         await client.GetAsync(API_URL);
 
+                    string responseText =
+                        await response.Content.ReadAsStringAsync();
+
                     if (response.IsSuccessStatusCode)
                     {
-                        string json = await response.Content.ReadAsStringAsync();
-
                         CartResponse cart =
-                            JsonConvert.DeserializeObject<CartResponse>(json);
+                            JsonConvert.DeserializeObject<CartResponse>(
+                                responseText
+                            );
 
                         if (cart != null && cart.items != null)
                         {
@@ -59,23 +63,31 @@ namespace Game_Grid
                         }
                         else
                         {
-                            rptCart.DataSource = new List<CartItemDto>();
+                            List<CartItemDto> emptyCart =
+                                new List<CartItemDto>();
+
+                            rptCart.DataSource = emptyCart;
                             rptCart.DataBind();
 
-                            CalculateTotals(new List<CartItemDto>());
+                            CalculateTotals(emptyCart);
                         }
                     }
                     else if (response.StatusCode ==
                              System.Net.HttpStatusCode.Unauthorized)
                     {
                         Session.Clear();
-                        Response.Redirect("login.aspx");
+
+                        Response.Redirect("login.aspx", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                        return;
                     }
                     else
                     {
                         lblMessage.Text =
                             "Could not load cart. Status: " +
-                            response.StatusCode;
+                            response.StatusCode +
+                            "<br/>" +
+                            responseText;
                     }
                 }
             }
@@ -86,9 +98,9 @@ namespace Game_Grid
             }
         }
 
-        
         // CALCULATE TOTALS
-     
+ 
+
         private void CalculateTotals(List<CartItemDto> items)
         {
             decimal subtotal = 0;
@@ -119,52 +131,63 @@ namespace Game_Grid
 
 
         // UPDATE CART ITEM
-       
+
+
         protected async void btnUpdate_Click(object sender, EventArgs e)
         {
             string token = Session["Token"] as string;
 
             if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
                 return;
             }
 
             try
             {
-                // Get product ID from the button that was clicked
-                System.Web.UI.WebControls.Button button = (System.Web.UI.WebControls.Button)sender;
+                System.Web.UI.WebControls.Button button =
+                    (System.Web.UI.WebControls.Button)sender;
 
+                int productId;
 
-                int productId = Convert.ToInt32(button.CommandArgument);
+                if (!int.TryParse(
+                    button.CommandArgument,
+                    out productId))
+                {
+                    lblMessage.Text = "Invalid product ID.";
+                    return;
+                }
 
-
-                // Get quantity from the textbox
-                string quantityValue = Request.Form["quantity_" + productId];
-
+                string quantityValue =
+                    Request.Form["quantity_" + productId];
 
                 int quantity;
 
-                if (!int.TryParse(quantityValue, out quantity))
+                if (!int.TryParse(
+                    quantityValue,
+                    out quantity))
                 {
-                    lblMessage.Text = "Please enter a valid quantity.";
+                    lblMessage.Text =
+                        "Please enter a valid quantity.";
                     return;
                 }
 
                 if (quantity <= 0)
                 {
-                    lblMessage.Text = "Quantity must be greater than 0.";
-
+                    lblMessage.Text =
+                        "Quantity must be greater than 0.";
                     return;
                 }
 
                 using (HttpClient client = new HttpClient())
                 {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue(
+                            "Bearer",
+                            token
+                        );
 
-
-                   
-                
                     StringContent content =
                         new StringContent(
                             quantity.ToString(),
@@ -174,9 +197,14 @@ namespace Game_Grid
 
                     HttpResponseMessage response =
                         await client.PutAsync(
-                            API_URL + "/update/" + productId,
+                            API_URL +
+                            "/update/" +
+                            productId,
                             content
                         );
+
+                    string responseText =
+                        await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -187,34 +215,34 @@ namespace Game_Grid
                     }
                     else
                     {
-                        string error =
-                            await response.Content.ReadAsStringAsync();
-
                         lblMessage.Text =
                             "Could not update cart. " +
-                            "Status: " + response.StatusCode +
-                            " " + error;
+                            "Status: " +
+                            response.StatusCode +
+                            "<br/>" +
+                            responseText;
                     }
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = "Error updating cart: " + ex.Message;
-
+                lblMessage.Text =
+                    "Error updating cart: " +
+                    ex.Message;
             }
         }
 
         // REMOVE CART ITEM
 
+
         protected async void btnRemove_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "REMOVE BUTTON CLICKED";
-
             string token = Session["Token"] as string;
 
             if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
                 return;
             }
 
@@ -223,15 +251,14 @@ namespace Game_Grid
                 System.Web.UI.WebControls.Button button =
                     (System.Web.UI.WebControls.Button)sender;
 
-                // Get product ID
                 int productId;
 
-                if (!int.TryParse(button.CommandArgument, out productId))
+                if (!int.TryParse(
+                    button.CommandArgument,
+                    out productId))
                 {
                     lblMessage.Text =
-                        "Invalid product ID: [" +
-                        button.CommandArgument +
-                        "]";
+                        "Invalid product ID.";
 
                     return;
                 }
@@ -239,9 +266,15 @@ namespace Game_Grid
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", token);
+                        new AuthenticationHeaderValue(
+                            "Bearer",
+                            token
+                        );
 
-                    string url = API_URL + "/remove/" + productId;
+                    string url =
+                        API_URL +
+                        "/remove/" +
+                        productId;
 
                     HttpResponseMessage response =
                         await client.DeleteAsync(url);
@@ -251,7 +284,8 @@ namespace Game_Grid
 
                     if (response.IsSuccessStatusCode)
                     {
-                        lblMessage.Text = "Item removed successfully.";
+                        lblMessage.Text =
+                            "Item removed successfully.";
 
                         await LoadCart();
                     }
@@ -259,8 +293,10 @@ namespace Game_Grid
                     {
                         lblMessage.Text =
                             "Remove failed. " +
-                            "Status: " + response.StatusCode +
-                            "<br/>Response: " + responseText;
+                            "Status: " +
+                            response.StatusCode +
+                            "<br/>Response: " +
+                            responseText;
                     }
                 }
             }
@@ -274,46 +310,56 @@ namespace Game_Grid
 
 
         // APPLY COUPON
+   
 
-        protected void btnApplyCoupon_Click(object sender, EventArgs e)
+        protected void btnApplyCoupon_Click(
+            object sender,
+            EventArgs e)
         {
             string coupon = txtCoupon.Text.Trim();
 
             if (string.IsNullOrEmpty(coupon))
             {
-                lblMessage.Text = "Please enter a coupon code.";
+                lblMessage.Text =
+                    "Please enter a coupon code.";
+
                 return;
             }
 
-            // Coupon functionality 
-       
-            lblMessage.Text = "Coupon functionality is not available yet.";
+            lblMessage.Text =
+                "Coupon functionality is not available yet.";
         }
-
 
         // CHECKOUT
 
-        protected void btnCheckout_Click(object sender, EventArgs e)
+
+        protected void btnCheckout_Click(
+            object sender,
+            EventArgs e)
         {
             string token = Session["Token"] as string;
 
             if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
                 return;
             }
 
-            Response.Redirect("checkout.aspx");
+            Response.Redirect("checkout.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 
     // CART RESPONSE
+ 
 
     public class CartResponse
     {
         public List<CartItemDto> items { get; set; }
     }
 
+    
     // CART ITEM
 
     public class CartItemDto
@@ -324,45 +370,61 @@ namespace Game_Grid
 
         public string productImage { get; set; }
 
-        // Must match "price" from Spring Boot
         public decimal price { get; set; }
 
         public int quantity { get; set; }
 
-        // Must match "subtotal" from Spring Boot
         public decimal subtotal { get; set; }
 
 
-        // Properties used by the ASPX page
-
+        // PROPERTIES USED BY ASPX
+     
         public int ProductID
         {
-            get { return productId; }
+            get
+            {
+                return productId;
+            }
         }
 
         public string ProductName
         {
-            get { return productName; }
+            get
+            {
+                return productName;
+            }
         }
 
         public string ProductImage
         {
-            get { return productImage; }
+            get
+            {
+                return productImage;
+            }
         }
 
         public decimal ProductPrice
         {
-            get { return price; }
+            get
+            {
+                return price;
+            }
         }
 
         public int Quantity
         {
-            get { return quantity; }
+            get
+            {
+                return quantity;
+            }
         }
 
         public decimal Total
         {
-            get { return subtotal; }
+            get
+            {
+                return subtotal;
+            }
         }
     }
 }
