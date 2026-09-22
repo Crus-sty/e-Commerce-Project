@@ -1,5 +1,0 @@
-ALTER LOGIN [Ecommerce_DB]
-WITH PASSWORD = 'maqhawe7210';
-
-ALTER LOGIN [Ecommerce_DB]
-WITH CHECK_POLICY = OFF;
