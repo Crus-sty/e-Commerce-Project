@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Admin Page" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="admin-home.aspx.cs" Inherits="Game_Grid.admin_home" %>
+﻿<%@ Page Title="Order Management"   Language="C#"   MasterPageFile="~/Admin.Master"   AutoEventWireup="true"   Async="true"   CodeBehind="orders.aspx.cs"   Inherits="Game_Grid.orders" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
