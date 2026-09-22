@@ -2,30 +2,27 @@ package com.eccomerce_store.electronics;
 
 import jakarta.persistence.*;
 
- // This class represents one product inside an order
 @Entity
-
 @Table(name = "orderitem")
 public class OrderItem
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "OrderItemID")
     private Long id;
 
     @ManyToOne
-
     @JoinColumn(name = "OrderID", nullable = false)
     private Order order;
 
     @ManyToOne
-
-    @JoinColumn(name = "productID", nullable = false)
+    @JoinColumn(name = "ProductID", nullable = false)
     private Product product;
 
-    @Column(name="Quantity",nullable = false)
+    @Column(name = "Quantity", nullable = false)
     private int quantity;
 
-    @Column(name="UnitPrice",nullable = false)
+    @Column(name = "UnitPrice", nullable = false)
     private double price;
 
     public OrderItem()
@@ -33,6 +30,7 @@ public class OrderItem
     }
 
     // Getters and Setters
+
     public Long getId()
     {
         return id;

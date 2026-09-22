@@ -2,90 +2,213 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="bg0 p-t-75 p-b-85">
         <div class="container">
 
             <div class="acc-headings p-b-40">
-                <h1 align="center">Discounts / Promotions Codes
+                <h1 align="center">
+                    Discounts / Promotion Codes
                 </h1>
             </div>
 
-            <div class="flex-w flex-sb-m bor0 p-t-18 p-b-15 p-lr-10 p-lr-10-sm">
-                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Discount No."></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search Discount" CssClass="btn btn-primary mt-3" OnClick="btnSearchDiscounts_Click"></asp:Button>
-                <asp:Button ID="btnAddDiscount" runat="server" Text="Add Discount" CssClass="btn btn-primary mt-3" OnClick="btnAddDiscount_Click"></asp:Button>
-                <asp:Button ID="btnDeleteDiscount" runat="server" Text="Delete Discount" CssClass="btn btn-primary mt-3" OnClick="btnDeleteDiscount_Click"></asp:Button>
+            <asp:Label
+                ID="lblMessage"
+                runat="server"
+                CssClass="text-danger">
+            </asp:Label>
+
+            <!-- SEARCH -->
+
+            <div class="flex-w flex-sb-m bor0 p-t-18 p-b-15">
+
+                <asp:TextBox
+                    ID="txtSearch"
+                    runat="server"
+                    CssClass="form-control"
+                    placeholder="Discount No.">
+                </asp:TextBox>
+
+                <asp:Button
+                    ID="btnSearch"
+                    runat="server"
+                    Text="Search Discount"
+                    CssClass="btn btn-primary mt-3"
+                    OnClick="btnSearchDiscounts_Click" />
+
             </div>
 
-            <div class="row">
 
-                <div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
-                    <div class="m-l-25 m-r--38 m-lr-0-xl">
-                        <div class="wrap-table-shopping-cart">
-                            <table class="table-shopping-cart">
-                                <tr class="table_head">
-                                    <th class="column-1">Discount No.</th>
-                                    <th class="column-1">Description</th>
-                                    <th class="column-3">Start Date</th>
-                                    <th class="column-3">End Date</th>
-                                    <th class="column-3">Manage / Modify</th>
-                                </tr>
+            <!-- ADD DISCOUNT -->
 
-                                <tr class="table_row">
-                                    <td class="column-1">[Discount No.]</td>
-                                    <td class="column-1">[Description]</td>
-                                    <td class="column-3">[Start Date]</td>
-                                    <td class="column-3">[End Date]</td>
+            <div class="bor10 p-lr-30 p-t-30 p-b-30 m-t-30">
 
-                                    <td class="column-3">
-                                        <!-- Remove button -->
-                                        <div class="block2-txt-child2 flex-r p-t-3">
-                                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" onclick="btnRemove_Click">
-                                                <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/images/icons/icon-heart-02.png" alt="ICON">
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                <h3 class="mtext-105 cl2 p-b-20">
+                    Add Discount
+                </h3>
 
-                                <!-- Repeater -->
+                <div class="p-b-15">
 
-                                <asp:Repeater ID="rptWishlist" runat="server">
-                                    <ItemTemplate>
-                                        <tr class="table_row">
-                                            <td class="column-1">
-                                                <div class="how-itemcart1">
-                                                    <img src='<%# Eval("DiscountNo") %>' alt="IMG">
-                                                </div>
-                                            </td>
-                                            <td class="column-2"><%# Eval("Description") %></td>
-                                            <td class="column-3"><%# Eval("StartDate") %></td>
-                                            <td class="column-4"><%# Eval("EndDate") %></td>
+                    <label>Discount Number</label>
 
-                                            <td class="column-5">
-                                                <div class="block2-txt-child2 flex-r p-t-3">
-                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/images/icons/icon-heart-02.png" alt="ICON">
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>
+                    <asp:TextBox
+                        ID="txtDiscountNo"
+                        runat="server"
+                        CssClass="form-control"
+                        placeholder="Enter discount number">
+                    </asp:TextBox>
 
-
-                            </table>
-                        </div>
-                    </div>
                 </div>
 
+                <div class="p-b-15">
 
+                    <label>Description</label>
+
+                    <asp:TextBox
+                        ID="txtDescription"
+                        runat="server"
+                        CssClass="form-control"
+                        placeholder="Discount description">
+                    </asp:TextBox>
+
+                </div>
+
+                <div class="p-b-15">
+
+                    <label>Discount Percentage</label>
+
+                    <asp:TextBox
+                        ID="txtDiscountPercentage"
+                        runat="server"
+                        CssClass="form-control"
+                        TextMode="Number"
+                        placeholder="Enter percentage">
+                    </asp:TextBox>
+
+                </div>
+
+                <div class="p-b-15">
+
+                    <label>Start Date</label>
+
+                    <asp:TextBox
+                        ID="txtStartDate"
+                        runat="server"
+                        CssClass="form-control"
+                        TextMode="Date">
+                    </asp:TextBox>
+
+                </div>
+
+                <div class="p-b-15">
+
+                    <label>End Date</label>
+
+                    <asp:TextBox
+                        ID="txtEndDate"
+                        runat="server"
+                        CssClass="form-control"
+                        TextMode="Date">
+                    </asp:TextBox>
+
+                </div>
+
+                <asp:Button
+                    ID="btnAddDiscount"
+                    runat="server"
+                    Text="Add Discount"
+                    CssClass="btn btn-primary"
+                    OnClick="btnAddDiscount_Click" />
 
             </div>
 
+
+            <!-- DISCOUNT TABLE -->
+
+            <div class="row m-t-50">
+
+                <div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
+
+                    <div class="wrap-table-shopping-cart">
+
+                        <table class="table-shopping-cart">
+
+                            <tr class="table_head">
+
+                                <th class="column-1">
+                                    Discount No.
+                                </th>
+
+                                <th class="column-2">
+                                    Description
+                                </th>
+
+                                <th class="column-3">
+                                    Start Date
+                                </th>
+
+                                <th class="column-4">
+                                    End Date
+                                </th>
+
+                                <th class="column-5">
+                                    Manage
+                                </th>
+
+                            </tr>
+
+
+                            <asp:Repeater
+                                ID="rptDiscounts"
+                                runat="server">
+
+                                <ItemTemplate>
+
+                                    <tr class="table_row">
+
+                                        <td class="column-1">
+                                            <%# Eval("DiscountNo") %>
+                                        </td>
+
+                                        <td class="column-2">
+                                            <%# Eval("Description") %>
+                                        </td>
+
+                                        <td class="column-3">
+                                            <%# Eval("StartDate") %>
+                                        </td>
+
+                                        <td class="column-4">
+                                            <%# Eval("EndDate") %>
+                                        </td>
+
+                                        <td class="column-5">
+
+                                            <asp:Button
+                                                ID="btnDeleteDiscount"
+                                                runat="server"
+                                                Text="Delete"
+                                                CssClass="btn btn-danger"
+                                                CommandArgument='<%# Eval("DiscountNo") %>'
+                                                OnClick="btnDeleteDiscount_Click" />
+
+                                        </td>
+
+                                    </tr>
+
+                                </ItemTemplate>
+
+                            </asp:Repeater>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
     </div>
