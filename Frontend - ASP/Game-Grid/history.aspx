@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" Async="true" CodeBehind="history.aspx.cs" Inherits="Game_Grid.history" %>
+﻿<%@ Page Title="Order History" Language="C#" MasterPageFile="~/Main-2.Master" AutoEventWireup="true" Async="true" CodeBehind="history.aspx.cs" Inherits="Game_Grid.history" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -64,8 +64,8 @@
                                                     Text="View Order"
                                                     CssClass="btn btn-primary mt-3"
                                                     CommandName="ViewOrder"
-                                                    CommandArgument='<%# Eval("Id") %>' />
-
+                                                    CommandArgument='<%# Eval("Id") %>'
+                                                    OnClick = "/account/history/<%# Eval("Id") %>" />
                                             </td>
 
                                         </tr>

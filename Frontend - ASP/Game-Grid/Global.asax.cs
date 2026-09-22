@@ -88,6 +88,12 @@ namespace Game_Grid
                 "shop/product/{id}",
                 "~/product-detail.aspx"
             );
+
+            routes.MapPageRoute(
+                "Invoice",
+                "account/history/{id}",
+                "~/order-detail.aspx");
+
         }
     }
 }

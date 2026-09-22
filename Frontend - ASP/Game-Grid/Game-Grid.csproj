@@ -367,6 +367,7 @@
     <Content Include="js\menu.js" />
     <Content Include="js\slick-custom.js" />
     <Content Include="login.aspx" />
+    <Content Include="order-detail.aspx" />
     <Content Include="orders.aspx" />
     <Content Include="payment.aspx" />
     <Content Include="Payments\apple-pay-logo-19557.svg" />
@@ -694,6 +695,13 @@
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="order-detail.aspx.cs">
+      <DependentUpon>order-detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="order-detail.aspx.designer.cs">
+      <DependentUpon>order-detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="orders.aspx.cs">
       <DependentUpon>orders.aspx</DependentUpon>
