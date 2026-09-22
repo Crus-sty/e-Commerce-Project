@@ -34,57 +34,61 @@ namespace Game_Grid
             int cartTotal = GetCartItemCount();
             int wishlistTotal = GetWishlistItemCount();
 
-            // cartIcon.Attributes["data-notify"] = cartTotal.ToString();
-            // wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
-
             SetActiveMenu();
         }
 
+
         protected void btnHistory_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/account/history", false);
+            Response.Redirect("~/history.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
 
+
         protected void btn_Orderhistory_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/account/history", false);
+            Response.Redirect("~/history.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
+
 
         protected void accountLink_Click(object sender, EventArgs e)
         {
             if (Session["email"] != null)
             {
-                Response.Redirect("/account", false);
+                Response.Redirect("~/account.aspx", false);
             }
             else
             {
-                Response.Redirect("/login", false);
+                Response.Redirect("~/login.aspx", false);
             }
 
             Context.ApplicationInstance.CompleteRequest();
         }
 
+
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/sign-up", false);
+            Response.Redirect("~/sign-up.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
 
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/login", false);
+            Response.Redirect("~/login.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
+
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
 
-            Response.Redirect("/home", false);
+            Response.Redirect("~/home.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
+
 
         protected async void btnAddToCart_Click(object sender, EventArgs e)
         {
@@ -92,7 +96,7 @@ namespace Game_Grid
 
             if (string.IsNullOrEmpty(token))
             {
-                Response.Redirect("/login", false);
+                Response.Redirect("~/login.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
                 return;
             }
@@ -125,31 +129,36 @@ namespace Game_Grid
                     quantity = quantity
                 };
 
-                string json = JsonConvert.SerializeObject(cartItem);
+                string json =
+                    JsonConvert.SerializeObject(cartItem);
 
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", token);
+                        new AuthenticationHeaderValue(
+                            "Bearer",
+                            token);
 
-                    StringContent content = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json"
-                    );
+                    StringContent content =
+                        new StringContent(
+                            json,
+                            Encoding.UTF8,
+                            "application/json");
 
                     HttpResponseMessage response =
                         await client.PostAsync(
                             "http://localhost:8080/api/cart/add",
-                            content
-                        );
+                            content);
 
                     string responseText =
                         await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Response.Redirect("/cart", false);
+                        Response.Redirect(
+                            "~/shopping-cart.aspx",
+                            false);
+
                         Context.ApplicationInstance.CompleteRequest();
                     }
                     else if (response.StatusCode ==
@@ -158,7 +167,10 @@ namespace Game_Grid
                         Session.Remove("Token");
                         Session.Remove("email");
 
-                        Response.Redirect("/login", false);
+                        Response.Redirect(
+                            "~/login.aspx",
+                            false);
+
                         Context.ApplicationInstance.CompleteRequest();
                     }
                     else
@@ -167,8 +179,7 @@ namespace Game_Grid
                             "Could not add to cart. Status: " +
                             response.StatusCode +
                             "<br/>" +
-                            responseText
-                        );
+                            responseText);
                     }
                 }
             }
@@ -176,39 +187,45 @@ namespace Game_Grid
             {
                 Response.Write(
                     "Error adding to cart: " +
-                    ex.Message
-                );
+                    ex.Message);
             }
         }
+
 
         protected void btnSubscribe_Click(object sender, EventArgs e)
         {
             // Newsletter subscription code can be added here.
         }
 
+
         private int GetCartItemCount()
         {
             if (Session["CartCount"] != null)
             {
-                return Convert.ToInt32(Session["CartCount"]);
+                return Convert.ToInt32(
+                    Session["CartCount"]);
             }
 
             return 0;
         }
+
 
         private int GetWishlistItemCount()
         {
             if (Session["WishlistCount"] != null)
             {
-                return Convert.ToInt32(Session["WishlistCount"]);
+                return Convert.ToInt32(
+                    Session["WishlistCount"]);
             }
 
             return 0;
         }
 
+
         private void SetActiveMenu()
         {
-            string current = Session["Page"] as string ?? "";
+            string current =
+                Session["Page"] as string ?? "";
 
             homeMenu.Attributes["class"] = "";
             shopMenu.Attributes["class"] = "";
@@ -218,22 +235,27 @@ namespace Game_Grid
             switch (current)
             {
                 case "home.aspx":
-                    homeMenu.Attributes["class"] = "active-menu";
+                    homeMenu.Attributes["class"] =
+                        "active-menu";
                     break;
 
-                case "shop.aspx":
-                    shopMenu.Attributes["class"] = "active-menu";
+                case "product.aspx":
+                    shopMenu.Attributes["class"] =
+                        "active-menu";
                     break;
 
                 case "about.aspx":
-                    aboutMenu.Attributes["class"] = "active-menu";
+                    aboutMenu.Attributes["class"] =
+                        "active-menu";
                     break;
 
                 case "contact.aspx":
-                    contactMenu.Attributes["class"] = "active-menu";
+                    contactMenu.Attributes["class"] =
+                        "active-menu";
                     break;
             }
         }
+
 
         private void ShowAlert(string message)
         {
@@ -245,10 +267,12 @@ namespace Game_Grid
 
             Page.ClientScript.RegisterStartupScript(
                 this.GetType(),
-                "alert_" + Guid.NewGuid().ToString("N"),
-                "alert('" + safe + "');",
-                true
-            );
+                "alert_" +
+                Guid.NewGuid().ToString("N"),
+                "alert('" +
+                safe +
+                "');",
+                true);
         }
     }
 }
