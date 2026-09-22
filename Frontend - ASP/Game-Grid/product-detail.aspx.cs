@@ -1,106 +1,246 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
-//using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text;
 
 namespace Game_Grid
 {
-    public partial class product_detail : System.Web.UI.Page
+    public partial class product_detail : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        private const string API_URL =
+            "http://localhost:8080/api/products/";
 
-        }
-		protected void btnAddToCart_Click(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
-            /*try
+            if (!IsPostBack)
             {
-                // Get product ID
-                int productId;
+                await LoadProduct();
+            }
+        }
 
-                if (!int.TryParse(hfProductId.Value, out productId))
+        private async Task LoadProduct()
+        {
+            try
+            {
+
+                string productId = Page.RouteData.Values["id"] as string;
+                if (string.IsNullOrEmpty(productId))
                 {
+                    productId = Request.QueryString["id"];
+                }
+
+                if (string.IsNullOrEmpty(productId))
+                {
+                    Response.Redirect("product.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
                     return;
                 }
 
-                // Get quantity
-                int quantity;
+                int id;
 
-                if (!int.TryParse(txtQuantity.Text, out quantity))
+                if (!int.TryParse(productId, out id))
                 {
-                    quantity = 1;
-                }
-
-                if (quantity < 1)
-                {
-                    quantity = 1;
-                }
-
-                // Get logged-in user
-                string email = Session["email"] as string;
-
-                if (string.IsNullOrEmpty(email))
-                {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("product.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
                     return;
                 }
-
-                // Data that will be sent to Spring Boot
-                var cartData = new
-                {
-                    productId = productId,
-                    quantity = quantity,
-                    email = email
-                };
-
-                // Convert to JSON
-                string json = JsonConvert.SerializeObject(cartData);
-                   
 
                 using (HttpClient client = new HttpClient())
                 {
-                    client.BaseAddress =
-                        new Uri("http://localhost:8080");//we will change
-
-                    StringContent content =
-                        new StringContent(
-                            json,
-                            Encoding.UTF8,
-                            "application/json"
-                        );
-
-                    // POST request
                     HttpResponseMessage response =
-                        await client.PostAsync(
-                            "/api/cart/add",
-                            content
-                        );
+                        await client.GetAsync(API_URL + id);
+
+                    string json =
+                        await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Response.Redirect("cart.aspx");
+                        ProductDto product =
+                            JsonConvert.DeserializeObject<ProductDto>(json);
+
+                        if (product == null)
+                        {
+                            lblMessage.Text =
+                                "Product could not be found.";
+
+                            return;
+                        }
+
+                        Page.Title = product.Name;
+
+                        BindProduct(product);
+
+                        // Wait for related products to finish loading
+                        await LoadRelatedProducts(product);
                     }
                     else
                     {
-                        //We Will Display error
+                        lblMessage.Text =
+                            "Could not load product. Status: "
+                            + response.StatusCode;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Handle error
-            }*/
-            if (Session["CartCount"] == null)
-            {
-                Session["CartCount"] = 0;
+                lblMessage.Text =
+                    "Error loading product: " + ex.Message;
             }
-            Session["CartCount"] = (int)(Session["CartCount"]) + 1;
         }
+
+        private void BindProduct(ProductDto product)
+        {
+            List<ProductDto> products =
+                new List<ProductDto>();
+
+            products.Add(product);
+
+            rptProduct.DataSource = products;
+            rptProduct.DataBind();
+
+            // Find txtQuantity INSIDE the Repeater
+            if (rptProduct.Items.Count > 0)
+            {
+                TextBox txtQuantity =
+                    (TextBox)rptProduct.Items[0]
+                    .FindControl("txtQuantity");
+
+                if (txtQuantity != null)
+                {
+                    txtQuantity.Text = "1";
+                }
+            }
+        }
+
+        private async Task LoadRelatedProducts(ProductDto currentProduct)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response =
+                        await client.GetAsync(
+                            "http://localhost:8080/api/products");
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return;
+                    }
+
+                    string json =
+                        await response.Content.ReadAsStringAsync();
+
+                    List<ProductDto> products =
+                        JsonConvert.DeserializeObject<List<ProductDto>>(json);
+
+                    if (products == null)
+                    {
+                        return;
+                    }
+
+                    // Remove current product
+                    products.RemoveAll(
+                        p => p.Id == currentProduct.Id);
+
+                    // Only show products from same category
+                    if (!string.IsNullOrEmpty(currentProduct.Category))
+                    {
+                        products = products.FindAll(
+                            p =>
+                                p.Category != null &&
+                                p.Category.Equals(
+                                    currentProduct.Category,
+                                    StringComparison.OrdinalIgnoreCase));
+                    }
+
+                    //  4 related products
+                    if (products.Count > 4)
+                    {
+                        products = products.GetRange(0, 4);
+                    }
+
+                    rptRelatedProducts.DataSource = products;
+                    rptRelatedProducts.DataBind();
+                }
+            }
+            catch
+            {
+                // Related products are optional.
+            }
+        }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            // Get the button that was clicked
+            Button btn = (Button)sender;
+
+            // Get the Repeater item
+            RepeaterItem item =
+                (RepeaterItem)btn.NamingContainer;
+
+            // Find the quantity TextBox inside that Repeater item
+            TextBox txtQuantity =
+                (TextBox)item.FindControl("txtQuantity");
+
+            int quantity = 1;
+
+            if (txtQuantity != null)
+            {
+                if (!int.TryParse(
+                    txtQuantity.Text,
+                    out quantity))
+                {
+                    quantity = 1;
+                }
+            }
+
+            if (quantity < 1)
+            {
+                quantity = 1;
+            }
+
+            // Get product ID
+            string productId =
+                Request.QueryString["id"];
+
+            if (string.IsNullOrEmpty(productId))
+            {
+                lblMessage.Text =
+                    "Product ID is missing.";
+
+                return;
+            }
+
+            // For now, display the selected quantity
+            lblMessage.Text =
+                "Product ID: "
+                + productId
+                + " | Quantity: "
+                + quantity;
+        }
+    }
+
+    public class ProductDto
+    {
+        public long Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public double Price { get; set; }
+
+        public int StockQuantity { get; set; }
+
+        public string Category { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public string ImageUrl2 { get; set; }
+
+        public string ImageUrl3 { get; set; }
     }
 }
