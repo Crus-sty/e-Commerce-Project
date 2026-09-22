@@ -37,8 +37,8 @@ namespace Game_Grid
             int cartTotal = GetCartItemCount();
             int wishlistTotal = GetWishlistItemCount();
 
-            cartIcon.Attributes["data-notify"] = cartTotal.ToString();
-            wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
+            // cartIcon.Attributes["data-notify"] = cartTotal.ToString();
+            // wishlistIcon.Attributes["data-notify"] = wishlistTotal.ToString();
 
             SetActiveMenu();
         }

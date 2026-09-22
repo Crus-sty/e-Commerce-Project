@@ -9,7 +9,7 @@
 
             <div class="acc-headings">
                 <h1 align="center" class="tit-1">
-                    Welcome, [NAME] [SURNAME] 
+                    Welcome
                 </h1>
             </div>
 

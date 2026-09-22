@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,8 @@ namespace Game_Grid
 
                     List<ProductDto> products =
                         JsonConvert.DeserializeObject<List<ProductDto>>(response);
+
+                    products = products.Take(5).ToList();
 
                     rptCart.DataSource = products;
                     rptCart.DataBind();
