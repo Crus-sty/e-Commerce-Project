@@ -1,7 +1,7 @@
 package com.eccomerce_store.electronics;
 
 import jakarta.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "orderitem")
 public class OrderItem
@@ -13,6 +13,7 @@ public class OrderItem
 
     @ManyToOne
     @JoinColumn(name = "OrderID", nullable = false)
+    @JsonBackReference
     private Order order;
 
     @ManyToOne

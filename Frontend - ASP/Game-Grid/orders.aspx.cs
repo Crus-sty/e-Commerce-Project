@@ -10,8 +10,8 @@ namespace Game_Grid
 {
     public partial class orders : System.Web.UI.Page
     {
-        private const string API_URL =
-            "http://localhost:8080/api/admin/orders";
+        private const string API_URL = "http://localhost:8080/api/admin/orders";
+
 
         protected async void Page_Load(object sender, EventArgs e)
         {
