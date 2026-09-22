@@ -48,8 +48,7 @@
                                                 <%# Eval("NumberOfItems") %>
                                             </td>
 
-                                            <td class="column-3">
-                                                R <%# Eval("TotalPrice", "{0:F2}") %>
+                                            <td class="column-3">R <%# Eval("TotalPrice", "{0:F2}") %>
                                             </td>
 
                                             <td class="column-4">
@@ -58,14 +57,13 @@
 
                                             <td class="column-5">
 
-                                                <asp:Button
+                                                <asp:HyperLink
                                                     ID="btnViewOrder"
                                                     runat="server"
                                                     Text="View Order"
                                                     CssClass="btn btn-primary mt-3"
-                                                    CommandName="ViewOrder"
-                                                    CommandArgument='<%# Eval("Id") %>'
-                                                    OnClick = "/account/history/<%# Eval("Id") %>" />
+                                                    NavigateUrl='<%# "/account/history/" + Eval("Id") %>'>
+                                                </asp:HyperLink>
                                             </td>
 
                                         </tr>

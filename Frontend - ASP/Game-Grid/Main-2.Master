@@ -113,11 +113,11 @@
                                 <i class="zmdi zmdi-search"></i>
                             </div>
 
-                            <div id="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+                            <div id="cartIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" onclick="location.href='/cart'">
                                 <i class="zmdi zmdi-shopping-cart"></i>
                             </div>
 
-                            <div id="wishlistIcon" runat="server" href="wishlist.aspx" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <div id="wishlistIcon" runat="server" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" onclick="location.href='/wishlist'">
                                 <i class="zmdi zmdi-favorite-outline"></i>
                             </div>
                         </div>

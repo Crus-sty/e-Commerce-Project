@@ -163,7 +163,7 @@
                                 <th class="column-1">Product</th>
                                 <th class="column-3">Unit price</th>
                                 <th class="column-4">Qty</th>
-                                <th class="column-5">Line total</th>
+                                <th class="column-5">Totals</th>
                             </tr>
 
                             <asp:Repeater ID="rptItems" runat="server">
