@@ -1,0 +1,88 @@
+Users -> Customer/Administrator (MANDATORY, OR)
+------
+UserID
+FirstName
+LastName
+Email
+PasswordHash
+Phone
+Role
+DateCreated
+
+Category
+---------
+CategoryID
+CategoryName
+Description
+
+Product
+--------
+ProductID
+CategoryID (FK)
+Name
+Description
+Brand
+Price
+StockQuantity
+ImageURL
+Specifications
+IsActive
+
+Cart
+----
+CartID
+UserID (FK)
+CreatedDate
+
+CartItem
+---------
+CartItemID
+CartID (FK)
+ProductID (FK)
+Quantity
+
+Order
+------
+OrderID
+UserID (FK)
+OrderDate
+Status
+TotalAmount
+ShippingAddress
+
+OrderItem
+----------
+OrderItemID
+OrderID (FK)
+ProductID (FK)
+Quantity
+UnitPrice
+
+Review
+-------
+ReviewID
+UserID (FK)
+ProductID (FK)
+Rating
+Comment
+ReviewDate
+
+Wishlist
+---------
+WishlistID
+UserID (FK)
+CreatedDate
+
+WishlistItem
+-------------
+WishlistItemID
+WishlistID (FK)
+ProductID (FK)
+
+CustomizationService
+--------------------
+ServiceID
+ProductID (FK)
+ServiceName
+Description
+ExtraCost
